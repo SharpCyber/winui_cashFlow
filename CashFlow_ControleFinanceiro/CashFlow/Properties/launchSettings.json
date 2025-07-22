@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CashFlow (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CashFlow (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
