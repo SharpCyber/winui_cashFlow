@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CashFlow.Data;
+using CashFlow.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace CashFlow.Application
 {
@@ -12,13 +14,7 @@ namespace CashFlow.Application
             try
             {
                 var host = Host.CreateDefaultBuilder()
-                    .ConfigureServices((context, services) =>
-                    {
-                        // Registrar UOW 
-                        // Registrar demais interfaces
-
-                        RegistrarServicos(services);
-                    })
+                    .ConfigureServices((context, services) => RegistrarServicos(services))
                     .Build();
 
                 ServiceProvider = host.Services;
@@ -31,7 +27,7 @@ namespace CashFlow.Application
 
         private static void RegistrarServicos(IServiceCollection services)
         {
-
+            services.AddSingleton<IUnitOfWork, UnitOfWork>();
         }
     }
 }

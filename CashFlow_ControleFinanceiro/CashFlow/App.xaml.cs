@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CashFlow.Application;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -8,6 +9,7 @@ using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,7 +28,7 @@ namespace CashFlow
     /// </summary>
     public partial class App : Microsoft.UI.Xaml.Application
     {
-        private Window? _window;
+        private Microsoft.UI.Xaml.Window? _window;
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -43,8 +45,17 @@ namespace CashFlow
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            _window = new MainWindow();
-            _window.Activate();
+            try
+            {
+                Bootstrap.Iniciar();
+
+                _window = new MainWindow();
+                _window.Activate();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Falha na inicialização: {ex.Message}");
+            }
         }
     }
 }
