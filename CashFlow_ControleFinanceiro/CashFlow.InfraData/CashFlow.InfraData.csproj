@@ -17,8 +17,5 @@
 		<ProjectReference Include="..\CashFlow.Data\CashFlow.Data.csproj" />
 		<ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Repository\" />
-	</ItemGroup>
 
 </Project>
