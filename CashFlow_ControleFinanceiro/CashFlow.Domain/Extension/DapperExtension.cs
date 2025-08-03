@@ -212,81 +212,81 @@ namespace CashFlow.Domain.Extension
         {
             //var atributoEntidade = entityType.GetCustomAttribute<EntidadeAttribute>();
             //string tableName = atributoEntidade?.NomeTabela ?? entityType.Name;
+            string tableName = entityType.Name;
 
-            //StringBuilder createTableSql = new StringBuilder();
-            //createTableSql.Append($"CREATE TABLE {tableName} (");
+            StringBuilder createTableSql = new StringBuilder();
+            createTableSql.Append($"CREATE TABLE {tableName} (");
 
-            //PropertyInfo[] properties = entityType.GetProperties();
-            //List<string> columns = new List<string>();
-            //List<string> foreignKeys = new List<string>(); // Lista para armazenar as FK
+            PropertyInfo[] properties = entityType.GetProperties();
+            List<string> columns = new List<string>();
+            List<string> foreignKeys = new List<string>(); // Lista para armazenar as FK
 
-            //foreach (PropertyInfo property in properties)
-            //{
-            //    // Ignorar propriedades não editáveis
-            //    if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
-            //        continue;
+            foreach (PropertyInfo property in properties)
+            {
+                // Ignorar propriedades não editáveis
+                //if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
+                //    continue;
 
-            //    Type propertyType = property.PropertyType;
-            //    string columnName = property.Name;
-            //    string columnType = SQLTradutorFactory.ObterTipoColuna(property);
+                Type propertyType = property.PropertyType;
+                string columnName = property.Name;
+                //string columnType = SQLTradutorFactory.ObterTipoColuna(property);
 
-            //    bool ehObrigatorio = true;
+                bool ehObrigatorio = true;
 
-            //    // Verificar se é Chave Primária
-            //    if (property.GetCustomAttribute<ChavePrimaria>() != null)
-            //    {
-            //        columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
-            //    }
-            //    else
-            //    {
-            //        // Verificar se a propriedade é obrigatória
-            //        //if (property.GetCustomAttribute<Obrigatorio>() != null)
-            //        //{
-            //        //    columns.Add($"{columnName} {columnType} NOT NULL");
-            //        //}
-            //        //else
-            //        //{
-            //        //    columns.Add($"{columnName} {columnType}");
-            //        //    ehObrigatorio = false;
-            //        //}
-            //    }
+                // Verificar se é Chave Primária
+                //if (property.GetCustomAttribute<ChavePrimaria>() != null)
+                //{
+                //    columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
+                //}
+                //else
+                //{
+                //    // Verificar se a propriedade é obrigatória
+                //    if (property.GetCustomAttribute<Obrigatorio>() != null)
+                //    {
+                //        columns.Add($"{columnName} {columnType} NOT NULL");
+                //    }
+                //    else
+                //    {
+                //        columns.Add($"{columnName} {columnType}");
+                //        ehObrigatorio = false;
+                //    }
+                //}
 
-            //    //// Verificar se é uma Foreign Key
-            //    //var relacionamento = property.GetCustomAttribute<Relacionamento>();
-            //    //if (relacionamento != null)
-            //    //{
-            //    //    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
-            //    //    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
+                // Verificar se é uma Foreign Key
+                //var relacionamento = property.GetCustomAttribute<Relacionamento>();
+                //if (relacionamento != null)
+                //{
+                //    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
+                //    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
 
-            //    //    if (!ehObrigatorio)
-            //    //        fk += " ON DELETE SET NULL";
+                //    if (!ehObrigatorio)
+                //        fk += " ON DELETE SET NULL";
 
-            //    //    foreignKeys.Add(fk);
-            //    //}
-            //}
+                //    foreignKeys.Add(fk);
+                //}
+            }
 
-            //// Adicionar as colunas ao SQL
-            //createTableSql.Append(string.Join(", ", columns));
+            // Adicionar as colunas ao SQL
+            createTableSql.Append(string.Join(", ", columns));
 
-            //// Adicionar as Foreign Keys (se houver)
-            //if (foreignKeys.Any())
-            //{
-            //    createTableSql.Append(", ");
-            //    createTableSql.Append(string.Join(", ", foreignKeys));
-            //}
+            // Adicionar as Foreign Keys (se houver)
+            if (foreignKeys.Any())
+            {
+                createTableSql.Append(", ");
+                createTableSql.Append(string.Join(", ", foreignKeys));
+            }
 
-            //createTableSql.Append(");");
+            createTableSql.Append(");");
 
-            //try
-            //{
-            //    var ret = connection.Execute(createTableSql.ToString(), transaction: transaction);
-            //    return (ret > 0);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new InvalidOperationException($"Erro ao criar a tabela '{tableName}': {createTableSql}", ex);
-            //}
-            return true;
+            try
+            {
+                var ret = connection.Execute(createTableSql.ToString(), transaction: transaction);
+                return (ret > 0);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Erro ao criar a tabela '{tableName}': {createTableSql}", ex);
+            }
         }
 
         public static bool CriarTabelas(this IDbConnection connection, string query, IDbTransaction transaction = null)
@@ -329,10 +329,10 @@ namespace CashFlow.Domain.Extension
                 case "string":
                     tipoColuna = "TEXT";
                     break;
-                case "int32":
+                case "int32": //int
                     tipoColuna = "INTEGER";
                     break;
-                case "int64":
+                case "int64": //long
                     tipoColuna = "BIGINT";
                     break;
                 case "decimal":
@@ -350,7 +350,7 @@ namespace CashFlow.Domain.Extension
                 case "boolean":
                     tipoColuna = "BOOLEAN";
                     break;
-                case "int16":
+                case "int16": // short
                     tipoColuna = "SMALLINT";
                     break;
                 default:

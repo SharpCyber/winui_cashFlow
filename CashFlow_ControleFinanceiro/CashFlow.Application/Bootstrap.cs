@@ -1,5 +1,7 @@
 ﻿using CashFlow.Data;
+using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
+using CashFlow.InfraData.Repository;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -28,6 +30,7 @@ namespace CashFlow.Application
         private static void RegistrarServicos(IServiceCollection services)
         {
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
         }
     }
 }

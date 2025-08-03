@@ -1,3 +1,6 @@
+using CashFlow.Application;
+using CashFlow.Domain.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -18,6 +21,8 @@ namespace CashFlow.Views
     public sealed partial class AtivoFinanceiroDialog : ContentDialog
     {
         #region Interfaces
+
+        private readonly ITipoTransacaoRepository _tipoTransacaoRepository;
         #endregion
 
         #region Propriedades
@@ -27,12 +32,16 @@ namespace CashFlow.Views
         public AtivoFinanceiroDialog()
         {
             InitializeComponent();
+            
+            _tipoTransacaoRepository = Bootstrap.ServiceProvider.GetRequiredService<ITipoTransacaoRepository>();
         }
         #endregion
 
         #region Eventos
         private void AtivoFinanceiro_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            var test = _tipoTransacaoRepository.ObterLista();
+
             this.Hide();
         }
         #endregion
