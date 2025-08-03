@@ -16,7 +16,7 @@
 
     <Grid Padding="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="54"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
@@ -27,14 +27,18 @@
             PaneDisplayMode="Left"
             IsPaneToggleButtonVisible="False"
             IsSettingsVisible="False"
-            IsBackButtonVisible="Collapsed">
+            IsBackButtonVisible="Collapsed"
+            Loaded="NavView_Loaded"
+            ItemInvoked="NavView_ItemInvoked">
 
             <NavigationView.MenuItems>
-                <NavigationViewItem Content="Teste 1" Icon="Home" HorizontalAlignment="Center" Margin="0,20,0,0"/>
-                <NavigationViewItem Content="Teste 2" Icon="Download"/>
-                <NavigationViewItem Content="Teste 3" Icon="Favorite"/>
+                <NavigationViewItem x:Name="nviDashBoard" Tag="Dashboard"/>
+                <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao"/>
+                <NavigationViewItem x:Name="nviInvestimentoPage" Tag="Investimento"/>
+                <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira"/>
+                <NavigationViewItem x:Name="nviCategoria" Tag="Categoria"/>
+                <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiro"/>
             </NavigationView.MenuItems>
-
         </NavigationView>
 
         <Frame 
