@@ -25,6 +25,11 @@ namespace CashFlow.Application
             var uow = Bootstrap.ServiceProvider.GetRequiredService<IUnitOfWork>();
         }
 
+        public static void Teste4()
+        {
+
+        }
+
         public static void Teste3()
         {
             // teste
