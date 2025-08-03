@@ -18,6 +18,9 @@ namespace CashFlow
             {
                 case ePagina.Nenhuma:
                     break;
+                case ePagina.Teste:
+                    frame.Navigate(typeof(TestePage));
+                    break;
                 case ePagina.Dashboard:
                     frame.Navigate(typeof(DashboardPage));
                     break;

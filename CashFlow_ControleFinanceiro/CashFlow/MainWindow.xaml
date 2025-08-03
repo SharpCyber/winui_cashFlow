@@ -38,6 +38,7 @@
                 <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira"/>
                 <NavigationViewItem x:Name="nviCategoria" Tag="Categoria"/>
                 <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiro"/>
+                <NavigationViewItem x:Name="nviTeste" Tag="Teste"/>
             </NavigationView.MenuItems>
         </NavigationView>
 

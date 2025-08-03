@@ -57,6 +57,11 @@ namespace CashFlow
             var itemTag = item.Tag.ToString();
             switch (itemTag)
             {
+                case "Teste":
+                    paginaAtiva = nviTeste;
+                    popupAtivo = false;
+                    Configuracao.AbrirTela(ePagina.Teste, this.ContentFrame);
+                    break;
                 case "Dashboard":
                     paginaAtiva = nviDashBoard;
                     popupAtivo = false;
