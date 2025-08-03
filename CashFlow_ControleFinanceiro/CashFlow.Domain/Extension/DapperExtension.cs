@@ -112,14 +112,14 @@ namespace CashFlow.Domain.Extension
 
             foreach (PropertyInfo propriedade in entidade.GetProperties())
             {
-                if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
-                    continue;
+                //if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
+                //    continue;
 
-                if (propriedade.GetCustomAttribute<Editavel>(false) != null)
-                    continue;
+                //if (propriedade.GetCustomAttribute<Editavel>(false) != null)
+                //    continue;
 
-                if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
-                    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
+                //if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
+                //    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
 
                 var valor = propriedade.GetValue(entity);
                 colunas.Add($"{propriedade.Name}");
@@ -152,16 +152,16 @@ namespace CashFlow.Domain.Extension
 
             foreach (PropertyInfo propriedade in entidade.GetProperties())
             {
-                if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
-                    continue;
+                //if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
+                //    continue;
 
-                if (propriedade.GetCustomAttribute<Editavel>(false) != null)
-                    continue;
+                //if (propriedade.GetCustomAttribute<Editavel>(false) != null)
+                //    continue;
 
-                if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
-                {
-                    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
-                }
+                //if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
+                //{
+                //    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
+                //}
 
                 var valor = propriedade.GetValue(entity);
                 colunas.Add($"{propriedade.Name} = @{propriedade.Name}");
@@ -210,82 +210,83 @@ namespace CashFlow.Domain.Extension
 
         public static bool CriarTabela(this IDbConnection connection, Type entityType, IDbTransaction transaction = null)
         {
-            var atributoEntidade = entityType.GetCustomAttribute<EntidadeAttribute>();
-            string tableName = atributoEntidade?.NomeTabela ?? entityType.Name;
+            //var atributoEntidade = entityType.GetCustomAttribute<EntidadeAttribute>();
+            //string tableName = atributoEntidade?.NomeTabela ?? entityType.Name;
 
-            StringBuilder createTableSql = new StringBuilder();
-            createTableSql.Append($"CREATE TABLE {tableName} (");
+            //StringBuilder createTableSql = new StringBuilder();
+            //createTableSql.Append($"CREATE TABLE {tableName} (");
 
-            PropertyInfo[] properties = entityType.GetProperties();
-            List<string> columns = new List<string>();
-            List<string> foreignKeys = new List<string>(); // Lista para armazenar as FK
+            //PropertyInfo[] properties = entityType.GetProperties();
+            //List<string> columns = new List<string>();
+            //List<string> foreignKeys = new List<string>(); // Lista para armazenar as FK
 
-            foreach (PropertyInfo property in properties)
-            {
-                // Ignorar propriedades não editáveis
-                if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
-                    continue;
+            //foreach (PropertyInfo property in properties)
+            //{
+            //    // Ignorar propriedades não editáveis
+            //    if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
+            //        continue;
 
-                Type propertyType = property.PropertyType;
-                string columnName = property.Name;
-                string columnType = SQLTradutorFactory.ObterTipoColuna(property);
+            //    Type propertyType = property.PropertyType;
+            //    string columnName = property.Name;
+            //    string columnType = SQLTradutorFactory.ObterTipoColuna(property);
 
-                bool ehObrigatorio = true;
+            //    bool ehObrigatorio = true;
 
-                // Verificar se é Chave Primária
-                if (property.GetCustomAttribute<ChavePrimaria>() != null)
-                {
-                    columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
-                }
-                else
-                {
-                    // Verificar se a propriedade é obrigatória
-                    if (property.GetCustomAttribute<Obrigatorio>() != null)
-                    {
-                        columns.Add($"{columnName} {columnType} NOT NULL");
-                    }
-                    else
-                    {
-                        columns.Add($"{columnName} {columnType}");
-                        ehObrigatorio = false;
-                    }
-                }
+            //    // Verificar se é Chave Primária
+            //    if (property.GetCustomAttribute<ChavePrimaria>() != null)
+            //    {
+            //        columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
+            //    }
+            //    else
+            //    {
+            //        // Verificar se a propriedade é obrigatória
+            //        //if (property.GetCustomAttribute<Obrigatorio>() != null)
+            //        //{
+            //        //    columns.Add($"{columnName} {columnType} NOT NULL");
+            //        //}
+            //        //else
+            //        //{
+            //        //    columns.Add($"{columnName} {columnType}");
+            //        //    ehObrigatorio = false;
+            //        //}
+            //    }
 
-                // Verificar se é uma Foreign Key
-                var relacionamento = property.GetCustomAttribute<Relacionamento>();
-                if (relacionamento != null)
-                {
-                    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
-                    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
+            //    //// Verificar se é uma Foreign Key
+            //    //var relacionamento = property.GetCustomAttribute<Relacionamento>();
+            //    //if (relacionamento != null)
+            //    //{
+            //    //    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
+            //    //    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
 
-                    if (!ehObrigatorio)
-                        fk += " ON DELETE SET NULL";
+            //    //    if (!ehObrigatorio)
+            //    //        fk += " ON DELETE SET NULL";
 
-                    foreignKeys.Add(fk);
-                }
-            }
+            //    //    foreignKeys.Add(fk);
+            //    //}
+            //}
 
-            // Adicionar as colunas ao SQL
-            createTableSql.Append(string.Join(", ", columns));
+            //// Adicionar as colunas ao SQL
+            //createTableSql.Append(string.Join(", ", columns));
 
-            // Adicionar as Foreign Keys (se houver)
-            if (foreignKeys.Any())
-            {
-                createTableSql.Append(", ");
-                createTableSql.Append(string.Join(", ", foreignKeys));
-            }
+            //// Adicionar as Foreign Keys (se houver)
+            //if (foreignKeys.Any())
+            //{
+            //    createTableSql.Append(", ");
+            //    createTableSql.Append(string.Join(", ", foreignKeys));
+            //}
 
-            createTableSql.Append(");");
+            //createTableSql.Append(");");
 
-            try
-            {
-                var ret = connection.Execute(createTableSql.ToString(), transaction: transaction);
-                return (ret > 0);
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException($"Erro ao criar a tabela '{tableName}': {createTableSql}", ex);
-            }
+            //try
+            //{
+            //    var ret = connection.Execute(createTableSql.ToString(), transaction: transaction);
+            //    return (ret > 0);
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new InvalidOperationException($"Erro ao criar a tabela '{tableName}': {createTableSql}", ex);
+            //}
+            return true;
         }
 
         public static bool CriarTabelas(this IDbConnection connection, string query, IDbTransaction transaction = null)
@@ -308,12 +309,13 @@ namespace CashFlow.Domain.Extension
 
         private static PropertyInfo ObterChavePrimaria(Type entidade)
         {
-            var chavePrimaria = entidade.GetProperties().Where(i => i.GetCustomAttribute<ChavePrimaria>() != null).FirstOrDefault();
+            //var chavePrimaria = entidade.GetProperties().Where(i => i.GetCustomAttribute<ChavePrimaria>() != null).FirstOrDefault();
 
-            if (chavePrimaria == null)
-                throw new InvalidOperationException($"A entidade {entidade.Name} não possui uma chave primária definida.");
+            //if (chavePrimaria == null)
+            //    throw new InvalidOperationException($"A entidade {entidade.Name} não possui uma chave primária definida.");
 
-            return chavePrimaria;
+            //return chavePrimaria;
+            return null;
         }
 
         private static string ObterTipoColuna(PropertyInfo propriedade)

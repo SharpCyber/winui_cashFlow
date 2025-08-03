@@ -34,5 +34,10 @@ namespace CashFlow.Application
         {
             // teste
         }
+
+        public static void Teste6()
+        {
+            // teste 6
+        }
     }
 }
