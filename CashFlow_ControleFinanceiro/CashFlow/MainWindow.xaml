@@ -14,34 +14,52 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid Padding="0">
+    <Grid Padding="0" Margin="0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="54"/>
+            <ColumnDefinition Width="82"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <NavigationView
-            Grid.Column="0"
-            Padding="0"
-            x:Name="NavView"
-            PaneDisplayMode="Left"
-            IsPaneToggleButtonVisible="False"
-            IsSettingsVisible="False"
-            IsBackButtonVisible="Collapsed"
-            Loaded="NavView_Loaded"
-            ItemInvoked="NavView_ItemInvoked">
-
+        <NavigationView x:Name="NavView"
+                        PaneDisplayMode="Left"
+                        IsPaneToggleButtonVisible="False"
+                        IsSettingsVisible="False"
+                        IsBackButtonVisible="Collapsed"
+                        Margin="0"
+                        Padding="0"
+                        Loaded="NavView_Loaded"
+                        ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="nviDashBoard" Tag="Dashboard"/>
-                <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao"/>
-                <NavigationViewItem x:Name="nviInvestimentoPage" Tag="Investimento"/>
-                <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira"/>
-                <NavigationViewItem x:Name="nviCategoria" Tag="Categoria"/>
-                <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiro"/>
-                <NavigationViewItem x:Name="nviTeste" Tag="Teste"/>
+                <NavigationViewItem x:Name="nviDashboardPage" Tag="Dashboard" Margin="0,20,0,0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/dashboard_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviInvestimentoPage" Tag="Investimento" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/investimento_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/entidadefinanceira_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviCategoria" Tag="Categoria" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/categoria_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/ativofinanceiro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviTeste" Tag="AtivoFinanceiro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64">
+                    <Image Source="ms-appx:///Assets/teste_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
             </NavigationView.MenuItems>
         </NavigationView>
-
         <Frame 
             Grid.Column="1"
             Background="Red"

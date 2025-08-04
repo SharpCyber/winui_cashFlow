@@ -45,7 +45,7 @@ namespace CashFlow
         }
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            paginaAtiva = nviDashBoard;
+            //paginaAtiva = nviDashBoard;
             NavView.SelectedItem = paginaAtiva;
             Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
         }
@@ -63,19 +63,19 @@ namespace CashFlow
                     Configuracao.AbrirTela(ePagina.Teste, this.ContentFrame);
                     break;
                 case "Dashboard":
-                    paginaAtiva = nviDashBoard;
+                    paginaAtiva = nviDashboardPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
                     break;
                 case "Transacao":
                     paginaAtiva = nviTransacaoPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame);
                     break;
                 case "Investimento":
                     paginaAtiva = nviInvestimentoPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame);
                     break;
                 case "EntidadeFinanceira":
                     popupAtivo = true;
