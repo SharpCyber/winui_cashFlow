@@ -17,6 +17,7 @@ namespace CashFlow
         private const int Altura = 700;
         private AppWindow m_AppWindow;
         private NavigationViewItem paginaAtiva;
+
         private bool popupAtivo = false;
         #endregion
 
@@ -45,7 +46,7 @@ namespace CashFlow
         }
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            //paginaAtiva = nviDashBoard;
+            paginaAtiva = nviDashboardPage;
             NavView.SelectedItem = paginaAtiva;
             Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
         }
@@ -140,7 +141,7 @@ namespace CashFlow
         }
         private AppWindow ObterAppWindowAtual()
         {
-            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(wndId);
         }
