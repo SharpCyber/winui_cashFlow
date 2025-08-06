@@ -40,4 +40,15 @@ namespace CashFlow.Domain.Enumeration
         EntidadeFinanceira = 2,
         Categoria = 3,
     }
+
+    public enum eTipoOperacao
+    {
+        Nenhuma = 0,
+        Visualizar = 1,
+        Adicionar = 2,
+        Salvar = 3,
+        Alterar = 4,
+        Deletar = 5,
+        Cancelar = 6
+    }
 }

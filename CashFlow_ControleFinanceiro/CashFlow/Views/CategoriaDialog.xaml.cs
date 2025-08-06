@@ -5,6 +5,12 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using CashFlow.Application;
+using CashFlow.Domain.Entity;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
+using CashFlow.ViewModel.CategoriaViewModel;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -12,11 +18,6 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using CashFlow.ViewModel.CategoriaViewModel;
-using CashFlow.Domain.Interfaces;
-using CashFlow.Application;
-using Microsoft.Extensions.DependencyInjection;
-using CashFlow.Domain.Entity;
 
 namespace CashFlow.Views
 {
@@ -55,6 +56,32 @@ namespace CashFlow.Views
         {
             this.Hide();
         }
+
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Adicionar);
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Alterar);
+        }
+
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Deletar);
+        }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Visualizar);
+        }
+
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Salvar);
+        }
+
         #endregion
 
         #region Metodos

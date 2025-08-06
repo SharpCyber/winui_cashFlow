@@ -13,6 +13,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Styles\ButtonStyle.xaml" />
 	  <None Remove="Themes\Colors.xaml" />
 	  <None Remove="Views\AtivoFinanceiroDialog.xaml" />
 	  <None Remove="Views\CategoriaDialog.xaml" />
@@ -110,6 +111,11 @@
 	  </Content>
 	</ItemGroup>
 	<ItemGroup>
+	  <Page Update="Styles\FontIconStyle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
 	  <Page Update="Views\TestePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
@@ -150,7 +156,9 @@
 	  </Page>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Styles\" />
+	  <Page Update="Styles\ButtonStyle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 
 	<!--
