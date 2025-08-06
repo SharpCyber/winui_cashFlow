@@ -1,10 +1,11 @@
-﻿using CashFlow.Data;
+﻿using System;
+using CashFlow.Data;
 using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
 using CashFlow.InfraData.Repository;
+using CashFlow.ViewModel.CategoriaViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace CashFlow.Application
 {
@@ -31,6 +32,8 @@ namespace CashFlow.Application
         {
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
+
+            services.AddSingleton<ICategoriaDialogViewModel, CategoriaDialogViewModel>();
         }
     }
 }

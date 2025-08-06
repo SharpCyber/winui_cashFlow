@@ -17,6 +17,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
 		<ProjectReference Include="..\CashFlow.InfraData\CashFlow.InfraData.csproj" />
+		<ProjectReference Include="..\CashFlow.ViewModel\CashFlow.ViewModel.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Services\" />

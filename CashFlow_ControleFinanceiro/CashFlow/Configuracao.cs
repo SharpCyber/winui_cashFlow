@@ -1,5 +1,8 @@
-﻿using CashFlow.Domain.Enumeration;
+﻿using CashFlow.Application;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
 using CashFlow.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -47,7 +50,9 @@ namespace CashFlow
                     await AbrirDialog(new EntidadeFinanceiraDialog(), xamlRoot);
                     break;
                 case eDialogo.Categoria:
-                    await AbrirDialog(new CategoriaDialog(), xamlRoot);
+                    var categoriaDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<ICategoriaDialogViewModel>();
+
+                    await AbrirDialog(new CategoriaDialog(categoriaDialogViewModel), xamlRoot);
                     break;
                 default:
                     break;
