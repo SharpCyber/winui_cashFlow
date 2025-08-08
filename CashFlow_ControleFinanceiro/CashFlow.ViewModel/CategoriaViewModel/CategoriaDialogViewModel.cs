@@ -1,13 +1,15 @@
-﻿using System;
+﻿using CashFlow.Domain.Entity;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
+using Microsoft.UI.Xaml;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CashFlow.Domain.Entity;
-using CashFlow.Domain.Enumeration;
-using CashFlow.Domain.Interfaces;
+using Windows.Data.Text;
 
 namespace CashFlow.ViewModel.CategoriaViewModel
 {
@@ -21,6 +23,10 @@ namespace CashFlow.ViewModel.CategoriaViewModel
         private eTipoOperacao _tipoOperacao;
         private bool _mostrarBotoesCrud = true;
         private bool _mostrarBotoesSalvarCancelar = false;
+        private Visibility _exibirAviso = Visibility.Collapsed;
+        private string _mensagemAviso;
+        private bool _habilitarBotoesCrud = true;
+
         #endregion
 
         #region Propriedades Pública
@@ -55,7 +61,10 @@ namespace CashFlow.ViewModel.CategoriaViewModel
             set
             {
                 _mostrarBotoesCrud = value;
+                _habilitarBotoesCrud = (CategoriaSelecionada != null);
+
                 OnPropertyChanged(nameof(MostrarBotoesCrud));
+                OnPropertyChanged(nameof(HabilitarBotoesCrud));
             }
         }
         public bool MostrarBotoesSalvarCancelar
@@ -67,6 +76,15 @@ namespace CashFlow.ViewModel.CategoriaViewModel
                 OnPropertyChanged(nameof(MostrarBotoesSalvarCancelar));
             }
         }
+        public bool HabilitarBotoesCrud
+        {
+            get => _habilitarBotoesCrud;
+            set
+            {
+                _habilitarBotoesCrud = value;
+                OnPropertyChanged(nameof(HabilitarBotoesCrud));
+            }
+        }
         public bool EditarNome
         {
             get => _editarNome;
@@ -74,6 +92,24 @@ namespace CashFlow.ViewModel.CategoriaViewModel
             {
                 _editarNome = value;
                 OnPropertyChanged(nameof(EditarNome));
+            }
+        }
+        public Visibility ExibirAviso
+        {
+            get => _exibirAviso;
+            set
+            {
+                _exibirAviso = value;
+                OnPropertyChanged(nameof(ExibirAviso));
+            }
+        }
+        public string MensagemAviso
+        {
+            get => _mensagemAviso;
+            set
+            {
+                _mensagemAviso = value;
+                OnPropertyChanged(nameof(MensagemAviso));
             }
         }
         #endregion
@@ -96,24 +132,44 @@ namespace CashFlow.ViewModel.CategoriaViewModel
         public void DefinirOperacao(eTipoOperacao tipoOperacao)
         {
             _tipoOperacao = tipoOperacao;
+            bool habilitarCrud = false;
+            bool exibirAviso = false;
+            string mensagemAviso = "";
 
-            if (_tipoOperacao == eTipoOperacao.Visualizar ||
-                _tipoOperacao == eTipoOperacao.Salvar ||
-                _tipoOperacao == eTipoOperacao.Cancelar ||
-                _tipoOperacao == eTipoOperacao.Nenhuma)
+            switch (_tipoOperacao)
             {
-                MostrarBotoesCrud = true;
-                MostrarBotoesSalvarCancelar = false;
+                case eTipoOperacao.Nenhuma: 
+                    habilitarCrud = true;
+                    break;
+                case eTipoOperacao.Visualizar:
+                    habilitarCrud = true;
+                    break;
+                case eTipoOperacao.Cancelar:
+                    habilitarCrud = true;
+                    break;
+                case eTipoOperacao.Confirmar:
+                    habilitarCrud = true;
+                    break;
+                case eTipoOperacao.Salvar:
+                    habilitarCrud = true;
+                    break;
+                case eTipoOperacao.Adicionar: 
+                    break;
+                case eTipoOperacao.Alterar:
+                    break;
+                case eTipoOperacao.Deletar:
+                    exibirAviso = true;
+                    mensagemAviso = "Tem certeza que deseja realizar a exclusão da categoria?\nEssa operação não poderá ser desfeita.";
+                    break;
+                default: break;
             }
-            else if (_tipoOperacao == eTipoOperacao.Alterar ||
-                     _tipoOperacao == eTipoOperacao.Deletar ||
-                     _tipoOperacao == eTipoOperacao.Adicionar)
-            {
-                MostrarBotoesCrud = false;
-                MostrarBotoesSalvarCancelar = true;
-            }
+
+            MostrarBotoesCrud = habilitarCrud;
+            MostrarBotoesSalvarCancelar = !habilitarCrud;
 
             EditarNome = (_tipoOperacao == eTipoOperacao.Alterar || _tipoOperacao == eTipoOperacao.Adicionar);
+            ExibirAviso = (exibirAviso) ? Visibility.Visible : Visibility.Collapsed;
+            MensagemAviso = mensagemAviso;
 
             OnPropertyChanged(nameof(TipoOperacao));
         }

@@ -28,6 +28,7 @@ namespace CashFlow.Views
         #endregion
 
         #region Propriedades
+        private eTipoOperacao tipoOperacaoAtual = eTipoOperacao.Visualizar;
         #endregion
 
         #region Método Construtor
@@ -37,55 +38,83 @@ namespace CashFlow.Views
 
             _categoriaDialogViewModel = categoriaDialogViewModel;
             this.DataContext = _categoriaDialogViewModel;
+
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
         }
         #endregion
 
         #region Eventos
         private void Categoria_Loaded(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
+            
+            ExecutarOperacao(tipoOperacaoAtual);
         }
         private void Categoria_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {
-
+            
         }
         private void Categoria_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             this.Hide();
         }
-
         private void btnAdicionar_Click(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Adicionar);
+            ExecutarOperacao(eTipoOperacao.Adicionar);
         }
-
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Alterar);
+            ExecutarOperacao(eTipoOperacao.Alterar);
         }
-
         private void btnExcluir_Click(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Deletar);
+            ExecutarOperacao(eTipoOperacao.Deletar);
         }
-
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Visualizar);
+            ExecutarOperacao(eTipoOperacao.Visualizar);
         }
-
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.DefinirOperacao(eTipoOperacao.Salvar);
+            ExecutarOperacao(eTipoOperacao.Salvar);
         }
-
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
         #endregion
 
         #region Metodos
+        private void ExecutarOperacao(eTipoOperacao eTipoOperacao)
+        {
+            tipoOperacaoAtual = eTipoOperacao;
+            _categoriaDialogViewModel.DefinirOperacao(tipoOperacaoAtual);
 
+            switch (tipoOperacaoAtual)
+            {
+                case eTipoOperacao.Nenhuma:
+                    break;
+                case eTipoOperacao.Visualizar:
+                    break;
+                case eTipoOperacao.Adicionar:
+                    _categoriaDialogViewModel.Nome = "";
+                    break;
+                case eTipoOperacao.Salvar:
+                    break;
+                case eTipoOperacao.Alterar:
+                    break;
+                case eTipoOperacao.Deletar:
+                    break;
+                case eTipoOperacao.Cancelar:
+                    break;
+                case eTipoOperacao.Confirmar:
+                    break;
+                default:
+                    break;
+            }
+        }
         #endregion
     }
 }

@@ -49,6 +49,7 @@ namespace CashFlow.Domain.Enumeration
         Salvar = 3,
         Alterar = 4,
         Deletar = 5,
-        Cancelar = 6
+        Cancelar = 6,
+        Confirmar = 7
     }
 }

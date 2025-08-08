@@ -1,5 +1,6 @@
 ﻿using CashFlow.Domain.Entity;
 using CashFlow.Domain.Enumeration;
+using Microsoft.UI.Xaml;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,5 +17,8 @@ namespace CashFlow.Domain.Interfaces
         string Nome { get; set; }
         bool EditarNome { get; set; }
         void DefinirOperacao(eTipoOperacao tipoOperacao);
+        Visibility ExibirAviso { get; set; }
+        string MensagemAviso { get; set; }
+        bool HabilitarBotoesCrud { get; set; }
     }
 }

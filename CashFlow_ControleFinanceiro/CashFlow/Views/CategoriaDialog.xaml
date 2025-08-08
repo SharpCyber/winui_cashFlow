@@ -8,16 +8,16 @@
     mc:Ignorable="d"
     x:Name="Categoria"
     Title="Categorias"
-    PrimaryButtonText="OK"
-    PrimaryButtonClick="Categoria_PrimaryButtonClick"
     Style="{StaticResource DefaultContentDialogStyle}"
+    PrimaryButtonClick="Categoria_PrimaryButtonClick"
+    PrimaryButtonText="Fechar"
     Margin="0"
     Padding="0"
     Closing="Categoria_Closing"
     Loaded="Categoria_Loaded"
     Background="{StaticResource Cinza13}">
-
-    <Grid Margin="0,0,0,-15" Padding="0">
+    
+    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -25,6 +25,7 @@
 
         <Grid Grid.Row="0" Padding="0" RowSpacing="12" Margin="0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -39,7 +40,8 @@
                           HorizontalAlignment="Stretch" 
                           VerticalAlignment="Center"
                           Margin="0" 
-                          Padding="12,0,0,0"                          
+                          Padding="12,0,0,0"    
+                          IsEnabled="{Binding MostrarBotoesCrud}"
                           ItemsSource="{Binding Categorias}"
                           SelectedItem="{Binding CategoriaSelecionada, Mode=TwoWay}"
                           DisplayMemberPath="Nome">
@@ -71,12 +73,14 @@
                     <Button x:Name="btnExcluir" 
                             Click="btnExcluir_Click" 
                             Visibility="{Binding MostrarBotoesCrud}" 
+                            IsEnabled="{Binding HabilitarBotoesCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
                     </Button>
                     <Button x:Name="btnEditar" 
                             Click="btnEditar_Click" 
                             Visibility="{Binding MostrarBotoesCrud}" 
+                            IsEnabled="{Binding HabilitarBotoesCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
                     </Button>
@@ -88,6 +92,13 @@
                     </Button>
                     
                 </StackPanel>
+            </StackPanel>
+            
+            <StackPanel x:Name="bAviso" Grid.Row="2" 
+                        Background="{StaticResource Cinza13}" Margin="0" MaxWidth="400" 
+                        BorderBrush="{StaticResource Vermelho3}" BorderThickness="6,0,6,0" CornerRadius="4" 
+                        Visibility="{Binding ExibirAviso}">
+                <TextBlock x:Name="txtAviso" HorizontalAlignment="Center" Padding="10" Text="{Binding MensagemAviso}"/>
             </StackPanel>
         </Grid>
     </Grid>
