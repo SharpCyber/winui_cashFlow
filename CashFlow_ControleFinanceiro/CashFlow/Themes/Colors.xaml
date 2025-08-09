@@ -10,10 +10,11 @@
     <SolidColorBrush x:Key="Verde3" Color="#FF1F671C"/>
     <SolidColorBrush x:Key="Verde4" Color="#FF123F10"/>
 
-    <SolidColorBrush x:Key="Azul1" Color="#FF5ab4e6"/>
-    <SolidColorBrush x:Key="Azul2" Color="#FF3c8cbe"/>
-    <SolidColorBrush x:Key="Azul3" Color="#FF1e6e96"/>
-    <SolidColorBrush x:Key="Azul4" Color="#FF0a3c5a"/>
+    <SolidColorBrush x:Key="Azul1" Color="#FF47B0E8"/>
+    <SolidColorBrush x:Key="Azul2" Color="#FF5ab4e6"/>
+    <SolidColorBrush x:Key="Azul3" Color="#FF3c8cbe"/>
+    <SolidColorBrush x:Key="Azul4" Color="#FF1e6e96"/>
+    <SolidColorBrush x:Key="Azul5" Color="#FF0a3c5a"/>
 
     <SolidColorBrush x:Key="Vermelho1" Color="#FFf55a50"/>
     <SolidColorBrush x:Key="Vermelho2" Color="#FFdc4b3c"/>

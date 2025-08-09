@@ -85,9 +85,20 @@ namespace CashFlow.Views
         {
             ExecutarOperacao(eTipoOperacao.Salvar);
         }
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void btnAjuda_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            if (spAjuda.Visibility != Visibility.Visible)
+            {
+                string mensagem = "" +
+                    "As categorias são como etiquetas que você cria para organizar suas entidades financeiras.\n\n" +
+                    "Exemplo: Agrupe 'Netflix' e 'Spotify' na categoria 'Assinaturas'.";
+
+                Aviso.MostrarComBotao(spAjuda, mensagem, eTipoMensagem.Informacao, TextWrapping.Wrap);
+            }
+            else
+            {
+                Aviso.Ocultar(spAjuda);
+            }
         }
         #endregion
 

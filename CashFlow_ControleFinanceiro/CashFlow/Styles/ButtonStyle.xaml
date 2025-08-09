@@ -20,6 +20,17 @@
         <Setter Property="Padding" Value="0"/>
     </Style>
 
+    <!-- 28 x 28 -->
+    <Style x:Key="DefaultButtonStyleAjuda_28x" TargetType="Button" BasedOn="{StaticResource BaseDefaultButtonStyle}">
+        <Setter Property="Width" Value="28"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Content" Value="?"/>
+        <Setter Property="Margin" Value="0,0,4,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="Foreground" Value="{StaticResource Branco}"/>
+    </Style>
+    
     <!-- 34 x 34 -->
     <Style x:Key="DefaultButtonStyle_34x" TargetType="Button" BasedOn="{StaticResource BaseDefaultButtonStyle}">
         <Setter Property="Width" Value="34"/>

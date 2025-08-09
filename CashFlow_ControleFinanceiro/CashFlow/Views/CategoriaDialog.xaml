@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     x:Name="Categoria"
-    Title="Categorias"
     Style="{StaticResource DefaultContentDialogStyle}"
     PrimaryButtonClick="Categoria_PrimaryButtonClick"
     PrimaryButtonText="Fechar"
@@ -23,20 +22,37 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="0" RowSpacing="12" Margin="0">
+        <Grid Grid.Row="0" Padding="0" RowSpacing="12" Margin="0" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Grid ColumnSpacing="8" Grid.Row="0" Padding="0" Margin="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+            <StackPanel Spacing="8">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
+                    <TextBlock Text="Categoria" 
+                               VerticalAlignment="Center" 
+                               FontFamily="Arial" 
+                               FontSize="24" 
+                               FontWeight="Bold"/>
+
+                    <Button x:Name="btnAjuda" 
+                            Grid.Column="1"
+                            Click="btnAjuda_Click" 
+                            Style="{StaticResource DefaultButtonStyleAjuda_28x}">
+                    </Button>
+                </Grid>
+
+                <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
+                
                 <ComboBox x:Name="cboCategoria" 
+                          Grid.Column="0"
                           HorizontalAlignment="Stretch" 
                           VerticalAlignment="Center"
                           Margin="0" 
@@ -46,7 +62,7 @@
                           SelectedItem="{Binding CategoriaSelecionada, Mode=TwoWay}"
                           DisplayMemberPath="Nome">
                 </ComboBox>
-            </Grid>
+            </StackPanel>
 
             <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="18" CornerRadius="4">
                 <TextBlock Text="Nome" FontSize="16" FontWeight="Normal"/>
