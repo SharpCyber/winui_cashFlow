@@ -23,8 +23,6 @@ namespace CashFlow.ViewModel.CategoriaViewModel
         private eTipoOperacao _tipoOperacao;
         private bool _mostrarBotoesCrud = true;
         private bool _mostrarBotoesSalvarCancelar = false;
-        private Visibility _exibirAviso = Visibility.Collapsed;
-        private string _mensagemAviso;
         private bool _habilitarBotoesCrud = true;
 
         #endregion
@@ -94,24 +92,6 @@ namespace CashFlow.ViewModel.CategoriaViewModel
                 OnPropertyChanged(nameof(EditarNome));
             }
         }
-        public Visibility ExibirAviso
-        {
-            get => _exibirAviso;
-            set
-            {
-                _exibirAviso = value;
-                OnPropertyChanged(nameof(ExibirAviso));
-            }
-        }
-        public string MensagemAviso
-        {
-            get => _mensagemAviso;
-            set
-            {
-                _mensagemAviso = value;
-                OnPropertyChanged(nameof(MensagemAviso));
-            }
-        }
         #endregion
 
         #region Construtor
@@ -133,8 +113,8 @@ namespace CashFlow.ViewModel.CategoriaViewModel
         {
             _tipoOperacao = tipoOperacao;
             bool habilitarCrud = false;
-            bool exibirAviso = false;
-            string mensagemAviso = "";
+
+            Nome = CategoriaSelecionada != null ? CategoriaSelecionada.Nome : "";
 
             switch (_tipoOperacao)
             {
@@ -153,13 +133,12 @@ namespace CashFlow.ViewModel.CategoriaViewModel
                 case eTipoOperacao.Salvar:
                     habilitarCrud = true;
                     break;
-                case eTipoOperacao.Adicionar: 
+                case eTipoOperacao.Adicionar:
+                    Nome = "";
                     break;
                 case eTipoOperacao.Alterar:
                     break;
                 case eTipoOperacao.Deletar:
-                    exibirAviso = true;
-                    mensagemAviso = "Tem certeza que deseja realizar a exclusão da categoria?\nEssa operação não poderá ser desfeita.";
                     break;
                 default: break;
             }
@@ -168,8 +147,6 @@ namespace CashFlow.ViewModel.CategoriaViewModel
             MostrarBotoesSalvarCancelar = !habilitarCrud;
 
             EditarNome = (_tipoOperacao == eTipoOperacao.Alterar || _tipoOperacao == eTipoOperacao.Adicionar);
-            ExibirAviso = (exibirAviso) ? Visibility.Visible : Visibility.Collapsed;
-            MensagemAviso = mensagemAviso;
 
             OnPropertyChanged(nameof(TipoOperacao));
         }

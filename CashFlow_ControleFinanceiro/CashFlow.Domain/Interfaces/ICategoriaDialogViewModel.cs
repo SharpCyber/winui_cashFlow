@@ -17,8 +17,6 @@ namespace CashFlow.Domain.Interfaces
         string Nome { get; set; }
         bool EditarNome { get; set; }
         void DefinirOperacao(eTipoOperacao tipoOperacao);
-        Visibility ExibirAviso { get; set; }
-        string MensagemAviso { get; set; }
         bool HabilitarBotoesCrud { get; set; }
     }
 }

@@ -17,7 +17,7 @@
     Loaded="Categoria_Loaded"
     Background="{StaticResource Cinza13}">
     
-    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="400">
+    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -93,13 +93,8 @@
                     
                 </StackPanel>
             </StackPanel>
-            
-            <StackPanel x:Name="bAviso" Grid.Row="2" 
-                        Background="{StaticResource Cinza13}" Margin="0" MaxWidth="400" 
-                        BorderBrush="{StaticResource Vermelho3}" BorderThickness="6,0,6,0" CornerRadius="4" 
-                        Visibility="{Binding ExibirAviso}">
-                <TextBlock x:Name="txtAviso" HorizontalAlignment="Center" Padding="10" Text="{Binding MensagemAviso}"/>
-            </StackPanel>
+
+            <StackPanel x:Name="spAviso" Grid.Row="2" HorizontalAlignment="Stretch" Padding="6,0"/>
         </Grid>
     </Grid>
 </ContentDialog>

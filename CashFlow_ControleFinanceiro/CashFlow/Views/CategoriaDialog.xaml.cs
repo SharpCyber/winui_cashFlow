@@ -18,6 +18,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using CashFlow.Domain.Helpers;
 
 namespace CashFlow.Views
 {
@@ -39,16 +40,20 @@ namespace CashFlow.Views
             _categoriaDialogViewModel = categoriaDialogViewModel;
             this.DataContext = _categoriaDialogViewModel;
 
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
         }
         #endregion
 
         #region Eventos
         private void Categoria_Loaded(object sender, RoutedEventArgs e)
         {
+            _categoriaDialogViewModel.Categorias.Clear();
+
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
+            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
+
+            _categoriaDialogViewModel.CategoriaSelecionada = _categoriaDialogViewModel.Categorias.FirstOrDefault();
             
             ExecutarOperacao(tipoOperacaoAtual);
         }
@@ -92,6 +97,8 @@ namespace CashFlow.Views
             tipoOperacaoAtual = eTipoOperacao;
             _categoriaDialogViewModel.DefinirOperacao(tipoOperacaoAtual);
 
+            Aviso.Ocultar(spAviso);
+
             switch (tipoOperacaoAtual)
             {
                 case eTipoOperacao.Nenhuma:
@@ -99,13 +106,18 @@ namespace CashFlow.Views
                 case eTipoOperacao.Visualizar:
                     break;
                 case eTipoOperacao.Adicionar:
-                    _categoriaDialogViewModel.Nome = "";
                     break;
                 case eTipoOperacao.Salvar:
                     break;
                 case eTipoOperacao.Alterar:
                     break;
                 case eTipoOperacao.Deletar:
+
+                    Aviso.Mostrar(
+                        spAviso, 
+                        "Tem certeza que deseja realizar a exclusão da categoria?\nEssa operação não poderá ser desfeita.", 
+                        eTipoMensagem.Informacao);
+
                     break;
                 case eTipoOperacao.Cancelar:
                     break;
