@@ -71,7 +71,7 @@
                          FontSize="16" 
                          FontWeight="Normal" 
                          Margin="0" 
-                         MaxLength="100"/>
+                         MaxLength="30"/>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0" Spacing="4">
                     
                     <Button x:Name="btnCancelar" 
