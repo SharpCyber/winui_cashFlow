@@ -14,7 +14,7 @@ using Microsoft.UI.Xaml;
 
 namespace CashFlow.ViewModel.EntidadeFinanceiraViewModel
 {
-    public class EntidadeFinanceiraDialogViewModel : CrudViewModelBase<object>, IEntidadeFinanceiraDialogViewModel
+    public class EntidadeRegistroDialogVM : CrudViewModelBase<object>, IEntidadeRegistroDialogVM
     {
         private ObservableCollection<Categoria> _categorias;
         private Categoria _categoriaSelecionada;

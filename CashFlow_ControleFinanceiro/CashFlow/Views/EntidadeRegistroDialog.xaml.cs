@@ -23,10 +23,10 @@ using CashFlow.ViewModel.EntidadeFinanceiraViewModel;
 
 namespace CashFlow.Views
 {
-    public sealed partial class EntidadeFinanceiraDialog : ContentDialog
+    public sealed partial class EntidadeRegistroDialog : ContentDialog
     {
         #region Interfaces
-        private readonly IEntidadeFinanceiraDialogViewModel _entidadeFinanceiraDialogViewModel;
+        private readonly IEntidadeRegistroDialogVM _entidadeFinanceiraDialogViewModel;
         #endregion
 
         #region Propriedades
@@ -34,7 +34,7 @@ namespace CashFlow.Views
         #endregion
 
         #region Método Construtor
-        public EntidadeFinanceiraDialog(IEntidadeFinanceiraDialogViewModel entidadeFinanceiraDialogViewModel)
+        public EntidadeRegistroDialog(IEntidadeRegistroDialogVM entidadeFinanceiraDialogViewModel)
         {
             InitializeComponent();
 

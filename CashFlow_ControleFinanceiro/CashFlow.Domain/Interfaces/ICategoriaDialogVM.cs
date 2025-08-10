@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Domain.Interfaces
 {
-    public interface ICategoriaDialogViewModel : ICrudViewModelBase<Categoria>
+    public interface ICategoriaDialogVM : ICrudViewModelBase<Categoria>
     {
 
     }

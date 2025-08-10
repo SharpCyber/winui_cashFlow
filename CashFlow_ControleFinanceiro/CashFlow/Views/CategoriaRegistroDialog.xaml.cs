@@ -22,10 +22,10 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace CashFlow.Views
 {
-    public sealed partial class CategoriaDialog : ContentDialog
+    public sealed partial class CategoriaRegistroDialog : ContentDialog
     {
         #region Interfaces
-        private readonly ICategoriaDialogViewModel _categoriaDialogViewModel;
+        private readonly ICategoriaDialogVM _categoriaDialogViewModel;
         #endregion
 
         #region Propriedades
@@ -33,7 +33,7 @@ namespace CashFlow.Views
         #endregion
 
         #region Método Construtor
-        public CategoriaDialog(ICategoriaDialogViewModel categoriaDialogViewModel)
+        public CategoriaRegistroDialog(ICategoriaDialogVM categoriaDialogViewModel)
         {
             InitializeComponent();
 

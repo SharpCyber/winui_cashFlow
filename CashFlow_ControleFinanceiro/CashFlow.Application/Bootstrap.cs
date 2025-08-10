@@ -34,8 +34,8 @@ namespace CashFlow.Application
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
             services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
 
-            services.AddSingleton<ICategoriaDialogViewModel, CategoriaDialogViewModel>();
-            services.AddSingleton<IEntidadeFinanceiraDialogViewModel, EntidadeFinanceiraDialogViewModel>();
+            services.AddSingleton<ICategoriaDialogVM, CategoriaRegistroDialogVM>();
+            services.AddSingleton<IEntidadeRegistroDialogVM, EntidadeRegistroDialogVM>();
         }
     }
 }

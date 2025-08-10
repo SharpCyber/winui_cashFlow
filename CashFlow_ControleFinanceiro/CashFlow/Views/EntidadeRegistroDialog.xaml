@@ -1,19 +1,19 @@
 <ContentDialog
-    x:Class="CashFlow.Views.CategoriaDialog"
+    x:Class="CashFlow.Views.EntidadeRegistroDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CashFlow.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Name="Categoria"
+    x:Name="EntidadeFinanceira"
     Style="{StaticResource DefaultContentDialogStyle}"
-    PrimaryButtonClick="Categoria_PrimaryButtonClick"
+    PrimaryButtonClick="EntidadeFinanceira_PrimaryButtonClick"
     PrimaryButtonText="Fechar"
     Margin="0"
     Padding="0"
-    Closing="Categoria_Closing"
-    Loaded="Categoria_Loaded"
+    Closing="EntidadeFinanceira_Closing"
+    Loaded="EntidadeFinanceira_Loaded"
     Background="{StaticResource Cinza13}">
     
     <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500">
@@ -36,7 +36,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Categoria" 
+                    <TextBlock Text="Entidade Financeira" 
                                VerticalAlignment="Center" 
                                FontFamily="Arial" 
                                FontSize="24" 
@@ -51,7 +51,7 @@
 
                 <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
                 
-                <ComboBox x:Name="cboCategoria" 
+                <ComboBox x:Name="cboEntidadeFinanceira" 
                           Grid.Column="0"
                           HorizontalAlignment="Stretch" 
                           VerticalAlignment="Center"
@@ -71,7 +71,20 @@
                          FontSize="16" 
                          FontWeight="Normal" 
                          Margin="0" 
-                         MaxLength="30"/>
+                         MaxLength="100"/>
+
+                <TextBlock Text="Categoria" FontSize="16" FontWeight="Normal"/>
+                <ComboBox x:Name="cboCategoria" 
+                          Grid.Column="0"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Center"
+                          Margin="0" 
+                          Padding="12,0,0,0"    
+                          IsEnabled="{Binding ExibirBotaoCrud}"
+                          ItemsSource="{Binding Categorias}"
+                          SelectedItem="{Binding CategoriaSelecionada, Mode=TwoWay}"
+                          DisplayMemberPath="Nome">
+                </ComboBox>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0" Spacing="4">
                     
                     <Button x:Name="btnCancelar" 

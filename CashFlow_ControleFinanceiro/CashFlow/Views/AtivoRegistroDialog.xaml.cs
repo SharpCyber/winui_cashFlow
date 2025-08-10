@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace CashFlow.Views
 {
-    public sealed partial class AtivoFinanceiroDialog : ContentDialog
+    public sealed partial class AtivoRegistroDialog : ContentDialog
     {
         #region Interfaces
         #endregion
@@ -24,7 +24,7 @@ namespace CashFlow.Views
         #endregion
 
         #region Construtor
-        public AtivoFinanceiroDialog()
+        public AtivoRegistroDialog()
         {
             InitializeComponent();
         }

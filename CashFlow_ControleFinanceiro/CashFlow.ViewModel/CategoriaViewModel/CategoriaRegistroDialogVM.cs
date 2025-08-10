@@ -13,7 +13,7 @@ using CashFlow.Domain.Interfaces;
 
 namespace CashFlow.ViewModel.CategoriaViewModel
 {
-    public class CategoriaDialogViewModel : CrudViewModelBase<Categoria>, ICategoriaDialogViewModel
+    public class CategoriaRegistroDialogVM : CrudViewModelBase<Categoria>, ICategoriaDialogVM
     {
 
     }
