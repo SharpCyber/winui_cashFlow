@@ -1,0 +1,116 @@
+<ContentDialog
+    x:Class="CashFlow.Views.CategoriaRegistroDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CashFlow.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Name="Categoria"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    PrimaryButtonClick="Categoria_PrimaryButtonClick"
+    PrimaryButtonText="Fechar"
+    Margin="0"
+    Padding="0"
+    Closing="Categoria_Closing"
+    Loaded="Categoria_Loaded"
+    Background="{StaticResource Cinza13}">
+    
+    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Padding="0" RowSpacing="12" Margin="0" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Spacing="8">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Categoria" 
+                               VerticalAlignment="Center" 
+                               FontFamily="Arial" 
+                               FontSize="24" 
+                               FontWeight="Bold"/>
+
+                    <Button x:Name="btnAjuda" 
+                            Grid.Column="1"
+                            Click="btnAjuda_Click" 
+                            Style="{StaticResource DefaultButtonStyleAjuda_28x}">
+                    </Button>
+                </Grid>
+
+                <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
+                
+                <ComboBox x:Name="cboCategoria" 
+                          Grid.Column="0"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Center"
+                          Margin="0" 
+                          Padding="12,0,0,0"    
+                          IsEnabled="{Binding ExibirBotaoCrud}"
+                          ItemsSource="{Binding Items}"
+                          SelectedItem="{Binding ItemSelecionado, Mode=TwoWay}"
+                          DisplayMemberPath="Nome">
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="18" CornerRadius="4">
+                <TextBlock Text="Nome" FontSize="16" FontWeight="Normal"/>
+                <TextBox Text="{Binding Nome}"
+                         IsEnabled="{Binding EditarNome}"
+                         FontSize="16" 
+                         FontWeight="Normal" 
+                         Margin="0" 
+                         MaxLength="30"/>
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0" Spacing="4">
+                    
+                    <Button x:Name="btnCancelar" 
+                            Click="btnCancelar_Click" 
+                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Style="{StaticResource DefaultButtonStyle_34x}">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE711;"/>
+                    </Button>
+                    <Button x:Name="btnSalvar" 
+                            Click="btnSalvar_Click" 
+                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Style="{StaticResource AccentButtonStyle_34x}">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74E;"/>
+                    </Button>
+                    <Button x:Name="btnExcluir" 
+                            Click="btnExcluir_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
+                            IsEnabled="{Binding HabilitarBotaoCrud}"
+                            Style="{StaticResource DefaultButtonStyle_34x}">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
+                    </Button>
+                    <Button x:Name="btnEditar" 
+                            Click="btnEditar_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
+                            IsEnabled="{Binding HabilitarBotaoCrud}"
+                            Style="{StaticResource DefaultButtonStyle_34x}">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
+                    </Button>
+                    <Button x:Name="btnAdicionar" 
+                            Click="btnAdicionar_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Style="{StaticResource AccentButtonStyle_34x}">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+                    </Button>
+                    
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel x:Name="spAviso" Grid.Row="2" HorizontalAlignment="Stretch" Padding="6,0"/>
+        </Grid>
+    </Grid>
+</ContentDialog>

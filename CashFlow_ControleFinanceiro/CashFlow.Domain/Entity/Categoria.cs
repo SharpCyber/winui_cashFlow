@@ -1,5 +1,5 @@
-﻿using CashFlow.Domain.Attributes;
 using System;
+using CashFlow.Domain.Attributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +19,4 @@ namespace CashFlow.Domain.Entity
         [Obrigatorio, Relacionamento("Usuario", "PK_Usuario")]
         public int FK_Usuario { get; set; }
     }
-
 }

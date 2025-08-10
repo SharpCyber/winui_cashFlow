@@ -1,5 +1,8 @@
-﻿using CashFlow.Domain.Enumeration;
+﻿using CashFlow.Application;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
 using CashFlow.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -30,6 +33,9 @@ namespace CashFlow
                 case ePagina.Investimento:
                     frame.Navigate(typeof(InvestimentoPage));
                     break;
+                case ePagina.TransacaoRegistro:
+                    frame.Navigate(typeof(TransacaoRegistroPage));
+                    break;
                 default:
                     break;
             }
@@ -41,13 +47,17 @@ namespace CashFlow
                 case eDialogo.Nenhuma:
                     break;
                 case eDialogo.AtivoFinanceiro:
-                    await AbrirDialog(new AtivoFinanceiroDialog(), xamlRoot);
+                    await AbrirDialog(new AtivoRegistroDialog(), xamlRoot);
                     break;
                 case eDialogo.EntidadeFinanceira:
-                    await AbrirDialog(new EntidadeFinanceiraDialog(), xamlRoot);
+                    var entidadeFinanceiraDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<IEntidadeRegistroDialogVM>();
+
+                    await AbrirDialog(new EntidadeRegistroDialog(entidadeFinanceiraDialogViewModel), xamlRoot);
                     break;
                 case eDialogo.Categoria:
-                    await AbrirDialog(new CategoriaDialog(), xamlRoot);
+                    var categoriaDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<ICategoriaDialogVM>();
+
+                    await AbrirDialog(new CategoriaRegistroDialog(categoriaDialogViewModel), xamlRoot);
                     break;
                 default:
                     break;

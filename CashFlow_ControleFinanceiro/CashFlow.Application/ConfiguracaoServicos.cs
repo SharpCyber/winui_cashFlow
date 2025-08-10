@@ -36,20 +36,5 @@ namespace CashFlow.Application
             //uow.Connection.CriarTabela(typeof(DetalheInvestimento));
             //uow.Connection.CriarTabela(typeof(Provento));
         }
-
-        public static void Teste4()
-        {
-            //aaaa
-        }
-
-        public static void Teste3()
-        {
-            // testeaaaa
-        }
-
-        public static void Teste6()
-        {
-            // teste 6
-        }
     }
 }

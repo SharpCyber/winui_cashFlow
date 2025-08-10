@@ -32,6 +32,7 @@ namespace CashFlow.Domain.Enumeration
         Dashboard = 2,
         Transacao = 3,
         Investimento = 4,
+        TransacaoRegistro = 5
     }
     public enum eDialogo
     {
@@ -39,5 +40,17 @@ namespace CashFlow.Domain.Enumeration
         AtivoFinanceiro = 1,
         EntidadeFinanceira = 2,
         Categoria = 3,
+    }
+
+    public enum eTipoOperacao
+    {
+        Nenhuma = 0,
+        Visualizar = 1,
+        Adicionar = 2,
+        Salvar = 3,
+        Alterar = 4,
+        Deletar = 5,
+        Cancelar = 6,
+        Confirmar = 7
     }
 }

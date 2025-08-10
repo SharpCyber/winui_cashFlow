@@ -17,6 +17,7 @@ namespace CashFlow
         private const int Altura = 700;
         private AppWindow m_AppWindow;
         private NavigationViewItem paginaAtiva;
+
         private bool popupAtivo = false;
         #endregion
 
@@ -45,7 +46,7 @@ namespace CashFlow
         }
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            paginaAtiva = nviDashBoard;
+            paginaAtiva = nviDashboardPage;
             NavView.SelectedItem = paginaAtiva;
             Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
         }
@@ -63,19 +64,24 @@ namespace CashFlow
                     Configuracao.AbrirTela(ePagina.Teste, this.ContentFrame);
                     break;
                 case "Dashboard":
-                    paginaAtiva = nviDashBoard;
+                    paginaAtiva = nviDashboardPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
                     break;
                 case "Transacao":
                     paginaAtiva = nviTransacaoPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame);
                     break;
                 case "Investimento":
                     paginaAtiva = nviInvestimentoPage;
                     popupAtivo = false;
-                    Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame); 
+                    Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame);
+                    break;
+                case "TransacaoRegistro":
+                    paginaAtiva = nviTransacaoRegistroPage;
+                    popupAtivo = false;
+                    Configuracao.AbrirTela(ePagina.TransacaoRegistro, this.ContentFrame);
                     break;
                 case "EntidadeFinanceira":
                     popupAtivo = true;
@@ -140,7 +146,7 @@ namespace CashFlow
         }
         private AppWindow ObterAppWindowAtual()
         {
-            IntPtr hWnd = WindowNative.GetWindowHandle(this);
+            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(wndId);
         }

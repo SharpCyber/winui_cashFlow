@@ -15,7 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace CashFlow.Views
 {
-    public sealed partial class TransacaoPage : Page
+    public sealed partial class AtivoRegistroDialog : ContentDialog
     {
         #region Interfaces
         #endregion
@@ -24,13 +24,21 @@ namespace CashFlow.Views
         #endregion
 
         #region Construtor
-        public TransacaoPage()
+        public AtivoRegistroDialog()
         {
             InitializeComponent();
         }
         #endregion
 
         #region Eventos
+        private void AtivoFinanceiro_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            this.Hide();
+        }
+        private void AtivoFinanceiro_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+
+        }
         #endregion
 
         #region Metodos
