@@ -33,6 +33,9 @@ namespace CashFlow
                 case ePagina.Investimento:
                     frame.Navigate(typeof(InvestimentoPage));
                     break;
+                case ePagina.TransacaoRegistro:
+                    frame.Navigate(typeof(TransacaoRegistroPage));
+                    break;
                 default:
                     break;
             }

@@ -48,6 +48,9 @@
 		<Content Include="Assets\transacao_64x64.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
+		<Content Include="Assets\transacaoregistro_64x64.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 		<Content Include="Assets\investimento_64x64.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>

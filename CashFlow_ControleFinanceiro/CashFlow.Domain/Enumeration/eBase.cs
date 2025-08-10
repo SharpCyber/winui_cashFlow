@@ -32,6 +32,7 @@ namespace CashFlow.Domain.Enumeration
         Dashboard = 2,
         Transacao = 3,
         Investimento = 4,
+        TransacaoRegistro = 5
     }
     public enum eDialogo
     {

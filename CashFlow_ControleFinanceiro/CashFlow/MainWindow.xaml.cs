@@ -78,6 +78,11 @@ namespace CashFlow
                     popupAtivo = false;
                     Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame);
                     break;
+                case "TransacaoRegistro":
+                    paginaAtiva = nviTransacaoRegistroPage;
+                    popupAtivo = false;
+                    Configuracao.AbrirTela(ePagina.TransacaoRegistro, this.ContentFrame);
+                    break;
                 case "EntidadeFinanceira":
                     popupAtivo = true;
                     await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);

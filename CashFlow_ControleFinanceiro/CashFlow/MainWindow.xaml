@@ -42,6 +42,10 @@
                     <Image Source="ms-appx:///Assets/investimento_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
+                <NavigationViewItem x:Name="nviTransacaoRegistroPage" Tag="TransacaoRegistro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Registrar Transações">
+                    <Image Source="ms-appx:///Assets/transacaoregistro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
                 <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Entidades Financeiras">
                     <Image Source="ms-appx:///Assets/entidadefinanceira_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
