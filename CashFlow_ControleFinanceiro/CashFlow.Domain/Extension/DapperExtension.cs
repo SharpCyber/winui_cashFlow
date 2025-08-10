@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using CashFlow.Domain.DTO;
+using CashFlow.Domain.Attributes;
 
 namespace CashFlow.Domain.Extension
 {
@@ -112,14 +113,14 @@ namespace CashFlow.Domain.Extension
 
             foreach (PropertyInfo propriedade in entidade.GetProperties())
             {
-                //if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
-                //    continue;
+                if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
+                    continue;
 
-                //if (propriedade.GetCustomAttribute<Editavel>(false) != null)
-                //    continue;
+                if (propriedade.GetCustomAttribute<Editavel>(false) != null)
+                    continue;
 
-                //if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
-                //    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
+                if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
+                    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
 
                 var valor = propriedade.GetValue(entity);
                 colunas.Add($"{propriedade.Name}");
@@ -152,16 +153,16 @@ namespace CashFlow.Domain.Extension
 
             foreach (PropertyInfo propriedade in entidade.GetProperties())
             {
-                //if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
-                //    continue;
+                if (propriedade.GetCustomAttribute<ChavePrimaria>() != null)
+                    continue;
 
-                //if (propriedade.GetCustomAttribute<Editavel>(false) != null)
-                //    continue;
+                if (propriedade.GetCustomAttribute<Editavel>(false) != null)
+                    continue;
 
-                //if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
-                //{
-                //    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
-                //}
+                if (propriedade.GetCustomAttribute<Obrigatorio>() != null && propriedade.GetValue(entity) == null)
+                {
+                    throw new InvalidOperationException($"A propriedade {propriedade.Name} é obrigatória e não foi preenchida.");
+                }
 
                 var valor = propriedade.GetValue(entity);
                 colunas.Add($"{propriedade.Name} = @{propriedade.Name}");
@@ -210,9 +211,9 @@ namespace CashFlow.Domain.Extension
 
         public static bool CriarTabela(this IDbConnection connection, Type entityType, IDbTransaction transaction = null)
         {
-            //var atributoEntidade = entityType.GetCustomAttribute<EntidadeAttribute>();
-            //string tableName = atributoEntidade?.NomeTabela ?? entityType.Name;
-            string tableName = entityType.Name;
+            var atributoEntidade = entityType.GetCustomAttribute<EntidadeAttribute>();
+            string tableName = atributoEntidade?.NomeTabela ?? entityType.Name;
+            //string tableName = entityType.Name;
 
             StringBuilder createTableSql = new StringBuilder();
             createTableSql.Append($"CREATE TABLE {tableName} (");
@@ -224,46 +225,59 @@ namespace CashFlow.Domain.Extension
             foreach (PropertyInfo property in properties)
             {
                 // Ignorar propriedades não editáveis
-                //if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
-                //    continue;
+                if (property.GetCustomAttribute<Editavel>()?.HabilitarEdicao == false)
+                    continue;
 
                 Type propertyType = property.PropertyType;
                 string columnName = property.Name;
-                //string columnType = SQLTradutorFactory.ObterTipoColuna(property);
+                string columnType = ObterTipoColuna(property);
 
                 bool ehObrigatorio = true;
 
                 // Verificar se é Chave Primária
-                //if (property.GetCustomAttribute<ChavePrimaria>() != null)
-                //{
-                //    columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
-                //}
-                //else
-                //{
-                //    // Verificar se a propriedade é obrigatória
-                //    if (property.GetCustomAttribute<Obrigatorio>() != null)
-                //    {
-                //        columns.Add($"{columnName} {columnType} NOT NULL");
-                //    }
-                //    else
-                //    {
-                //        columns.Add($"{columnName} {columnType}");
-                //        ehObrigatorio = false;
-                //    }
-                //}
+                if (property.GetCustomAttribute<ChavePrimaria>() != null)
+                {
+                    bool semAutoIncremento = property.GetCustomAttribute<SemAutoIncrementoAttribute>() != null;
+
+                    if (semAutoIncremento)
+                        columns.Add($"{columnName} {columnType} PRIMARY KEY");
+                    else
+                        columns.Add($"{columnName} {columnType} PRIMARY KEY AUTOINCREMENT"); // IDENTITY (VALIDAR NECESSIDADE E INCLUIR NO MOMENTO EM QUE CRIA BASE DE DADOS)
+                }
+                else
+                {
+                    bool isRequired = property.GetCustomAttribute<Obrigatorio>() != null;
+                    bool isUnique = property.GetCustomAttribute<UnicoAttribute>() != null;
+
+                    string constraints = "";
+
+                    if (isRequired)
+                        constraints += "NOT NULL";
+
+                    if (isUnique)
+                    {
+                        if (!string.IsNullOrWhiteSpace(constraints))
+                            constraints += " ";
+                        constraints += "UNIQUE";
+                    }
+
+                    columns.Add($"{columnName} {columnType} {constraints}".Trim());
+
+                    ehObrigatorio = isRequired;
+                }
 
                 // Verificar se é uma Foreign Key
-                //var relacionamento = property.GetCustomAttribute<Relacionamento>();
-                //if (relacionamento != null)
-                //{
-                //    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
-                //    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
+                var relacionamento = property.GetCustomAttribute<Relacionamento>();
+                if (relacionamento != null)
+                {
+                    // Adicionar a definição da chave estrangeira com o nome da chave primária referenciada
+                    string fk = ObterSintaxeForeignKey(columnName, relacionamento.Tabela, relacionamento.ChavePrimaria);
 
-                //    if (!ehObrigatorio)
-                //        fk += " ON DELETE SET NULL";
+                    if (!ehObrigatorio)
+                        fk += " ON DELETE SET NULL";
 
-                //    foreignKeys.Add(fk);
-                //}
+                    foreignKeys.Add(fk);
+                }
             }
 
             // Adicionar as colunas ao SQL
@@ -309,13 +323,12 @@ namespace CashFlow.Domain.Extension
 
         private static PropertyInfo ObterChavePrimaria(Type entidade)
         {
-            //var chavePrimaria = entidade.GetProperties().Where(i => i.GetCustomAttribute<ChavePrimaria>() != null).FirstOrDefault();
+            var chavePrimaria = entidade.GetProperties().Where(i => i.GetCustomAttribute<ChavePrimaria>() != null).FirstOrDefault();
 
-            //if (chavePrimaria == null)
-            //    throw new InvalidOperationException($"A entidade {entidade.Name} não possui uma chave primária definida.");
+            if (chavePrimaria == null)
+                throw new InvalidOperationException($"A entidade {entidade.Name} não possui uma chave primária definida.");
 
-            //return chavePrimaria;
-            return null;
+            return chavePrimaria;
         }
 
         private static string ObterTipoColuna(PropertyInfo propriedade)

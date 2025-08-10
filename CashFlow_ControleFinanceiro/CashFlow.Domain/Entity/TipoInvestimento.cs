@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Domain.Entity
 {
-    [Entidade("TipoTransacao")]
-    public class TipoTransacao
+    [Entidade("TipoInvestimento")]
+    public class TipoInvestimento
     {
-        [ChavePrimaria, SemAutoIncremento]
-        public int PK_TipoTransacao { get; set; }
+        [ChavePrimaria]
+        public int PK_TipoInvestimento { get; set; }
 
         [Obrigatorio]
-        public string Nome {  get; set; }
+        public string Nome { get; set; }
     }
+
 }
