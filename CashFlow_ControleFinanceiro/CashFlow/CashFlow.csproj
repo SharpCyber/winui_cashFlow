@@ -18,10 +18,8 @@
 	  <None Remove="Views\AtivoFinanceiroDialog.xaml" />
 	  <None Remove="Views\CategoriaDialog.xaml" />
 	  <None Remove="Views\DashBoardPage.xaml" />
-	  <None Remove="Views\EntidadeFinanceiraDialog.xaml" />
 	  <None Remove="Views\InvestimentoPage.xaml" />
 	  <None Remove="Views\TestePage.xaml" />
-	  <None Remove="Views\TransacaoPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -114,6 +112,9 @@
 	  <Page Update="Styles\FontIconStyle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
+	  <Page Update="Views\EntidadeFinanceiraDialog.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Views\TestePage.xaml">
@@ -122,11 +123,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Themes\Colors.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\EntidadeFinanceiraDialog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>

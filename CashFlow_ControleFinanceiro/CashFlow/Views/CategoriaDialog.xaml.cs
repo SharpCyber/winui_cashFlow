@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using CashFlow.Application;
 using CashFlow.Domain.Entity;
+using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Interfaces;
 using CashFlow.ViewModel.CategoriaViewModel;
@@ -18,7 +19,6 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using CashFlow.Domain.Helpers;
 
 namespace CashFlow.Views
 {
@@ -46,14 +46,14 @@ namespace CashFlow.Views
         #region Eventos
         private void Categoria_Loaded(object sender, RoutedEventArgs e)
         {
-            _categoriaDialogViewModel.Categorias.Clear();
+            _categoriaDialogViewModel.Items.Clear();
 
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
-            _categoriaDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
+            _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 0, Nome = "" });
+            _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
+            _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
+            _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
 
-            _categoriaDialogViewModel.CategoriaSelecionada = _categoriaDialogViewModel.Categorias.FirstOrDefault();
+            _categoriaDialogViewModel.ItemSelecionado = _categoriaDialogViewModel.Items.FirstOrDefault();
             
             ExecutarOperacao(tipoOperacaoAtual);
         }

@@ -75,9 +75,11 @@ namespace CashFlow.Domain.Helpers
                 Text = mensagem,
                 Padding = new Thickness(12, 10, 12, 10),
                 VerticalAlignment = VerticalAlignment.Center,
-                TextWrapping = textWrapping
+                HorizontalAlignment = HorizontalAlignment.Center,
+                TextWrapping = textWrapping,
+                HorizontalTextAlignment = TextAlignment.Center
             };
-            
+
             Grid.SetColumn(txtAviso, 0);
 
             var btnFecharAviso = new Button

@@ -10,13 +10,8 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Domain.Interfaces
 {
-    public interface ICategoriaDialogViewModel
+    public interface ICategoriaDialogViewModel : ICrudViewModelBase<Categoria>
     {
-        ObservableCollection<Categoria> Categorias { get; set; }
-        Categoria CategoriaSelecionada { get; set; }
-        string Nome { get; set; }
-        bool EditarNome { get; set; }
-        void DefinirOperacao(eTipoOperacao tipoOperacao);
-        bool HabilitarBotoesCrud { get; set; }
+
     }
 }

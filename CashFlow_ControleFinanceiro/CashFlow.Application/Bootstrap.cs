@@ -4,6 +4,7 @@ using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
 using CashFlow.InfraData.Repository;
 using CashFlow.ViewModel.CategoriaViewModel;
+using CashFlow.ViewModel.EntidadeFinanceiraViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -34,6 +35,7 @@ namespace CashFlow.Application
             services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
 
             services.AddSingleton<ICategoriaDialogViewModel, CategoriaDialogViewModel>();
+            services.AddSingleton<IEntidadeFinanceiraDialogViewModel, EntidadeFinanceiraDialogViewModel>();
         }
     }
 }
