@@ -9,15 +9,15 @@
     mc:Ignorable="d"
     x:Name="AtivoFinanceiro"
     Style="{StaticResource DefaultContentDialogStyle}"
-    PrimaryButtonClick="AtivoFinanceiro_PrimaryButtonClick_1"
+    PrimaryButtonClick="AtivoFinanceiro_PrimaryButtonClick"
     PrimaryButtonText="Fechar"
     Margin="0"
     Padding="0"
-    Closing="AtivoFinanceiro_Closing_1"
+    Closing="AtivoFinanceiro_Closing"
     Loaded="AtivoFinanceiro_Loaded"
     Background="{StaticResource Cinza13}">
 
-    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500">
+    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500" MinHeight="280">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -64,9 +64,9 @@
 
             </StackPanel>
 
-            <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="18" CornerRadius="4">
-                <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="20,0" LayoutUpdated="scroll_LayoutUpdated">
-                    <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Tarefas}" >
+            <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Nenhuma}" Margin="0" Padding="2" CornerRadius="0">
+                <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="0" LayoutUpdated="scroll_LayoutUpdated">
+                    <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Items}" Margin="0">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel/>
@@ -75,40 +75,26 @@
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
+                                <Grid Background="{StaticResource Cinza12}" CornerRadius="8" Padding="6" Margin="0,2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <StackPanel x:Name="spTarefa" 
-                                            Padding="0" 
-                                            Margin="0,0,0,6" 
-                                            Background="{StaticResource Nenhuma}"
-                                            CanDrag="False"
-                                            AllowDrop="False">
+                                    <TextBlock Text="{Binding Codigo}" 
+                                               VerticalAlignment="Center" 
+                                               Margin="6,0"
+                                               Padding="2"
+                                               Foreground="{StaticResource Branco}" />
 
-                                    <Grid Background="{StaticResource Cinza10}" Padding="16,10" CornerRadius="6">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="24"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBox x:Name="txtAtivo" 
-                                                 Grid.Column="1"
-                                                 VerticalAlignment="Center" 
-                                                 Text="{Binding Descricao, Mode=TwoWay}" 
-                                                 Foreground="{StaticResource Branco}" 
-                                                 FontWeight="Normal" />
-
-
-                                        <Button x:Name="btnAdicionar" 
-                                                Command="{Binding ToggleAnotacaoCommand}"
-                                                Grid.Column="2" 
-                                                Padding="0" 
-                                                Width="24" 
-                                                Height="24" 
-                                                Background="{Binding ExisteAnotacao}"
-                                                Style="{StaticResource DefaultButtonStyle}">
-                                                    <FontIcon Glyph="{Binding IconeBotaoExibirTarefaAnotacao}" FontFamily="Segoe Fluent Icons" FontSize="14"/>
-                                        </Button>
-                                    </Grid>
-                                </StackPanel>
+                                    <Button x:Name="btnAdicionar" 
+                                            Click="btnAdicionar_Click" 
+                                            Grid.Column="1"
+                                            Visibility="{Binding ExibirBotaoCrud}" 
+                                            Style="{StaticResource AccentButtonStyle_34x}">
+                                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+                                    </Button>
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
