@@ -39,7 +39,6 @@ namespace CashFlow.Views
 
             _categoriaDialogViewModel = categoriaDialogViewModel;
             this.DataContext = _categoriaDialogViewModel;
-
         }
         #endregion
 

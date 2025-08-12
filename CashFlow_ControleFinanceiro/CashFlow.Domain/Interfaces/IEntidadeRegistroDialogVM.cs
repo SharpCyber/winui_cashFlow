@@ -9,7 +9,7 @@ using CashFlow.Domain.Enumeration;
 
 namespace CashFlow.Domain.Interfaces
 {
-    public interface IEntidadeRegistroDialogVM : ICrudViewModelBase<object>
+    public interface IEntidadeRegistroDialogVM : ICrudViewModelBase<EntidadeFinanceira>
     {
         ObservableCollection<Categoria> Categorias { get; set; }
         Categoria CategoriaSelecionada { get; set; }

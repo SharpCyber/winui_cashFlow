@@ -105,10 +105,10 @@ namespace CashFlow.Views
         {
             _entidadeFinanceiraDialogViewModel.Items.Clear();
 
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 0, Nome = "" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 1, Nome = "Teste 1" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 2, Nome = "Teste 2" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 3, Nome = "Teste 3" });
+            _entidadeFinanceiraDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 0, Nome = "" });
+            _entidadeFinanceiraDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 1, Nome = "Teste 1" });
+            _entidadeFinanceiraDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 2, Nome = "Teste 2" });
+            _entidadeFinanceiraDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 3, Nome = "Teste 3" });
 
             _entidadeFinanceiraDialogViewModel.ItemSelecionado = _entidadeFinanceiraDialogViewModel.Items.FirstOrDefault();
 
@@ -146,7 +146,7 @@ namespace CashFlow.Views
                 case eTipoOperacao.Deletar:
                     Aviso.Mostrar(
                         spAviso, 
-                        "Tem certeza que deseja realizar a exclusão da entidade?\nEssa operação não poderá ser desfeita.", 
+                        "Tem certeza que deseja realizar a exclusão da entidade?\n\nEssa operação não poderá ser desfeita.", 
                         eTipoMensagem.Informacao,
                         TextWrapping.Wrap);
                     break;

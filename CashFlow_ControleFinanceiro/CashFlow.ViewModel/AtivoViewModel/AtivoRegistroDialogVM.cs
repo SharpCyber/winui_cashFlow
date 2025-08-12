@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Data.Text;
-using Microsoft.UI.Xaml;
 using CashFlow.Domain.Entity;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Interfaces;
+using Microsoft.UI.Xaml;
 
-namespace CashFlow.ViewModel.CategoriaViewModel
+namespace CashFlow.ViewModel.AtivoViewModel
 {
-    public class CategoriaRegistroDialogVM : CrudViewModelBase<Categoria>, ICategoriaDialogVM
+    public class AtivoRegistroDialogVM : ViewModelBase <AtivoFinanceiro>, IAtivoRegistroDialogVM
     {
+
     }
 }

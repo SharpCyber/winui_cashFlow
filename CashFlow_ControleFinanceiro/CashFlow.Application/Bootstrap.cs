@@ -3,6 +3,7 @@ using CashFlow.Data;
 using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
 using CashFlow.InfraData.Repository;
+using CashFlow.ViewModel.AtivoViewModel;
 using CashFlow.ViewModel.CategoriaViewModel;
 using CashFlow.ViewModel.EntidadeFinanceiraViewModel;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,6 +37,7 @@ namespace CashFlow.Application
 
             services.AddSingleton<ICategoriaDialogVM, CategoriaRegistroDialogVM>();
             services.AddSingleton<IEntidadeRegistroDialogVM, EntidadeRegistroDialogVM>();
+            services.AddSingleton<IAtivoRegistroDialogVM, AtivoRegistroDialogVM>();
         }
     }
 }

@@ -7,51 +7,115 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    x:Name="AtivoFinanceiro"
     Style="{StaticResource DefaultContentDialogStyle}"
+    PrimaryButtonClick="AtivoFinanceiro_PrimaryButtonClick_1"
+    PrimaryButtonText="Fechar"
     Margin="0"
     Padding="0"
-    x:Name="AtivoFinanceiro"
-    Title="Ativo Financeiro"
-    Closing="AtivoFinanceiro_Closing"
-    PrimaryButtonText="OK"
-    PrimaryButtonClick="AtivoFinanceiro_PrimaryButtonClick"
+    Closing="AtivoFinanceiro_Closing_1"
+    Loaded="AtivoFinanceiro_Loaded"
     Background="{StaticResource Cinza13}">
 
-    <Grid Margin="0" Padding="0">
+    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="0" RowSpacing="12">
+        <Grid Grid.Row="0" Padding="2,0" RowSpacing="12" Margin="0" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Grid ColumnSpacing="8" Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox HorizontalAlignment="Stretch" MinWidth="260" Width="260" VerticalAlignment="Center"/>
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Horizontal" Margin="0" Spacing="4">
-                    <Button x:Name="btnExcluir" Width="34" Height="34" Padding="0" Margin="0" Style="{StaticResource AlternateCloseButtonStyle}">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE74D;"/>
-                    </Button>
-                    <Button x:Name="btnEditar" Width="34" Height="34" Padding="0" Margin="0" Style="{StaticResource AlternateCloseButtonStyle}">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE70F;"/>
-                    </Button>
-                    <Button x:Name="btnAdicionar" Width="34" Height="34" Padding="0" Margin="0" Style="{StaticResource DefaultButtonStyle}">
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE710;"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
+            <StackPanel Spacing="8">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-            <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="12" CornerRadius="4">
-                <TextBlock Text="Nome" FontSize="16" FontWeight="Normal"/>
-                <TextBox Text="" FontSize="16" FontWeight="Normal"/>
+                    <TextBlock Text="Ativo Financeiro" 
+                           VerticalAlignment="Center" 
+                           FontFamily="Arial" 
+                           FontSize="24" 
+                           FontWeight="Bold"/>
+
+                    <Button x:Name="btnAjuda" 
+                        Grid.Column="1"
+                        Click="btnAjuda_Click" 
+                        Style="{StaticResource DefaultButtonStyleAjuda_28x}">
+                    </Button>
+                </Grid>
+
+                <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
+
+                <TextBox x:Name="txtPesquisarAtivo"
+                         HorizontalAlignment="Stretch"
+                         PlaceholderText="Pesquisar ativo"
+                         Margin="0"
+                         Text=""
+                         MaxLength="50"
+                         KeyUp="txtPesquisarAtivo_KeyUp"
+                         Foreground="{StaticResource Branco}" 
+                         FontWeight="Normal"/>
+
             </StackPanel>
+
+            <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="18" CornerRadius="4">
+                <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="20,0" LayoutUpdated="scroll_LayoutUpdated">
+                    <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Tarefas}" >
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+
+                                <StackPanel x:Name="spTarefa" 
+                                            Padding="0" 
+                                            Margin="0,0,0,6" 
+                                            Background="{StaticResource Nenhuma}"
+                                            CanDrag="False"
+                                            AllowDrop="False">
+
+                                    <Grid Background="{StaticResource Cinza10}" Padding="16,10" CornerRadius="6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="24"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBox x:Name="txtAtivo" 
+                                                 Grid.Column="1"
+                                                 VerticalAlignment="Center" 
+                                                 Text="{Binding Descricao, Mode=TwoWay}" 
+                                                 Foreground="{StaticResource Branco}" 
+                                                 FontWeight="Normal" />
+
+
+                                        <Button x:Name="btnAdicionar" 
+                                                Command="{Binding ToggleAnotacaoCommand}"
+                                                Grid.Column="2" 
+                                                Padding="0" 
+                                                Width="24" 
+                                                Height="24" 
+                                                Background="{Binding ExisteAnotacao}"
+                                                Style="{StaticResource DefaultButtonStyle}">
+                                                    <FontIcon Glyph="{Binding IconeBotaoExibirTarefaAnotacao}" FontFamily="Segoe Fluent Icons" FontSize="14"/>
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+
+            <StackPanel x:Name="spAviso" Grid.Row="2" HorizontalAlignment="Stretch" Padding="6,0"/>
         </Grid>
     </Grid>
 </ContentDialog>

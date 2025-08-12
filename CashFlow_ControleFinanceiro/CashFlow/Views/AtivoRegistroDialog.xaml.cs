@@ -39,9 +39,34 @@ namespace CashFlow.Views
         {
 
         }
+        private void AtivoFinanceiro_PrimaryButtonClick_1(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+
+        }
+        private void AtivoFinanceiro_Closing_1(ContentDialog sender, ContentDialogClosingEventArgs args)
+        {
+
+        }
+        private void AtivoFinanceiro_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnAjuda_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void txtPesquisarAtivo_KeyUp(object sender, KeyRoutedEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Metodos
         #endregion
+
+        private void scroll_LayoutUpdated(object sender, object e)
+        {
+
+        }
     }
 }

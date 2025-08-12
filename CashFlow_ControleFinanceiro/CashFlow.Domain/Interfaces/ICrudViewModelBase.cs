@@ -9,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace CashFlow.Domain.Interfaces
 {
-    public interface ICrudViewModelBase<T> : INotifyPropertyChanged
+    public interface ICrudViewModelBase<T> : IViewModelBase <T> 
     {
-        ObservableCollection<T> Items { get; set; } 
-        T ItemSelecionado { get; set; } 
-
         string Nome { get; set; }
         bool EditarNome { get; set; }
         bool ExibirBotaoCrud { get; set; }

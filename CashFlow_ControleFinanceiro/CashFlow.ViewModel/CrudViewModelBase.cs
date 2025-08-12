@@ -12,10 +12,9 @@ using CashFlow.Domain.Interfaces;
 
 namespace CashFlow.ViewModel
 {
-    public abstract class CrudViewModelBase<T> : ICrudViewModelBase<T> where T : class
+    public abstract class CrudViewModelBase<T> : ViewModelBase <T>, ICrudViewModelBase<T> where T : class
     {
         #region Propriedades
-        private ObservableCollection<T> _items;
         private T _itemSelecionado;
         
         private string _nome;
@@ -27,23 +26,7 @@ namespace CashFlow.ViewModel
         #endregion
 
         #region Propriedades Pública
-        public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<T> Items
-        {
-            get
-            {
-                if (_items == null)
-                    _items = new ObservableCollection<T>();
-
-                return _items;
-            }
-            set
-            {
-                _items = value;
-                OnPropertyChanged();
-            }
-        }
-        public T ItemSelecionado
+        public override T ItemSelecionado
         {
             get => _itemSelecionado;
             set
@@ -105,10 +88,7 @@ namespace CashFlow.ViewModel
         #endregion
 
         #region Métodos Públicos
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+
         public virtual void DefinirOperacao(eTipoOperacao tipoOperacao)
         {
             bool habilitarCrud = false;
