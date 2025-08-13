@@ -28,7 +28,6 @@ namespace CashFlow.Views
         #endregion
 
         #region Propriedades
-        private List<AtivoFinanceiro> Ativos = new List<AtivoFinanceiro>();
         private readonly int _delayPesquisa = 500;
         private CancellationTokenSource _cancellationTokenSource;
         private bool fecharDialog = true;
@@ -50,15 +49,10 @@ namespace CashFlow.Views
         {
             _ativoRegistroDialogVM.Items.Clear();
 
-            Ativos.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 1, Codigo = "Teste 1", FK_TipoInvestimento = 1, Nome = "Teste 1 Nome", Ativo = true });
-            Ativos.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 2, Codigo = "Teste 2", FK_TipoInvestimento = 2, Nome = "Teste 2 Nome", Ativo = true });
-            Ativos.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 3, Codigo = "Teste 3", FK_TipoInvestimento = 3, Nome = "Teste 3 Nome", Ativo = true });
-            Ativos.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 4, Codigo = "Teste 4", FK_TipoInvestimento = 4, Nome = "Teste 4 Nome", Ativo = true });
-
-            //_ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 1, Codigo = "Teste 1", FK_TipoInvestimento = 1, Nome = "Teste 1 Nome", Ativo = true });
-            //_ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 2, Codigo = "Teste 2", FK_TipoInvestimento = 2, Nome = "Teste 2 Nome", Ativo = true });
-            //_ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 3, Codigo = "Teste 3", FK_TipoInvestimento = 3, Nome = "Teste 3 Nome", Ativo = true });
-            //_ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 4, Codigo = "Teste 4", FK_TipoInvestimento = 4, Nome = "Teste 4 Nome", Ativo = true });
+            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 1, Codigo = "Teste 1", FK_TipoInvestimento = 1, Nome = "Teste 1 Nome", Ativo = true });
+            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 2, Codigo = "Teste 2", FK_TipoInvestimento = 2, Nome = "Teste 2 Nome", Ativo = true });
+            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 3, Codigo = "Teste 3", FK_TipoInvestimento = 3, Nome = "Teste 3 Nome", Ativo = true });
+            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 4, Codigo = "Teste 4", FK_TipoInvestimento = 4, Nome = "Teste 4 Nome", Ativo = true });
 
             _ativoRegistroDialogVM.ItemSelecionado = _ativoRegistroDialogVM.Items.FirstOrDefault();
         }

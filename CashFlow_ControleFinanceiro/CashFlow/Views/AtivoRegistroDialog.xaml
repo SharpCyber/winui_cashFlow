@@ -90,7 +90,6 @@
                                     <Button x:Name="btnAdicionar" 
                                             Click="btnAdicionar_Click" 
                                             Grid.Column="1"
-                                            Visibility="{Binding ExibirBotaoCrud}" 
                                             Style="{StaticResource AccentButtonStyle_34x}">
                                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
                                     </Button>
