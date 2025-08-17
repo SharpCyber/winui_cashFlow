@@ -17,13 +17,13 @@
     Loaded="AtivoFinanceiro_Loaded"
     Background="{StaticResource Cinza13}">
 
-    <Grid Margin="0,0,0,-15" Padding="0" MinWidth="500" MinHeight="280">
+    <Grid Margin="0,0,0,-15" Padding="0" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Padding="2,0" RowSpacing="12" Margin="0" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="0" Padding="2,0" RowSpacing="12" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -61,7 +61,6 @@
                          KeyUp="txtPesquisarAtivo_KeyUp"
                          Foreground="{StaticResource Branco}" 
                          FontWeight="Normal"/>
-
             </StackPanel>
 
             <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Nenhuma}" Margin="0" Padding="2" CornerRadius="0">

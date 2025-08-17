@@ -6,9 +6,118 @@
     xmlns:local="using:CashFlow.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    Loading="Page_Loading"
+    SizeChanged="Page_SizeChanged">
 
-    <Grid>
+    <Grid Background="{StaticResource Cinza13}">
+        <Grid Background="{StaticResource Cinza10}"
+              RowSpacing="12"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Center"
+              Padding="16,24"
+              Margin="18"
+              CornerRadius="8"
+              MinWidth="220"   
+              MaxWidth="800">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
+            <StackPanel Spacing="4" Grid.Row="0" Padding="0" Margin="0">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <TextBlock Text="Entidade Financeira" FontWeight="Bold"/>
+                    <TextBlock x:Name="txtEntidade" Text="[ Investimento ]" Foreground="{StaticResource Amarelo}"/>
+                </StackPanel>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ComboBox Grid.Column="0" 
+                              HorizontalAlignment="Stretch" 
+                              TabIndex="0"
+                              Margin="0,0,8,0"/>
+                    <Button x:Name="btnAdicionarEntidade"
+                            Click="btnAdicionarEntidade_Click"
+                            Grid.Column="1"
+                            TabIndex="1"
+                            Style="{StaticResource AccentButtonStyle}"
+                            VerticalAlignment="Stretch">
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <Grid Grid.Row="2" ColumnSpacing="12" Padding="0" Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="txtDataTransacao" 
+                           Grid.Row="0" 
+                           Text="Tipo Transação" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center" 
+                           TextWrapping="NoWrap"/>
+
+                <ComboBox x:Name="cboTipoTransacao"
+                          Grid.Row="1" 
+                          TabIndex="2"
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Bottom"
+                          ItemsSource="{Binding TipoTransacaoCollection}"
+                          SelectedItem="{Binding TipoTransacaoSelecionado, Mode=TwoWay}"
+                          DisplayMemberPath="Nome"/>
+
+                <CheckBox x:Name="chkDataTransacao" 
+                          IsChecked="True" 
+                          Grid.Row="0"
+                          Grid.Column="1"
+                          Margin="0"
+                          TabIndex="3"
+                          VerticalAlignment="Center">
+                    <TextBlock Text="Data Transação" FontWeight="Bold" VerticalAlignment="Bottom" TextWrapping="NoWrap"/>
+                </CheckBox>
+                
+                <CalendarDatePicker x:Name="dtpDataTransacao"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    TabIndex="4"
+                                    DateFormat="{}{day.integer}/{month.integer}/{year.full}" 
+                                    HorizontalAlignment="Stretch"
+                                    PlaceholderText="Não possui vencimento"
+                                    IsEnabled="{x:Bind chkDataTransacao.IsChecked.Value, Mode=OneWay}"/>
+
+                <CheckBox x:Name="chkDataVencimento" 
+                          IsChecked="True"
+                          Grid.Row="0"
+                          Grid.Column="2"
+                          TabIndex="5"
+                          VerticalAlignment="Center">
+                    <TextBlock Text="Data Vencimento" FontWeight="Bold" TextWrapping="NoWrap"/>
+                </CheckBox>
+
+                <CalendarDatePicker x:Name="dtpVencimento"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    TabIndex="6"
+                                    DateFormat="{}{day.integer}/{month.integer}/{year.full}" 
+                                    HorizontalAlignment="Stretch"
+                                    PlaceholderText="Não possui vencimento"
+                                    IsEnabled="{x:Bind chkDataVencimento.IsChecked.Value, Mode=OneWay}"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

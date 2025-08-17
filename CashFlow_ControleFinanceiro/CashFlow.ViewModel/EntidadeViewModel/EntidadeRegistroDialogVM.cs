@@ -16,21 +16,21 @@ namespace CashFlow.ViewModel.EntidadeFinanceiraViewModel
 {
     public class EntidadeRegistroDialogVM : CrudViewModelBase<EntidadeFinanceira>, IEntidadeRegistroDialogVM
     {
-        private ObservableCollection<Categoria> _categorias;
+        private ObservableCollection<Categoria> _categoriaCollection;
         private Categoria _categoriaSelecionada;
 
-        public ObservableCollection<Categoria> Categorias
+        public ObservableCollection<Categoria> CategoriaCollection
         {
             get
             {
-                if (_categorias == null)
-                    _categorias = new ObservableCollection<Categoria>();
+                if (_categoriaCollection == null)
+                    _categoriaCollection = new ObservableCollection<Categoria>();
 
-                return _categorias;
+                return _categoriaCollection;
             }
             set
             {
-                _categorias = value;
+                _categoriaCollection = value;
                 OnPropertyChanged();
             }
         }
@@ -41,7 +41,7 @@ namespace CashFlow.ViewModel.EntidadeFinanceiraViewModel
             {
                 _categoriaSelecionada = value;
 
-                Nome = CategoriaSelecionada != null ? CategoriaSelecionada.Nome : "";
+                Nome = _categoriaSelecionada != null ? _categoriaSelecionada.Nome : "";
                 OnPropertyChanged(nameof(CategoriaSelecionada));
             }
         }

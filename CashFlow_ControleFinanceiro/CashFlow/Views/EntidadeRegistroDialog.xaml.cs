@@ -115,14 +115,14 @@ namespace CashFlow.Views
         }
         private void CarregarCategoria()
         {
-            _entidadeFinanceiraDialogViewModel.Categorias.Clear();
+            _entidadeFinanceiraDialogViewModel.CategoriaCollection.Clear();
 
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
+            _entidadeFinanceiraDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 0, Nome = "" });
+            _entidadeFinanceiraDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
+            _entidadeFinanceiraDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
+            _entidadeFinanceiraDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
 
-            _entidadeFinanceiraDialogViewModel.CategoriaSelecionada = _entidadeFinanceiraDialogViewModel.Categorias.FirstOrDefault();
+            _entidadeFinanceiraDialogViewModel.CategoriaSelecionada = _entidadeFinanceiraDialogViewModel.CategoriaCollection.FirstOrDefault();
         }
         private void ExecutarOperacao(eTipoOperacao eTipoOperacao)
         {

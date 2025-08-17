@@ -1,5 +1,7 @@
 using CashFlow.Application;
 using CashFlow.Domain.Entity;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -70,7 +72,18 @@ namespace CashFlow.Views
         }
         private void btnAjuda_Click(object sender, RoutedEventArgs e)
         {
+            if (spAjuda.Visibility != Visibility.Visible)
+            {
+                string mensagem = "" +
+                    "Ativos financeiros...\n\n" +
+                    "Exemplo: .";
 
+                Aviso.MostrarComBotao(spAjuda, mensagem, eTipoMensagem.Informacao, TextWrapping.Wrap);
+            }
+            else
+            {
+                Aviso.Ocultar(spAjuda);
+            }
         }
         private async void txtPesquisarAtivo_KeyUp(object sender, KeyRoutedEventArgs e)
         {

@@ -11,7 +11,7 @@ namespace CashFlow.Domain.Interfaces
 {
     public interface IEntidadeRegistroDialogVM : ICrudViewModelBase<EntidadeFinanceira>
     {
-        ObservableCollection<Categoria> Categorias { get; set; }
+        ObservableCollection<Categoria> CategoriaCollection { get; set; }
         Categoria CategoriaSelecionada { get; set; }
     }
 }
