@@ -17,6 +17,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization.NumberFormatting;
 
 namespace CashFlow.Views
 {
@@ -44,12 +45,8 @@ namespace CashFlow.Views
         #region Eventos
         private void Page_Loading(FrameworkElement sender, object args)
         {
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Clear();
-
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 1, Nome = "Entrada" });
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 2, Nome = "Saída" });
-
-            _transacaoRegistroPageVM.TipoTransacaoSelecionada = _transacaoRegistroPageVM.TipoTransacaoCollection.FirstOrDefault();
+            CarregarDropDowns();
+            DefinirPadronizacaoDosComponentes();
         }
         private async void btnAdicionarEntidade_Click(object sender, RoutedEventArgs e)
         {
@@ -78,8 +75,40 @@ namespace CashFlow.Views
         #endregion
 
         #region Metodos
+        private void CarregarDropDowns()
+        {
+            CarregarTipoTransacao();
+        }
+        private void CarregarTipoTransacao()
+        {
+            _transacaoRegistroPageVM.TipoTransacaoCollection.Clear();
+
+            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 1, Nome = "Entrada" });
+            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 2, Nome = "Saída" });
+
+            _transacaoRegistroPageVM.TipoTransacaoSelecionada = _transacaoRegistroPageVM.TipoTransacaoCollection.FirstOrDefault();
+        }
+        private void CarregarTipoEntidadeFinanceira()
+        {
+
+        }
+        private void DefinirPadronizacaoDosComponentes()
+        {
+            DefinirPadraoValorTotal();
+        }
+        private void DefinirPadraoValorTotal()
+        {
+            txtValorTotal.NumberFormatter = new DecimalFormatter(new[] { "pt-BR" }, "BR")
+            {
+                IsGrouped = true,
+                FractionDigits = 2
+            };
+        }
         #endregion
 
+        private void btnAdicionarAtivo_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
