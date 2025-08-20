@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
 
             <!-- Entidade Financeira -->
-            <StackPanel Spacing="4" Grid.Row="0" Padding="0" Margin="0">
+            <StackPanel Grid.Row="0" Spacing="4" Padding="0" Margin="0">
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <TextBlock Text="Entidade Financeira" FontWeight="Bold"/>
                     <TextBlock x:Name="txtEntidade" Text="[ Investimento ]" Foreground="{StaticResource Amarelo}"/>
@@ -63,7 +63,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -71,31 +71,31 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock x:Name="txtDataTransacao" 
-                           Grid.Row="0" 
-                           Text="Tipo Transação" 
-                           FontWeight="Bold" 
-                           VerticalAlignment="Center" 
-                           TextWrapping="NoWrap"/>
+                            Grid.Row="0" 
+                            Text="Tipo Transação" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
 
                 <ComboBox x:Name="cboTipoTransacao"
-                          Grid.Row="1" 
-                          TabIndex="2"
-                          HorizontalAlignment="Stretch" 
-                          VerticalAlignment="Bottom"
-                          ItemsSource="{Binding TipoTransacaoCollection}"
-                          SelectedItem="{Binding TipoTransacaoSelecionado, Mode=TwoWay}"
-                          DisplayMemberPath="Nome"/>
+                            Grid.Row="1" 
+                            TabIndex="2"
+                            HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Bottom"
+                            ItemsSource="{Binding TipoTransacaoCollection}"
+                            SelectedItem="{Binding TipoTransacaoSelecionado, Mode=TwoWay}"
+                            DisplayMemberPath="Nome"/>
 
                 <CheckBox x:Name="chkDataTransacao" 
-                          IsChecked="True" 
-                          Grid.Row="0"
-                          Grid.Column="1"
-                          Margin="0"
-                          TabIndex="3"
-                          VerticalAlignment="Center">
+                            IsChecked="True" 
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0"
+                            TabIndex="3"
+                            VerticalAlignment="Center">
                     <TextBlock Text="Data Transação" FontWeight="Bold" VerticalAlignment="Bottom" TextWrapping="NoWrap"/>
                 </CheckBox>
-                
+
                 <CalendarDatePicker x:Name="dtpDataTransacao"
                                     Grid.Row="1"
                                     Grid.Column="1"
@@ -106,11 +106,11 @@
                                     IsEnabled="{x:Bind chkDataTransacao.IsChecked.Value, Mode=OneWay}"/>
 
                 <CheckBox x:Name="chkDataVencimento" 
-                          IsChecked="True"
-                          Grid.Row="0"
-                          Grid.Column="2"
-                          TabIndex="5"
-                          VerticalAlignment="Center">
+                            IsChecked="True"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            TabIndex="5"
+                            VerticalAlignment="Center">
                     <TextBlock Text="Data Vencimento" FontWeight="Bold" TextWrapping="NoWrap"/>
                 </CheckBox>
 
@@ -124,65 +124,162 @@
                                     IsEnabled="{x:Bind chkDataVencimento.IsChecked.Value, Mode=OneWay}"/>
             </Grid>
 
-            <!-- Ativo Financeiro -->
-            <Grid Grid.Row="2" ColumnSpacing="8" RowSpacing="8" Padding="0" Margin="0">
+            <Grid Grid.Row="2" 
+                  Visibility="Visible"
+                  Background="{StaticResource Cinza11}"
+                  RowSpacing="12"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center"
+                  Padding="12,12,12,24"
+                  Margin="0"
+                  CornerRadius="8">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
+                
+                <!-- Ativo Financeiro -->
+                <Grid Grid.Row="0" ColumnSpacing="8" RowSpacing="8" Padding="0" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="40*"/>
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="txtAtivo" 
-                           Grid.Row="0"                         
-                           Grid.Column="0"
-                           Text="Ativo Financeiro" 
-                           FontWeight="Bold" 
-                           VerticalAlignment="Center" 
-                           TextWrapping="NoWrap"/>
+                    <TextBlock x:Name="txtAtivo" 
+                            Grid.Row="0"                         
+                            Grid.Column="0"
+                            Text="Ativo Financeiro" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
 
-                <ComboBox x:Name="cboAtivo"
-                          Grid.Row="1"
-                          Grid.Column="0"
-                          HorizontalAlignment="Stretch" 
-                          VerticalAlignment="Bottom"                        
-                          ItemsSource="{Binding TipoTransacaoCollection}"
-                          SelectedItem="{Binding TipoTransacaoSelecionado, Mode=TwoWay}"
-                          DisplayMemberPath="Nome"
-                          Margin="0,0,0,0"/>
+                    <ComboBox x:Name="cboAtivo"
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalAlignment="Stretch" 
+                            VerticalAlignment="Bottom"                        
+                            ItemsSource="{Binding TipoTransacaoCollection}"
+                            SelectedItem="{Binding TipoTransacaoSelecionado, Mode=TwoWay}"
+                            DisplayMemberPath="Nome"
+                            Margin="0,0,0,0"/>
 
-                <Button x:Name="btnAdicionarAtivo"
+                    <Button x:Name="btnAdicionarAtivo"
                         Click="btnAdicionarAtivo_Click"
                         Grid.Column="1"
                         Grid.Row="1"
                         Style="{StaticResource AccentButtonStyle}"
                         VerticalAlignment="Stretch">
-                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
-                </Button>
+                        <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+                    </Button>
 
-                <TextBlock x:Name="txtQuantidadeAtivoTitulo" 
-                           Grid.Row="0"                         
-                           Grid.Column="2"
-                           Text="Ativo Financeiro" 
-                           FontWeight="Bold" 
-                           VerticalAlignment="Center" 
-                           TextWrapping="NoWrap"/>
 
-                <NumberBox x:Name="txtQuantidadeAtivo"
-                           Grid.Column="2"
-                           Grid.Row="1"
-                           HorizontalAlignment="Stretch"
-                           Maximum="999999999.99"
-                           Minimum="-999999999.99"
-                           SpinButtonPlacementMode="Hidden"/>
+                </Grid>
+
+                <!-- Valor Unitário e Quantidade Ativos -->
+                <Grid Grid.Row="1" ColumnSpacing="8" RowSpacing="8" Padding="0" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="txtValorUnitarioTitulo" 
+                            Grid.Row="0"                         
+                            Grid.Column="0"
+                            Text="Valor Unitário (R$)" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
+
+                    <NumberBox x:Name="txtValorUnitario"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            HorizontalAlignment="Stretch"
+                            Maximum="999999999.99"
+                            Minimum="-999999999.99"
+                            PlaceholderText="0,00"
+                            SpinButtonPlacementMode="Hidden"/>
+
+                    <TextBlock x:Name="txtQuantidadeAtivoTitulo" 
+                            Grid.Row="0"                         
+                            Grid.Column="1"
+                            Text="Quantidade Ativos" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
+
+                    <NumberBox x:Name="txtQuantidadeAtivo"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            HorizontalAlignment="Stretch"
+                            Maximum="999999999.99999"
+                            Minimum="-999999999.9999"
+                            PlaceholderText="0"
+                            SpinButtonPlacementMode="Hidden"/>
+                </Grid>
+
+                <!-- Valor Unitário e Quantidade Ativos -->
+                <Grid Grid.Row="2" ColumnSpacing="8" RowSpacing="8" Padding="0" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="txtImpostosTitulo" 
+                            Grid.Row="0"                         
+                            Grid.Column="0"
+                            Text="Valor Impostos (R$)" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
+
+                    <NumberBox x:Name="txtOutrosTitulo"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            HorizontalAlignment="Stretch"
+                            Maximum="999999999.99"
+                            Minimum="-999999999.99"
+                            PlaceholderText="0,00"
+                            SpinButtonPlacementMode="Hidden"/>
+
+                    <TextBlock x:Name="txtOutros" 
+                            Grid.Row="0"                         
+                            Grid.Column="1"
+                            Text="Valor Outros (R$)" 
+                            FontWeight="Bold" 
+                            VerticalAlignment="Center" 
+                            TextWrapping="NoWrap"/>
+
+                    <NumberBox x:Name="txt4"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            PlaceholderText="0,00"
+                            HorizontalAlignment="Stretch"
+                            Maximum="999999999.99"
+                            Minimum="-999999999.99"
+                            SpinButtonPlacementMode="Hidden"/>
+                </Grid>
             </Grid>
-            
+
             <!-- Valor Total -->
-            <StackPanel Grid.Row="3" Spacing="8">
+            <StackPanel Grid.Row="3"
+                        Padding="4"
+                        Spacing="8">
                 <TextBlock x:Name="txtValorTotalTitulo" 
                            Text="Valor Total" 
                            FontWeight="Bold" 
@@ -191,10 +288,14 @@
                 <NumberBox x:Name="txtValorTotal"
                            Maximum="999999999.99"
                            Minimum="-999999999.99"
+                           PlaceholderText="0,00"
                            SpinButtonPlacementMode="Hidden"/>
             </StackPanel>
-            <!-- Observações -->
-            <StackPanel Grid.Row="4" Spacing="8">
+            
+             <!--Observações--> 
+            <StackPanel Grid.Row="4"
+                        Padding="4"
+                        Spacing="8">
                 <TextBlock x:Name="txtObservacaoTitulo" 
                            Text="Observações" 
                            FontWeight="Bold" 
@@ -204,9 +305,9 @@
                          TextWrapping="Wrap" 
                          VerticalAlignment="Stretch" 
                          MaxLength="300"
-                         Height="108"
                          MaxHeight="108"/>
             </StackPanel>
         </Grid>
     </Grid>
 </Page>
+
