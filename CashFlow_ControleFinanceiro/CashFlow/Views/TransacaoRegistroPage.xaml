@@ -26,10 +26,37 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            <StackPanel Spacing="8">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Registrar Transação Financeira" 
+                               VerticalAlignment="Center" 
+                               FontFamily="Arial" 
+                               FontSize="20" 
+                               FontWeight="Bold"/>
+                    <Button x:Name="btnAjuda" 
+                            Grid.Column="1"
+                            Click="btnAjuda_Click" 
+                            Style="{StaticResource DefaultButtonStyleAjuda_28x}">
+                    </Button>
+                </Grid>
+
+                <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
+
+                <Border Height="2" Background="{StaticResource Cinza9}"/>
+
+            </StackPanel>
+            
             <!-- Entidade Financeira -->
-            <StackPanel Grid.Row="0" Spacing="4" Padding="0" Margin="0">
+            <StackPanel Grid.Row="1" Spacing="4" Padding="0" Margin="0">
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <TextBlock Text="Entidade Financeira" FontWeight="Bold"/>
                     <TextBlock x:Name="txtEntidade" Text="[ Investimento ]" Foreground="{StaticResource Amarelo}"/>
@@ -58,7 +85,7 @@
             </StackPanel>
 
             <!-- Tipo Transacao, Data Transação e Data Vencimento  -->
-            <Grid Grid.Row="1" ColumnSpacing="12" Padding="0" Margin="0">
+            <Grid Grid.Row="2" ColumnSpacing="12" Padding="0" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
@@ -124,7 +151,7 @@
                                     IsEnabled="{x:Bind chkDataVencimento.IsChecked.Value, Mode=OneWay}"/>
             </Grid>
 
-            <Grid Grid.Row="2" 
+            <Grid Grid.Row="3" 
                   Visibility="Visible"
                   Background="{StaticResource Cinza11}"
                   RowSpacing="12"
@@ -243,7 +270,7 @@
                     <TextBlock x:Name="txtImpostosTitulo" 
                             Grid.Row="0"                         
                             Grid.Column="0"
-                            Text="Valor Impostos (R$)" 
+                            Text="Impostos (R$)" 
                             FontWeight="Bold" 
                             VerticalAlignment="Center" 
                             TextWrapping="NoWrap"/>
@@ -260,7 +287,7 @@
                     <TextBlock x:Name="txtOutros" 
                             Grid.Row="0"                         
                             Grid.Column="1"
-                            Text="Valor Outros (R$)" 
+                            Text="Outros (R$)" 
                             FontWeight="Bold" 
                             VerticalAlignment="Center" 
                             TextWrapping="NoWrap"/>
@@ -277,11 +304,11 @@
             </Grid>
 
             <!-- Valor Total -->
-            <StackPanel Grid.Row="3"
+            <StackPanel Grid.Row="4"
                         Padding="4"
                         Spacing="8">
                 <TextBlock x:Name="txtValorTotalTitulo" 
-                           Text="Valor Total" 
+                           Text="Total (R$)" 
                            FontWeight="Bold" 
                            VerticalAlignment="Center" 
                            TextWrapping="NoWrap"/>
@@ -293,7 +320,7 @@
             </StackPanel>
             
              <!--Observações--> 
-            <StackPanel Grid.Row="4"
+            <StackPanel Grid.Row="5"
                         Padding="4"
                         Spacing="8">
                 <TextBlock x:Name="txtObservacaoTitulo" 
@@ -306,6 +333,48 @@
                          VerticalAlignment="Stretch" 
                          MaxLength="300"
                          MaxHeight="108"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" 
+                        Grid.Column="1" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Right" 
+                        Orientation="Horizontal" 
+                        Margin="0" 
+                        Spacing="4">
+
+                <Button x:Name="btnCancelar" 
+                        Click="btnCancelar_Click" 
+                        Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                        Style="{StaticResource DefaultButtonStyle_34x}">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE711;"/>
+                </Button>
+                <Button x:Name="btnSalvar" 
+                        Click="btnSalvar_Click" 
+                        Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                        Style="{StaticResource AccentButtonStyle_34x}">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74E;"/>
+                </Button>
+                <Button x:Name="btnExcluir" 
+                        Click="btnExcluir_Click" 
+                        Visibility="{Binding ExibirBotaoCrud}" 
+                        IsEnabled="{Binding HabilitarBotaoCrud}"
+                        Style="{StaticResource DefaultButtonStyle_34x}">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
+                </Button>
+                <Button x:Name="btnEditar" 
+                        Click="btnEditar_Click" 
+                        Visibility="{Binding ExibirBotaoCrud}" 
+                        IsEnabled="{Binding HabilitarBotaoCrud}"
+                        Style="{StaticResource DefaultButtonStyle_34x}">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
+                </Button>
+                <Button x:Name="btnAdicionar" 
+                        Click="btnAdicionar_Click" 
+                        Visibility="{Binding ExibirBotaoCrud}" 
+                        Style="{StaticResource AccentButtonStyle_34x}">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

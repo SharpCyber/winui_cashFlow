@@ -52,23 +52,47 @@ namespace CashFlow.Views
         {
             await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);
         }
-
         private void VencimentoCheckBox_Changed(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             txtEntidade.Text = "Size: " + this.XamlRoot.Size.Width;
         }
-
         private void chkDataVencimento_Checked(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void chkDataVencimento_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnAdicionarAtivo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnAjuda_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnSalvar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnExcluir_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -105,10 +129,5 @@ namespace CashFlow.Views
             };
         }
         #endregion
-
-        private void btnAdicionarAtivo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
