@@ -7,6 +7,7 @@ using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Windows.Graphics;
 
 namespace CashFlow
 {
@@ -29,6 +30,7 @@ namespace CashFlow
             DefinirPadraoUI();
 
             CashFlow.Application.ConfiguracaoServicos.Iniciar();
+            SetWindowMinSize();
         }
         #endregion
 
@@ -149,6 +151,29 @@ namespace CashFlow
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
             WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(wndId);
+        }
+
+        private void SetWindowMinSize()
+        {
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+
+            AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
+            if (appWindow == null)
+            {
+                return; 
+            }
+
+            var presenter = appWindow.Presenter as OverlappedPresenter;
+            if (presenter == null)
+            {
+                return; 
+            }
+
+            int minWidth = 600;
+            int minHeight = 800;
+            presenter.PreferredMinimumHeight = minHeight;
+            presenter.PreferredMinimumWidth = minWidth;
         }
         #endregion
     }
