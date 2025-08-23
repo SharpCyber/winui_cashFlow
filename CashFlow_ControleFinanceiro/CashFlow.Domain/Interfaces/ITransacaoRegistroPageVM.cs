@@ -18,5 +18,8 @@ namespace CashFlow.Domain.Interfaces
 
         ObservableCollection<EntidadeFinanceira> EntidadeFinanceiraCollection { get; set; }
         EntidadeFinanceira EntidadeFinanceiraSelecionada { get; set; }
+
+        bool HabilitarDataTransacao { get; set; }
+        bool HabilitarDataVencimento { get; set; }
     }
 }

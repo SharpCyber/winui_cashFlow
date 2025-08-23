@@ -88,7 +88,6 @@ namespace CashFlow.ViewModel
         #endregion
 
         #region Métodos Públicos
-
         public virtual void DefinirOperacao(eTipoOperacao tipoOperacao)
         {
             bool habilitarCrud = false;

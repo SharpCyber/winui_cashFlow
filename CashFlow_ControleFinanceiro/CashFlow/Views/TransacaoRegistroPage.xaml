@@ -113,21 +113,33 @@
                       Padding="12,12,12,24"
                       Margin="0"
                       CornerRadius="8">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid Grid.Row="0" ColumnSpacing="8" RowSpacing="4" Padding="0" Margin="0">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="txtAtivo" Grid.Row="0" Grid.Column="0" Text="Ativo Financeiro" FontWeight="Bold" VerticalAlignment="Center" TextWrapping="NoWrap"/>
+                        
+                        <TextBlock x:Name="txtAtivo" 
+                                   Grid.Row="0" 
+                                   Grid.Column="0" 
+                                   Text="Ativo Financeiro" 
+                                   FontWeight="Bold" 
+                                   VerticalAlignment="Center" 
+                                   TextWrapping="NoWrap"/>
+                        
                         <ComboBox x:Name="cboAtivo"
                                   Grid.Row="1" Grid.Column="0"
                                   HorizontalAlignment="Stretch"    
@@ -144,15 +156,19 @@
                             <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
                         </Button>
                     </Grid>
+                    
                     <Grid Grid.Row="1" ColumnSpacing="8" RowSpacing="4" Padding="0" Margin="0">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <TextBlock x:Name="txtValorUnitarioTitulo"
                                    Grid.Row="0"
                                    Grid.Column="0" 
@@ -160,6 +176,7 @@
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center" 
                                    TextWrapping="NoWrap"/>
+                        
                         <NumberBox x:Name="txtValorUnitario" 
                                    Grid.Column="0" 
                                    Grid.Row="1" 
@@ -168,6 +185,7 @@
                                    Minimum="-999999999.99" 
                                    PlaceholderText="0,00" 
                                    SpinButtonPlacementMode="Hidden"/>
+                        
                         <TextBlock x:Name="txtQuantidadeAtivoTitulo" 
                                    Grid.Row="0"
                                    Grid.Column="1" 
@@ -175,6 +193,7 @@
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center" 
                                    TextWrapping="NoWrap"/>
+                        
                         <NumberBox x:Name="txtQuantidadeAtivo" 
                                    Grid.Column="1"
                                    Grid.Row="1" 
@@ -184,15 +203,19 @@
                                    PlaceholderText="0" 
                                    SpinButtonPlacementMode="Hidden"/>
                     </Grid>
+                    
                     <Grid Grid.Row="2" ColumnSpacing="8" RowSpacing="4" Padding="0" Margin="0">
+                        
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        
                         <TextBlock x:Name="txtImpostosTitulo" 
                                    Grid.Row="0" 
                                    Grid.Column="0" 
@@ -200,6 +223,7 @@
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center" 
                                    TextWrapping="NoWrap"/>
+                        
                         <NumberBox x:Name="txtOutrosTitulo" 
                                    Grid.Column="0" 
                                    Grid.Row="1" 
@@ -208,6 +232,7 @@
                                    Minimum="-999999999.99" 
                                    PlaceholderText="0,00" 
                                    SpinButtonPlacementMode="Hidden"/>
+                        
                         <TextBlock x:Name="txtOutros" 
                                    Grid.Row="0" 
                                    Grid.Column="1" 
@@ -215,6 +240,7 @@
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center" 
                                    TextWrapping="NoWrap"/>
+                        
                         <NumberBox x:Name="txt4" 
                                    Grid.Column="1" 
                                    Grid.Row="1" 
@@ -227,46 +253,55 @@
                 </Grid>
 
                 <Grid Grid.Row="3" ColumnSpacing="12">
+                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    
                     <CheckBox x:Name="chkDataTransacao" 
-                              IsChecked="True" 
+                              IsChecked="{Binding HabilitarDataTransacao, Mode=TwoWay}" 
                               VerticalAlignment="Center">
+                        
                         <TextBlock Text="Data Transação" 
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center" 
                                    TextWrapping="NoWrap"/>
                     </CheckBox>
+                    
                     <CheckBox x:Name="chkDataVencimento" 
                               Grid.Column="1" 
-                              IsChecked="True" 
+                              IsChecked="{Binding HabilitarDataVencimento, Mode=TwoWay}" 
                               VerticalAlignment="Center">
+                        
                         <TextBlock Text="Data Vencimento" 
                                    FontWeight="Bold" 
                                    VerticalAlignment="Center"
                                    TextWrapping="NoWrap"/>
                     </CheckBox>
+                    
                     <CalendarDatePicker x:Name="dtpDataTransacao"
-                                          Grid.Row="1"
-                                          Grid.Column="0"
-                                          DateFormat="{}{day.integer}/{month.integer}/{year.full}"   
-                                          HorizontalAlignment="Stretch"
-                                          PlaceholderText="Selecione a data"
-                                          IsEnabled="{x:Bind chkDataTransacao.IsChecked.Value, Mode=OneWay}"/>
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        DateFormat="{}{day.integer}/{month.integer}/{year.full}"   
+                                        HorizontalAlignment="Stretch"
+                                        PlaceholderText="Selecione"
+                                        IsEnabled="{Binding HabilitarDataTransacao}"/>
+                    
                     <CalendarDatePicker x:Name="dtpVencimento"
-                                          Grid.Row="1"
-                                          Grid.Column="1"
-                                          DateFormat="{}{day.integer}/{month.integer}/{year.full}"   
-                                          HorizontalAlignment="Stretch"
-                                          PlaceholderText="Não possui"
-                                          IsEnabled="{x:Bind chkDataVencimento.IsChecked.Value, Mode=OneWay}"/>
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        DateFormat="{}{day.integer}/{month.integer}/{year.full}"   
+                                        HorizontalAlignment="Stretch"
+                                        PlaceholderText="Selecione"
+                                        IsEnabled="{Binding HabilitarDataVencimento}"/>
+                    
                     <TextBlock x:Name="txtValorTotalTitulo" 
                                Grid.Row="0"
                                Grid.Column="2"
@@ -276,6 +311,7 @@
                                HorizontalAlignment="Right"
                                VerticalAlignment="Center"
                                TextWrapping="NoWrap"/>
+                    
                     <NumberBox x:Name="txtValorTotal" 
                                Grid.Row="1"
                                Grid.Column="2"
@@ -286,16 +322,19 @@
                 </Grid>
 
                 <StackPanel Grid.Row="4" Spacing="4">
+                    
                     <TextBlock x:Name="txtObservacaoTitulo" 
                                Text="Observações" 
                                FontWeight="Bold"
                                VerticalAlignment="Center" 
                                TextWrapping="NoWrap"/>
+                    
                     <TextBox AcceptsReturn="False"   
                              TextWrapping="Wrap"   
                              VerticalAlignment="Stretch"   
                              MaxLength="300"
                              MaxHeight="108"/>
+                    
                 </StackPanel>
 
                 <StackPanel Grid.Row="5"    
@@ -304,25 +343,36 @@
                             Orientation="Horizontal"    
                             Margin="0"    
                             Spacing="4">
-                    <Button x:Name="btnCancelar" Click="btnCancelar_Click" 
+
+                    <Button x:Name="btnCancelar" 
+                            Click="btnCancelar_Click" 
+                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE711;"/>
                     </Button>
-                    <Button x:Name="btnSalvar" Click="btnSalvar_Click" 
+                    <Button x:Name="btnSalvar" 
+                            Click="btnSalvar_Click" 
+                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74E;"/>
                     </Button>
-                    <Button x:Name="btnExcluir" Click="btnExcluir_Click" 
-                            IsEnabled="{Binding HabilitarBotaoCrud}" 
+                    <Button x:Name="btnExcluir" 
+                            Click="btnExcluir_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
+                            IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
                     </Button>
-                    <Button x:Name="btnEditar" Click="btnEditar_Click" 
-                            IsEnabled="{Binding HabilitarBotaoCrud}" 
+                    <Button x:Name="btnEditar" 
+                            Click="btnEditar_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
+                            IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
                     </Button>
-                    <Button x:Name="btnAdicionar" Click="btnAdicionar_Click" 
+                    <Button x:Name="btnAdicionar" 
+                            Click="btnAdicionar_Click" 
+                            Visibility="{Binding ExibirBotaoCrud}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
                     </Button>

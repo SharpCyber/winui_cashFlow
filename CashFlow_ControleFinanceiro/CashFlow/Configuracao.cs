@@ -15,26 +15,26 @@ namespace CashFlow
 {
     public static class Configuracao
     {
-        public static void AbrirTela(ePagina pagina, Frame frame)
+        public static void AbrirTela(ePagina pagina, Frame frame, eTipoOperacao tipoOperacao = eTipoOperacao.Visualizar)
         {
             switch (pagina)
             {
                 case ePagina.Nenhuma:
                     break;
                 case ePagina.Teste:
-                    frame.Navigate(typeof(TestePage));
+                    frame.Navigate(typeof(TestePage), tipoOperacao);
                     break;
                 case ePagina.Dashboard:
-                    frame.Navigate(typeof(DashboardPage));
+                    frame.Navigate(typeof(DashboardPage), tipoOperacao);
                     break;
                 case ePagina.Transacao:
-                    frame.Navigate(typeof(TransacaoPage));
+                    frame.Navigate(typeof(TransacaoPage), tipoOperacao);
                     break;
                 case ePagina.Investimento:
-                    frame.Navigate(typeof(InvestimentoPage));
+                    frame.Navigate(typeof(InvestimentoPage), tipoOperacao);
                     break;
                 case ePagina.TransacaoRegistro:
-                    frame.Navigate(typeof(TransacaoRegistroPage));
+                    frame.Navigate(typeof(TransacaoRegistroPage), tipoOperacao);
                     break;
                 default:
                     break;

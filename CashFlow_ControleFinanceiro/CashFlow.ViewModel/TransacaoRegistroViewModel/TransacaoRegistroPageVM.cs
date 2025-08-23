@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace CashFlow.ViewModel.TransacaoRegistroViewModel
 {
     public class TransacaoRegistroPageVM : CrudViewModelBase<Transacao>, ITransacaoRegistroPageVM
     {
-        #region TipoTransacao
+        #region Tipo Transação
         private ObservableCollection<TipoTransacao> _tipoTransacaoCollection;
         private TipoTransacao _tipoTransacaoSelecionada;
         public ObservableCollection<TipoTransacao> TipoTransacaoCollection
@@ -41,7 +42,7 @@ namespace CashFlow.ViewModel.TransacaoRegistroViewModel
         }
         #endregion
 
-        #region AtivoFinanceiro
+        #region Ativo Financeiro
         private ObservableCollection<AtivoFinanceiro> _ativoFinanceiroCollection;
         private AtivoFinanceiro _ativoFinanceiroSelecionada;
         public ObservableCollection<AtivoFinanceiro> AtivoFinanceiroCollection
@@ -71,7 +72,7 @@ namespace CashFlow.ViewModel.TransacaoRegistroViewModel
         }
         #endregion
 
-        #region EntidadeFinanceira
+        #region Entidade Financeira
         private ObservableCollection<EntidadeFinanceira> _entidadeFinanceiraCollection;
         private EntidadeFinanceira _entidadeFinanceiraSelecionada;
         public ObservableCollection<EntidadeFinanceira> EntidadeFinanceiraCollection
@@ -97,6 +98,30 @@ namespace CashFlow.ViewModel.TransacaoRegistroViewModel
                 _entidadeFinanceiraSelecionada = value;
 
                 OnPropertyChanged(nameof(EntidadeFinanceiraSelecionada));
+            }
+        }
+        #endregion
+
+        #region Data de Transação e Vencimento
+        private bool _habilitarDataTransacao = true;
+        private bool _habilitarDataVencimento = false;
+
+        public bool HabilitarDataTransacao
+        {
+            get => _habilitarDataTransacao;
+            set 
+            {
+                _habilitarDataTransacao = value;
+                OnPropertyChanged();  
+            }
+        }
+        public bool HabilitarDataVencimento
+        {
+            get => _habilitarDataVencimento;
+            set
+            {
+                _habilitarDataVencimento = value;
+                OnPropertyChanged();
             }
         }
         #endregion
