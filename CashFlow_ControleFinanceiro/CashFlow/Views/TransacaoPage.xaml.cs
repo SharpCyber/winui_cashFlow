@@ -31,6 +31,10 @@ namespace CashFlow.Views
         #endregion
 
         #region Eventos
+        private void gStatusGeral_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Metodos
