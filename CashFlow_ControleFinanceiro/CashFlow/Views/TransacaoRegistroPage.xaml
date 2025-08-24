@@ -17,6 +17,9 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+
+        <Border x:Name="bEsquerda" Grid.Column="0" Width="1"/>
+
         <ScrollViewer 
             Grid.Column="1"
             HorizontalAlignment="Stretch"
@@ -380,5 +383,7 @@
             </Grid>
 
         </ScrollViewer>
+
+        <Border x:Name="bDireita" Grid.Column="2" Width="1"/>
     </Grid>
 </Page>

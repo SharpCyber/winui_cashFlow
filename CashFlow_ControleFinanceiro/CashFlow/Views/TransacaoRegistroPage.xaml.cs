@@ -67,6 +67,63 @@ namespace CashFlow.Views
         private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             txtEntidade.Text = "Size: " + this.XamlRoot.Size.Width;
+
+            double largura = this.XamlRoot.Size.Width;
+            double multiplicador = 0.16;
+
+            if (largura >= 1500) 
+            { 
+                multiplicador = 0.3;
+            }
+            else if (largura >= 1400)
+            {
+                multiplicador = 0.28;
+            }
+            else if (largura >= 1300)
+            {
+                multiplicador = 0.24;
+            }
+            else if (largura >= 1200)
+            {
+                multiplicador = 0.2;
+            }
+            else if(largura >= 1100)
+            {
+                multiplicador = 0.18;
+            }
+            else if (largura >= 1000)
+            {
+                multiplicador = 0.16;
+            }
+            else if (largura >= 900)
+            {
+                multiplicador = 0.14;
+            }
+            else if (largura >= 800)
+            {
+                multiplicador = 0.12;
+            }
+            else if (largura >= 700)
+            {
+                multiplicador = 0.08;
+            }
+            else if (largura >= 600)
+            {
+                multiplicador = 0.04;
+            }
+            else
+            {
+                multiplicador = 0;
+            }
+
+            bEsquerda.Width = (largura * multiplicador);
+            bDireita.Width = (largura * multiplicador);
+
+            if (bEsquerda.Width <= 0)
+            {
+                bEsquerda.Width = 1;
+                bDireita.Width = 1;
+            }
         }
         private void chkDataVencimento_Checked(object sender, RoutedEventArgs e)
         {
