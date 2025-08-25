@@ -1,18 +1,25 @@
-using System;
-using WinRT.Interop;
 using CashFlow.Application;
 using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
+using CashFlow.ViewModel.MainWindowViewModel;
 using CashFlow.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
 using Windows.Graphics;
+using WinRT.Interop;
 
 namespace CashFlow
 {
     public sealed partial class MainWindow : Window
     {
+        #region Interfaces
+        private readonly IMainWindowVM _mainWindowVM;
+        #endregion
+
         #region Propriedades
         private const int Largura = 600;
         private const int Altura = 700;
@@ -28,6 +35,9 @@ namespace CashFlow
             this.InitializeComponent();
 
             DefinirPadraoUI();
+
+            _mainWindowVM = Bootstrap.ServiceProvider.GetRequiredService<IMainWindowVM>();
+            MainContent.DataContext = _mainWindowVM;
 
             CashFlow.Application.ConfiguracaoServicos.Iniciar();
             SetWindowMinSize();
@@ -50,53 +60,59 @@ namespace CashFlow
         {
             paginaAtiva = nviDashboardPage;
             NavView.SelectedItem = paginaAtiva;
+            _mainWindowVM.NomeTelaAtiva = "Dashboard";
             Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
         }
         private async void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var item = args.InvokedItemContainer as NavigationViewItem;
-            if (item == null) return;
+            if (item == null) 
+                return;
 
-            var itemTag = item.Tag.ToString();
-            switch (itemTag)
+            var tag = item.Tag.ToString();
+
+            if (tag != null && !tag.Contains("Dialog"))
+            {
+                AtualizarNomeTelaAtiva(item);
+                popupAtivo = false;
+            }
+            else
+            {
+                popupAtivo = true;
+            }
+
+            switch (tag)
             {
                 case "Teste":
                     paginaAtiva = nviTeste;
-                    popupAtivo = false;
                     Configuracao.AbrirTela(ePagina.Teste, this.ContentFrame);
                     break;
                 case "Dashboard":
                     paginaAtiva = nviDashboardPage;
-                    popupAtivo = false;
                     Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
                     break;
                 case "Transacao":
                     paginaAtiva = nviTransacaoPage;
-                    popupAtivo = false;
                     Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame);
                     break;
                 case "Investimento":
                     paginaAtiva = nviInvestimentoPage;
-                    popupAtivo = false;
                     Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame);
                     break;
                 case "TransacaoRegistro":
                     paginaAtiva = nviTransacaoRegistroPage;
-                    popupAtivo = false;
+                    
                     Configuracao.AbrirTela(ePagina.TransacaoRegistro, this.ContentFrame);
                     break;
-                case "EntidadeFinanceira":
-                    popupAtivo = true;
+                case "EntidadeFinanceiraDialog":
                     await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);
                     NavView.SelectedItem = paginaAtiva;
                     break;
-                case "Categoria":
-                    popupAtivo = true;
+                case "CategoriaDialog":
                     await Configuracao.AbrirDialog(eDialogo.Categoria, this.Content.XamlRoot);
                     NavView.SelectedItem = paginaAtiva;
                     break;
-                case "AtivoFinanceiro":
-                    popupAtivo = true;
+                case "AtivoFinanceiroDialog":
                     await Configuracao.AbrirDialog(eDialogo.AtivoFinanceiro, this.Content.XamlRoot);
                     NavView.SelectedItem = paginaAtiva;
                     break;
@@ -152,7 +168,6 @@ namespace CashFlow
             WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(wndId);
         }
-
         private void SetWindowMinSize()
         {
             var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
@@ -174,6 +189,11 @@ namespace CashFlow
             int minHeight = 800;
             presenter.PreferredMinimumHeight = minHeight;
             presenter.PreferredMinimumWidth = minWidth;
+        }
+        private void AtualizarNomeTelaAtiva(NavigationViewItem pagina)
+        {
+            if (pagina != null)
+                _mainWindowVM.NomeTelaAtiva = ToolTipService.GetToolTip(pagina)?.ToString();
         }
         #endregion
     }
