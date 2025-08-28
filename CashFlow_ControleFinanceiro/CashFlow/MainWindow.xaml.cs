@@ -21,8 +21,8 @@ namespace CashFlow
         #endregion
 
         #region Propriedades
-        private const int Largura = 600;
-        private const int Altura = 700;
+        private const int Largura = 800;
+        private const int Altura = 600;
         private AppWindow m_AppWindow;
         private NavigationViewItem paginaAtiva;
 
@@ -185,10 +185,8 @@ namespace CashFlow
                 return; 
             }
 
-            int minWidth = 600;
-            int minHeight = 800;
-            presenter.PreferredMinimumHeight = minHeight;
-            presenter.PreferredMinimumWidth = minWidth;
+            presenter.PreferredMinimumHeight = Altura;
+            presenter.PreferredMinimumWidth = Largura;
         }
         private void AtualizarNomeTelaAtiva(NavigationViewItem pagina)
         {

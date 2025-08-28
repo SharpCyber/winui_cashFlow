@@ -10,129 +10,141 @@
 
     <Grid Background="{StaticResource Cinza13}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="32"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="32"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="gStatusTop" Grid.Row="0"  Background="{StaticResource Cinza13}" Padding="12,0">
+        <Grid x:Name="gStatusGeral" Grid.Row="0"  Background="{StaticResource Cinza11}" Padding="12" ColumnSpacing="12" SizeChanged="gStatusGeral_SizeChanged">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="55*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Left" Text="Movimentação Financeira"/>
-            <TextBlock Grid.Column="1" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Right" Text="Nome do usuário"/>
-        </Grid>
+            <Grid Grid.Column="0" HorizontalAlignment="Stretch" ColumnSpacing="32" MaxWidth="600" Background="{StaticResource Nenhuma}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0"
+                            MinWidth="120"
+                            Padding="0" 
+                            Spacing="6" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Stretch" 
+                            Background="{StaticResource Nenhuma}" 
+                            CornerRadius="8">
 
-        <Grid x:Name="gStatusGeral" Grid.Row="1"  Background="{StaticResource Cinza11}" Padding="18,12" ColumnSpacing="12" SizeChanged="gStatusGeral_SizeChanged">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Padding="12" Spacing="6" VerticalAlignment="Center" Background="{StaticResource Cinza10}" CornerRadius="8">
+                        <TextBlock Grid.Column="0"
+                                   Text="Despesas"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
 
-                <Grid ColumnSpacing="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    VerticalAlignment="Bottom">
 
-                    <TextBlock Grid.Column="0"
-                               Text="Despesas"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
+                            <FontIcon FontFamily="Segoe Fluent Icons" 
+                                      Glyph="&#xEB0F;" 
+                                      Foreground="{StaticResource Vermelho1}"
+                                      FontSize="14"/>
 
-                    <StackPanel Grid.Column="1"
-                                Orientation="Horizontal"
-                                Spacing="0"
-                                VerticalAlignment="Center">
+                            <TextBlock Text="80%" FontSize="14" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Grid>
 
-                        <FontIcon FontFamily="Segoe Fluent Icons" 
-                                  Glyph="&#xEB11;" 
-                                  Foreground="{StaticResource Vermelho1}"
-                                  FontSize="14"/>
+                    <ProgressBar Value="45"
+                                 Maximum="100"
+                                 Minimum="0"
+                                 MinHeight="6"
+                                 Foreground="{StaticResource Vermelho1}"
+                                 Background="{StaticResource Cinza4}"
+                                 CornerRadius="2"/>
 
-                        <TextBlock Text="80%" FontWeight="SemiBold"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="R$ 9M"
+                                       Foreground="{StaticResource Branco}"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                        <TextBlock Text=" / R$ 9M"
+                                       FontSize="12"
+                                       Foreground="{StaticResource Vermelho1}"
+                                       FontWeight="Bold"/>
                     </StackPanel>
-                </Grid>
 
-                <ProgressBar Value="45"
-                             Maximum="100"
-                             Minimum="0"
-                             Foreground="{StaticResource Vermelho1}"
-                             Background="{StaticResource Cinza4}"
-                             CornerRadius="1"/>
-
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="R$ 9M"
-                                   Foreground="{StaticResource Branco}"
-                                   FontSize="12"
-                                   FontWeight="SemiBold"/>
-
-                    <TextBlock Text=" / R$ 9M"
-                                   FontSize="12"
-                                   Foreground="{StaticResource Vermelho1}"
-                                   FontWeight="Bold"/>
                 </StackPanel>
 
-            </StackPanel>
+                <StackPanel Grid.Column="2"
+                            MinWidth="120"
+                            Padding="0" 
+                            Spacing="6" 
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Stretch" 
+                            Background="{StaticResource Nenhuma}" 
+                            CornerRadius="8">
 
-            <StackPanel Grid.Column="1" Padding="12" Spacing="6" VerticalAlignment="Center" Background="{StaticResource Cinza10}" CornerRadius="8">
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                <Grid ColumnSpacing="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"
+                                   Text="Receitas"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
 
-                    <TextBlock Grid.Column="0"
-                               Text="Despesas"
-                               FontSize="18"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    VerticalAlignment="Center">
 
-                    <StackPanel Grid.Column="1"
-                                Orientation="Horizontal"
-                                Spacing="0"
-                                VerticalAlignment="Center">
+                            <FontIcon FontFamily="Segoe Fluent Icons" 
+                                      Glyph="&#xEB11;" 
+                                      Foreground="{StaticResource Verde1}"
+                                      FontSize="14"/>
 
-                        <FontIcon FontFamily="Segoe Fluent Icons" 
-                                  Glyph="&#xEB11;" 
-                                  Foreground="{StaticResource Vermelho1}"
-                                  FontSize="14"/>
+                            <TextBlock Text="80%" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Grid>
 
-                        <TextBlock Text="80%" FontWeight="SemiBold"/>
+                    <ProgressBar Value="50"
+                                 Maximum="100"
+                                 Minimum="0"
+                                 MinHeight="6"
+                                 BackgroundSizing="OuterBorderEdge"
+                                 Foreground="{StaticResource Verde1}"
+                                 Background="{StaticResource Cinza4}"
+                                 CornerRadius="2"/>
+
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="R$ 9M"
+                                       Foreground="{StaticResource Branco}"
+                                       FontSize="12"
+                                       FontWeight="SemiBold"/>
+
+                        <TextBlock Text=" / R$ 9M"
+                                       FontSize="12"
+                                       Foreground="{StaticResource Verde1}"
+                                       FontWeight="Bold"/>
                     </StackPanel>
-                </Grid>
 
-                <ProgressBar Value="45"
-                             Maximum="100"
-                             Minimum="0"
-                             Foreground="{StaticResource Vermelho1}"
-                             Background="{StaticResource Cinza4}"
-                             CornerRadius="1"/>
-
-                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="R$ 9M"
-                                   Foreground="{StaticResource Branco}"
-                                   FontSize="12"
-                                   FontWeight="SemiBold"/>
-
-                    <TextBlock Text=" / R$ 9M"
-                                   FontSize="12"
-                                   Foreground="{StaticResource Vermelho1}"
-                                   FontWeight="Bold"/>
                 </StackPanel>
+            </Grid>
 
-            </StackPanel>
-
-            <StackPanel Grid.Column="2" Padding="12" Spacing="6" VerticalAlignment="Center" Background="{StaticResource Nenhuma}" CornerRadius="8">
+            <StackPanel Grid.Column="1" Padding="12" Spacing="6" VerticalAlignment="Center" MaxWidth="600" Background="{StaticResource Nenhuma}" CornerRadius="8">
                 <StackPanel Grid.Column="1"
                                 Orientation="Horizontal"
                                 Spacing="12"
@@ -153,23 +165,13 @@
                         <TextBlock Text="80%" FontWeight="SemiBold" Foreground="{StaticResource Branco}"/>
                     </StackPanel>
                 </StackPanel>
-                <TextBlock Text="-R$ 9.999M"
+                <TextBlock Text="R$ 999.999.999,99"
                            Foreground="{StaticResource Verde1}"
                            FontSize="20"
                            HorizontalAlignment="Right"
                            FontWeight="Bold"/>
-
-
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="gPesquisa" Grid.Row="2"  Background="{StaticResource Cinza11}">
-        </Grid>
-
-        <Grid Grid.Row="3" Background="{StaticResource Cinza11}">
-        </Grid>
-
-        <Grid Grid.Row="4" Background="{StaticResource Cinza13}">
-        </Grid>
     </Grid>
 </Page>
