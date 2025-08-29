@@ -7,9 +7,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{StaticResource Cinza12}">
+    Background="{StaticResource Cinza13}">
 
-    <Grid Background="{StaticResource Cinza10}" Margin="32,12,32,0">
+    <Grid Background="{StaticResource Cinza13}" 
+          Margin="32,12,32,0" 
+          RowSpacing="8" 
+          HorizontalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -17,24 +20,37 @@
             <RowDefinition Height="32"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="{StaticResource Cinza11}" ColumnSpacing="24">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Background="{StaticResource Nenhuma}"
+              ColumnSpacing="24" 
+              MaxWidth="1366" 
+              HorizontalAlignment="Stretch">
+            
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MaxWidth="300" MinWidth="100"/>
-                <ColumnDefinition Width="*" MaxWidth="300" MinWidth="100"/>
+                <ColumnDefinition Width="*" MaxWidth="260" MinWidth="100"/>
+                <ColumnDefinition Width="*" MaxWidth="260" MinWidth="100"/>
                 <ColumnDefinition Width="*" MinWidth="260"/>
             </Grid.ColumnDefinitions>
 
             <Grid Background="{StaticResource Nenhuma}" 
-                  RowSpacing="8"
+                  Grid.Column="0"
+                  RowSpacing="4"
+                  Padding="0"
+                  Margin="0"
                   HorizontalAlignment="Stretch">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" 
+                      Padding="0"
+                      Margin="0"
                       Background="{StaticResource Nenhuma}" 
                       HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
@@ -45,15 +61,16 @@
                     <TextBlock x:Name="txtDespesaTitulo" 
                                Grid.Column="0"
                                Text="Despesa"
-                               FontSize="18"
-                               FontWeight="Bold"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Foreground="{StaticResource Branco}"
                                VerticalAlignment="Center"/>
 
                     <StackPanel x:Name="spDespesaTituloPorcentagem"
                                 Grid.Column="1" 
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Right" 
-                                VerticalAlignment="Center" 
+                                VerticalAlignment="Bottom" 
                                 Spacing="4">
                     
                         <FontIcon FontFamily="Segoe Fluent Icons" 
@@ -72,7 +89,9 @@
                              Grid.Row="1"
                              Maximum="100"
                              Minimum="0"
-                             MinHeight="6"
+                             MinHeight="3"
+                             Padding="0"
+                             Margin="0"
                              Foreground="{StaticResource Vermelho1}"
                              Background="{StaticResource Cinza4}"
                              CornerRadius="2"/>
@@ -85,7 +104,7 @@
                     <TextBlock x:Name="txtDespesaTituloRecebido" 
                                Grid.Column="0"
                                Text="R$ 9M"
-                               FontSize="16"
+                               FontSize="14"
                                Foreground="{StaticResource Vermelho1}"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
@@ -93,7 +112,7 @@
                     <TextBlock x:Name="txtDespesaTituloTotal" 
                                Grid.Column="0"
                                Text=" / R$ 9M"
-                               FontSize="16"
+                               FontSize="14"
                                Foreground="{StaticResource Branco}"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
@@ -101,36 +120,41 @@
             </Grid>
 
             <Grid Background="{StaticResource Nenhuma}" 
-                  RowSpacing="8"
                   Grid.Column="1"
+                  RowSpacing="4"
+                  Padding="0"
+                  Margin="0"
                   HorizontalAlignment="Stretch">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0" 
+                      Padding="0"
+                      Margin="0"
                       Background="{StaticResource Nenhuma}" 
                       HorizontalAlignment="Stretch">
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock x:Name="txtReceitaTitulo"
+                    <TextBlock x:Name="txtReceitaTitulo" 
                                Grid.Column="0"
                                Text="Receita"
-                               FontSize="18"
-                               FontWeight="Bold"
+                               FontSize="16"
+                               FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
 
                     <StackPanel x:Name="spReceitaTituloPorcentagem"
                                 Grid.Column="1" 
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Right" 
-                                VerticalAlignment="Center" 
+                                VerticalAlignment="Bottom" 
                                 Spacing="4">
 
                         <FontIcon FontFamily="Segoe Fluent Icons" 
@@ -149,7 +173,9 @@
                              Grid.Row="1"
                              Maximum="100"
                              Minimum="0"
-                             MinHeight="6"
+                             MinHeight="3"
+                             Padding="0"
+                             Margin="0"
                              Foreground="{StaticResource Vermelho1}"
                              Background="{StaticResource Cinza4}"
                              CornerRadius="2"/>
@@ -162,7 +188,7 @@
                     <TextBlock x:Name="txtReceitaTituloRecebido" 
                                Grid.Column="0"
                                Text="R$ 9M"
-                               FontSize="16"
+                               FontSize="14"
                                Foreground="{StaticResource Vermelho1}"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
@@ -170,23 +196,30 @@
                     <TextBlock x:Name="txtReceitaTituloTotal" 
                                Grid.Column="0"
                                Text=" / R$ 9M"
-                               FontSize="16"
+                               FontSize="14"
                                Foreground="{StaticResource Branco}"
                                FontWeight="SemiBold"
                                VerticalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
-            <StackPanel Grid.Column="2" Padding="12" Spacing="6" VerticalAlignment="Center" MaxWidth="600" Background="{StaticResource Nenhuma}" CornerRadius="8">
+            <StackPanel Grid.Column="2" 
+                        Padding="0" 
+                        Spacing="6" 
+                        VerticalAlignment="Center" 
+                        MaxWidth="600" 
+                        HorizontalAlignment="Right"
+                        Background="{StaticResource Nenhuma}" CornerRadius="8">
+                
                 <StackPanel Grid.Column="1"
-                                Orientation="Horizontal"
-                                Spacing="12"
+                            Orientation="Horizontal"
+                            Spacing="12"
                             HorizontalAlignment="Right"
-                                VerticalAlignment="Center">
+                            VerticalAlignment="Top">
 
                     <TextBlock Grid.Column="0"
                                Text="Saldo"
-                               FontSize="18"
+                               FontSize="16"
                                FontWeight="Bold"
                                VerticalAlignment="Center"/>
 
@@ -198,12 +231,89 @@
                         <TextBlock Text="80%" FontWeight="SemiBold" Foreground="{StaticResource Branco}"/>
                     </StackPanel>
                 </StackPanel>
+
+                <Border Height="1" 
+                        Width="200" 
+                        HorizontalAlignment="Right"
+                        Background="{StaticResource Cinza4}"/>
+
                 <TextBlock Text="R$ 999.999.999,99"
                            Foreground="{StaticResource Verde1}"
-                           FontSize="20"
+                           FontSize="18"
                            HorizontalAlignment="Right"
                            FontWeight="Bold"/>
             </StackPanel>
         </Grid>
+
+        <Grid Background="{StaticResource Cinza11}"
+              BorderBrush="{StaticResource Cinza13Transp10}"
+              BorderThickness="0,0,0,2"
+              Grid.Row="1"
+              CornerRadius="8"
+              ColumnSpacing="24" 
+              MaxWidth="1366" 
+              HorizontalAlignment="Stretch">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="48"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                  VerticalAlignment="Stretch"
+                  Background="{StaticResource Nenhuma}"
+                  ColumnSpacing="8" 
+                  Margin="0"
+                  Padding="8"
+                  MinWidth="230" 
+                  MaxWidth="230">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="28"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ComboBox x:Name="cboOrdenacao"
+                          Grid.Column="0"
+                          Grid.Row="1"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"                    
+                          ItemsSource="{Binding OrdenacaoCollection}"
+                          SelectedItem="{Binding OrdenacaoSelecionada, Mode=TwoWay}"
+                          DisplayMemberPath="Nome"/>
+
+                <Button x:Name="btnOrdenacao"
+                        Grid.Row="1"
+                        Grid.Column="2"               
+                        Padding="0"
+                        Style="{StaticResource DefaultButtonStyle}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE8CB;"/>
+                </Button>
+            </Grid>
+
+            <DatePicker Grid.Column="1" 
+                        DayVisible="False" 
+                        Language="pt-BR" 
+                        HorizontalAlignment="Left"
+                        MonthFormat="{}{month.solo.full}" 
+                        YearFormat="{}{year.full(4)}"/>
+
+            <Button x:Name="btnAdicionar"
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource AccentButtonStyle_34x}">
+                <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+            </Button>
+        </Grid>
+
+
     </Grid>
 </Page>

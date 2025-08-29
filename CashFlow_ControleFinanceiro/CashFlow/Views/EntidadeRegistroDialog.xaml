@@ -50,7 +50,7 @@
                 </Grid>
 
                 <StackPanel x:Name="spAjuda" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch" Padding="6,0"/>
-                
+
                 <ComboBox x:Name="cboEntidadeFinanceira" 
                           Grid.Column="0"
                           HorizontalAlignment="Stretch" 
@@ -60,8 +60,8 @@
                           IsEnabled="{Binding ExibirBotaoCrud}"
                           ItemsSource="{Binding Items}"
                           SelectedItem="{Binding ItemSelecionado, Mode=TwoWay}"
-                          DisplayMemberPath="Nome">
-                </ComboBox>
+                          DisplayMemberPath="Nome"/>
+
             </StackPanel>
 
             <StackPanel Spacing="8" Orientation="Vertical" Grid.Row="1" Background="{StaticResource Cinza11}" Margin="0" Padding="18" CornerRadius="4">
