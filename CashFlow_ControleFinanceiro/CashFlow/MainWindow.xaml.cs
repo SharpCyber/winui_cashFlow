@@ -9,6 +9,7 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
+using System.Threading.Tasks;
 using Windows.Graphics;
 using WinRT.Interop;
 
@@ -56,67 +57,19 @@ namespace CashFlow
 
             }
         }
-        private void NavView_Loaded(object sender, RoutedEventArgs e)
+        private async void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            paginaAtiva = nviDashboardPage;
+            await NavegarParaItem(nviTransacaoPage);
             NavView.SelectedItem = paginaAtiva;
-            _mainWindowVM.NomeTelaAtiva = "Dashboard";
-            Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
         }
+
         private async void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             var item = args.InvokedItemContainer as NavigationViewItem;
-            if (item == null) 
+            if (item == null)
                 return;
 
-            var tag = item.Tag.ToString();
-
-            if (tag != null && !tag.Contains("Dialog"))
-            {
-                AtualizarNomeTelaAtiva(item);
-                popupAtivo = false;
-            }
-            else
-            {
-                popupAtivo = true;
-            }
-
-            switch (tag)
-            {
-                case "Teste":
-                    paginaAtiva = nviTeste;
-                    Configuracao.AbrirTela(ePagina.Teste, this.ContentFrame);
-                    break;
-                case "Dashboard":
-                    paginaAtiva = nviDashboardPage;
-                    Configuracao.AbrirTela(ePagina.Dashboard, this.ContentFrame);
-                    break;
-                case "Transacao":
-                    paginaAtiva = nviTransacaoPage;
-                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame);
-                    break;
-                case "Investimento":
-                    paginaAtiva = nviInvestimentoPage;
-                    Configuracao.AbrirTela(ePagina.Investimento, this.ContentFrame);
-                    break;
-                case "TransacaoRegistro":
-                    paginaAtiva = nviTransacaoRegistroPage;
-                    
-                    Configuracao.AbrirTela(ePagina.TransacaoRegistro, this.ContentFrame);
-                    break;
-                case "EntidadeFinanceiraDialog":
-                    await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);
-                    NavView.SelectedItem = paginaAtiva;
-                    break;
-                case "CategoriaDialog":
-                    await Configuracao.AbrirDialog(eDialogo.Categoria, this.Content.XamlRoot);
-                    NavView.SelectedItem = paginaAtiva;
-                    break;
-                case "AtivoFinanceiroDialog":
-                    await Configuracao.AbrirDialog(eDialogo.AtivoFinanceiro, this.Content.XamlRoot);
-                    NavView.SelectedItem = paginaAtiva;
-                    break;
-            }
+            await NavegarParaItem(item);
         }
         #endregion
 
@@ -192,6 +145,46 @@ namespace CashFlow
         {
             if (pagina != null)
                 _mainWindowVM.NomeTelaAtiva = ToolTipService.GetToolTip(pagina)?.ToString();
+        }
+
+        private async Task NavegarParaItem(NavigationViewItem item)
+        {
+            if (item == null) return;
+
+            var tag = item.Tag.ToString();
+
+            if (tag != null && !tag.Contains("Dialog"))
+            {
+                AtualizarNomeTelaAtiva(item);
+                popupAtivo = false;
+                paginaAtiva = item;
+            }
+            else
+            {
+                popupAtivo = true;
+            }
+
+            switch (tag)
+            {
+                case "Transacao":
+                    Configuracao.AbrirTela(ePagina.Transacao, this.ContentFrame);
+                    break;
+                case "TransacaoRegistro":
+                    Configuracao.AbrirTela(ePagina.TransacaoRegistro, this.ContentFrame);
+                    break;
+                case "EntidadeFinanceiraDialog":
+                    await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);
+                    NavView.SelectedItem = paginaAtiva;
+                    break;
+                case "CategoriaDialog":
+                    await Configuracao.AbrirDialog(eDialogo.Categoria, this.Content.XamlRoot);
+                    NavView.SelectedItem = paginaAtiva;
+                    break;
+                case "AtivoFinanceiroDialog":
+                    await Configuracao.AbrirDialog(eDialogo.AtivoFinanceiro, this.Content.XamlRoot);
+                    NavView.SelectedItem = paginaAtiva;
+                    break;
+            }
         }
         #endregion
     }

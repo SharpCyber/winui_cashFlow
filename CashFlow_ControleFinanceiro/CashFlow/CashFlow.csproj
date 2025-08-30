@@ -15,9 +15,6 @@
 	<ItemGroup>
 	  <None Remove="Styles\ButtonStyle.xaml" />
 	  <None Remove="Themes\Colors.xaml" />
-	  <None Remove="Views\DashBoardPage.xaml" />
-	  <None Remove="Views\InvestimentoPage.xaml" />
-	  <None Remove="Views\TestePage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -110,6 +107,9 @@
 	  </Content>
 	</ItemGroup>
 	<ItemGroup>
+	  <Page Update="Styles\TextBlockStyle.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
 	  <Page Update="Views\TransacaoRegistroPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
@@ -120,11 +120,6 @@
 	  </Page>
 	  <Page Update="Views\EntidadeRegistroDialog.xaml">
 	    <SubType>Designer</SubType>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\TestePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>
 	<ItemGroup>
@@ -139,16 +134,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Views\AtivoRegistroDialog.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\DashboardPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\InvestimentoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>

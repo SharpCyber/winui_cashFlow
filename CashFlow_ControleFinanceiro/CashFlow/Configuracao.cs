@@ -21,17 +21,8 @@ namespace CashFlow
             {
                 case ePagina.Nenhuma:
                     break;
-                case ePagina.Teste:
-                    frame.Navigate(typeof(TestePage), tipoOperacao);
-                    break;
-                case ePagina.Dashboard:
-                    frame.Navigate(typeof(DashboardPage), tipoOperacao);
-                    break;
                 case ePagina.Transacao:
                     frame.Navigate(typeof(TransacaoPage), tipoOperacao);
-                    break;
-                case ePagina.Investimento:
-                    frame.Navigate(typeof(InvestimentoPage), tipoOperacao);
                     break;
                 case ePagina.TransacaoRegistro:
                     frame.Navigate(typeof(TransacaoRegistroPage), tipoOperacao);

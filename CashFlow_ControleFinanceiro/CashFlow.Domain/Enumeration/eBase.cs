@@ -28,11 +28,8 @@ namespace CashFlow.Domain.Enumeration
     public enum ePagina
     {
         Nenhuma = 0,
-        Teste = 1,
-        Dashboard = 2,
-        Transacao = 3,
-        Investimento = 4,
-        TransacaoRegistro = 5
+        Transacao = 1,
+        TransacaoRegistro = 2
     }
     public enum eDialogo
     {

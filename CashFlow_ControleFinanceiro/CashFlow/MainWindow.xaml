@@ -32,16 +32,8 @@
                         Loaded="NavView_Loaded"
                         ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="nviDashboardPage" Tag="Dashboard" Margin="0,20,0,0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Dashboard">
-                    <Image Source="ms-appx:///Assets/dashboard_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
-                </NavigationViewItem>
-
                 <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Transações">
                     <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
-                </NavigationViewItem>
-
-                <NavigationViewItem x:Name="nviInvestimentoPage" Tag="Investimento" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Investimentos">
-                    <Image Source="ms-appx:///Assets/investimento_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
                 <NavigationViewItem x:Name="nviTransacaoRegistroPage" Tag="TransacaoRegistro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Transação Registro">
@@ -59,11 +51,6 @@
                 <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiroDialog" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Ativos Financeiros">
                     <Image Source="ms-appx:///Assets/ativofinanceiro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
-
-                <NavigationViewItem x:Name="nviTeste" Tag="Teste" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Teste">
-                    <Image Source="ms-appx:///Assets/teste_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
-                </NavigationViewItem>
-
             </NavigationView.MenuItems>
         </NavigationView>
 
