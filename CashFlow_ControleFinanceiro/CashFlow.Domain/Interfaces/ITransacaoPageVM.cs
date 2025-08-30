@@ -13,5 +13,6 @@ namespace CashFlow.Domain.Interfaces
     {
         ObservableCollection<Item> OrdenacaoCollection { get; set; }
         Item OrdenacaoSelecionada { get; set; }
+        DateTimeOffset DataSelecionada { get; set; }
     }
 }

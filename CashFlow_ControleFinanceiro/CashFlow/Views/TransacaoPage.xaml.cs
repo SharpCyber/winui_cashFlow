@@ -47,5 +47,15 @@ namespace CashFlow.Views
 
         #region Metodos
         #endregion
+
+        private void btnOrdenacao_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
