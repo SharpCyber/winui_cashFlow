@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    x:Name="pageTransacao"
+    Loaded="pageTransacao_Loaded"
     Background="{StaticResource Cinza13}">
 
     <Grid Background="{StaticResource Cinza13}" 
@@ -323,7 +325,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="20,0" LayoutUpdated="scroll_LayoutUpdated" >
-            <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Transacoes}" MaxWidth="1366" Margin="32,12,32,0" >
+            <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Items}" MaxWidth="1366" Margin="12,0" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -333,7 +335,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid x:Name="gItemTransacao" Grid.Row="2" Background="{StaticResource Cinza10}">
+                        <Grid x:Name="gItemTransacao" Grid.Row="2" Margin="0,0,0,6" Background="{StaticResource Cinza10}">
                             <Grid.RowDefinitions>
                                 <RowDefinition x:Name="gLinhaItemTransacao" Height="40" MinHeight="40" MaxHeight="40"/>
                                 <!-- 0- Transação -->
@@ -549,7 +551,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
 
         <Grid Grid.Row="3" Background="{StaticResource Cinza11}" Padding="12,4,12,0">
             <Grid.ColumnDefinitions>

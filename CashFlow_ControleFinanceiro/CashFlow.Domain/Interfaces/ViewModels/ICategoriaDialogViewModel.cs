@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashFlow.Domain.Interfaces
+namespace CashFlow.Domain.Interfaces.ViewModels
 {
-    public interface IAtivoRegistroDialogVM : IViewModelBase <AtivoFinanceiro>
-    { 
+    public interface ICategoriaDialogViewModel : IViewModelColecaoBase<Categoria>
+    {
     }
 }

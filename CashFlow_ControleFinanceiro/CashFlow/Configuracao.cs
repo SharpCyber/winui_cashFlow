@@ -41,14 +41,10 @@ namespace CashFlow
                     await AbrirDialog(new AtivoRegistroDialog(), xamlRoot);
                     break;
                 case eDialogo.EntidadeFinanceira:
-                    var entidadeFinanceiraDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<IEntidadeRegistroDialogVM>();
-
-                    await AbrirDialog(new EntidadeRegistroDialog(entidadeFinanceiraDialogViewModel), xamlRoot);
+                    await AbrirDialog(new EntidadeRegistroDialog(), xamlRoot);
                     break;
                 case eDialogo.Categoria:
-                    var categoriaDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<ICategoriaDialogVM>();
-
-                    await AbrirDialog(new CategoriaRegistroDialog(categoriaDialogViewModel), xamlRoot);
+                    await AbrirDialog(new CategoriaRegistroDialog(), xamlRoot);
                     break;
                 default:
                     break;

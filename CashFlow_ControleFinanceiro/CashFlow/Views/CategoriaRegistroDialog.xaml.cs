@@ -10,7 +10,6 @@ using CashFlow.Domain.Entity;
 using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Interfaces;
-using CashFlow.ViewModel.CategoriaViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -19,13 +18,14 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using CashFlow.Domain.Interfaces.ViewModels;
 
 namespace CashFlow.Views
 {
     public sealed partial class CategoriaRegistroDialog : ContentDialog
     {
         #region Interfaces
-        private readonly ICategoriaDialogVM _categoriaDialogViewModel;
+        private readonly ICategoriaDialogViewModel _categoriaDialogViewModel;
         #endregion
 
         #region Propriedades
@@ -33,11 +33,12 @@ namespace CashFlow.Views
         #endregion
 
         #region Método Construtor
-        public CategoriaRegistroDialog(ICategoriaDialogVM categoriaDialogViewModel)
+        public CategoriaRegistroDialog()
         {
             InitializeComponent();
 
-            _categoriaDialogViewModel = categoriaDialogViewModel;
+            _categoriaDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<ICategoriaDialogViewModel>();
+
             this.DataContext = _categoriaDialogViewModel;
         }
         #endregion
@@ -47,14 +48,13 @@ namespace CashFlow.Views
         {
             _categoriaDialogViewModel.Items.Clear();
 
-            _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 0, Nome = "" });
             _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
             _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
             _categoriaDialogViewModel.Items.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
 
-            _categoriaDialogViewModel.ItemSelecionado = _categoriaDialogViewModel.Items.FirstOrDefault();
+            cboCategoria.SelectedIndex = 0;
             
-            ExecutarOperacao(tipoOperacaoAtual);
+            ExecutarOperacao(eTipoOperacao.Visualizar);
         }
         private void Categoria_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {

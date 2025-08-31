@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Loading="Page_Loading"
     SizeChanged="Page_SizeChanged">
-
+    <ScrollViewer x:Name="scroll">
     <Grid Background="{StaticResource Nenhuma}" Padding="8,0" VerticalAlignment="Stretch">
 
         <Grid.ColumnDefinitions>
@@ -333,33 +333,33 @@
 
                     <Button x:Name="btnCancelar" 
                             Click="btnCancelar_Click" 
-                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Visibility="{Binding ExibirBotaoCancelar}" 
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE711;"/>
                     </Button>
                     <Button x:Name="btnSalvar" 
                             Click="btnSalvar_Click" 
-                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Visibility="{Binding ExibirBotaoSalvar}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74E;"/>
                     </Button>
                     <Button x:Name="btnExcluir" 
                             Click="btnExcluir_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoExcluir}" 
                             IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
                     </Button>
                     <Button x:Name="btnEditar" 
                             Click="btnEditar_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoEditar}" 
                             IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
                     </Button>
                     <Button x:Name="btnAdicionar" 
                             Click="btnAdicionar_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoAdicionar}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
                     </Button>
@@ -369,4 +369,5 @@
 
         <Border x:Name="bDireita" Grid.Column="2" Width="1"/>
     </Grid>
+    </ScrollViewer>
 </Page>

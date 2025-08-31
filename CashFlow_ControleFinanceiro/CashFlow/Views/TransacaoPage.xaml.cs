@@ -1,6 +1,6 @@
 using CashFlow.Application;
+using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
-using CashFlow.ViewModel.TransacaoPageViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -22,7 +22,6 @@ namespace CashFlow.Views
     public sealed partial class TransacaoPage : Page
     {
         #region Interfaces
-        private readonly ITransacaoPageVM transacaoPageVM;
         #endregion
 
         #region Propriedades
@@ -32,13 +31,13 @@ namespace CashFlow.Views
         public TransacaoPage()
         {
             InitializeComponent();
-
-            transacaoPageVM = Bootstrap.ServiceProvider.GetRequiredService<ITransacaoPageVM>();
-            this.DataContext = transacaoPageVM;
         }
         #endregion
 
         #region Eventos
+        private void pageTransacao_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
         private void gStatusGeral_SizeChanged(object sender, SizeChangedEventArgs e)
         {
 

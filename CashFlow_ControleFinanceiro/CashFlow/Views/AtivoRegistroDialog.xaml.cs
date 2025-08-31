@@ -3,6 +3,8 @@ using CashFlow.Domain.Entity;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Interfaces;
+using CashFlow.Domain.Interfaces.ViewModels;
+using CashFlow.ViewModel.Ativo;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -26,7 +28,7 @@ namespace CashFlow.Views
     public sealed partial class AtivoRegistroDialog : ContentDialog
     {
         #region Interfaces
-        private readonly IAtivoRegistroDialogVM _ativoRegistroDialogVM;
+        private readonly IAtivoDialogViewModel _ativoDialogViewModel;
         #endregion
 
         #region Propriedades
@@ -40,23 +42,23 @@ namespace CashFlow.Views
         {
             InitializeComponent();
 
-            _ativoRegistroDialogVM = Bootstrap.ServiceProvider.GetRequiredService<IAtivoRegistroDialogVM>();
+            _ativoDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<IAtivoDialogViewModel>();
 
-            this.DataContext = _ativoRegistroDialogVM;
+            this.DataContext = _ativoDialogViewModel;
         }
         #endregion
 
         #region Eventos
         private void AtivoFinanceiro_Loaded(object sender, RoutedEventArgs e)
         {
-            _ativoRegistroDialogVM.Items.Clear();
+            _ativoDialogViewModel.Items.Clear();
 
-            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 1, Codigo = "Teste 1", FK_TipoInvestimento = 1, Nome = "Teste 1 Nome", Ativo = true });
-            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 2, Codigo = "Teste 2", FK_TipoInvestimento = 2, Nome = "Teste 2 Nome", Ativo = true });
-            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 3, Codigo = "Teste 3", FK_TipoInvestimento = 3, Nome = "Teste 3 Nome", Ativo = true });
-            _ativoRegistroDialogVM.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 4, Codigo = "Teste 4", FK_TipoInvestimento = 4, Nome = "Teste 4 Nome", Ativo = true });
+            _ativoDialogViewModel.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 1, Codigo = "Teste 1", FK_TipoInvestimento = 1, Nome = "Teste 1 Nome", Ativo = true });
+            _ativoDialogViewModel.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 2, Codigo = "Teste 2", FK_TipoInvestimento = 2, Nome = "Teste 2 Nome", Ativo = true });
+            _ativoDialogViewModel.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 3, Codigo = "Teste 3", FK_TipoInvestimento = 3, Nome = "Teste 3 Nome", Ativo = true });
+            _ativoDialogViewModel.Items.Add(new AtivoFinanceiro { PK_AtivoFinanceiro = 4, Codigo = "Teste 4", FK_TipoInvestimento = 4, Nome = "Teste 4 Nome", Ativo = true });
 
-            _ativoRegistroDialogVM.ItemSelecionado = _ativoRegistroDialogVM.Items.FirstOrDefault();
+            
         }
         private void AtivoFinanceiro_Closing(ContentDialog sender, ContentDialogClosingEventArgs args)
         {

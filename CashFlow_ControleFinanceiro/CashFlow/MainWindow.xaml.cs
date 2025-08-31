@@ -1,7 +1,8 @@
 using CashFlow.Application;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Interfaces;
-using CashFlow.ViewModel.MainWindowViewModel;
+using CashFlow.Domain.Interfaces.ViewModels;
+using CashFlow.ViewModel.MainWindow;
 using CashFlow.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI;
@@ -18,7 +19,7 @@ namespace CashFlow
     public sealed partial class MainWindow : Window
     {
         #region Interfaces
-        private readonly IMainWindowVM _mainWindowVM;
+        private readonly IMainWindowViewModel _mainWindowViewModel;
         #endregion
 
         #region Propriedades
@@ -37,8 +38,9 @@ namespace CashFlow
 
             DefinirPadraoUI();
 
-            _mainWindowVM = Bootstrap.ServiceProvider.GetRequiredService<IMainWindowVM>();
-            MainContent.DataContext = _mainWindowVM;
+            _mainWindowViewModel = Bootstrap.ServiceProvider.GetRequiredService<IMainWindowViewModel>();
+
+            MainContent.DataContext = _mainWindowViewModel;
 
             CashFlow.Application.ConfiguracaoServicos.Iniciar();
             SetWindowMinSize();
@@ -144,7 +146,7 @@ namespace CashFlow
         private void AtualizarNomeTelaAtiva(NavigationViewItem pagina)
         {
             if (pagina != null)
-                _mainWindowVM.NomeTelaAtiva = ToolTipService.GetToolTip(pagina)?.ToString();
+                _mainWindowViewModel.NomeTelaAtiva = ToolTipService.GetToolTip(pagina)?.ToString();
         }
 
         private async Task NavegarParaItem(NavigationViewItem item)

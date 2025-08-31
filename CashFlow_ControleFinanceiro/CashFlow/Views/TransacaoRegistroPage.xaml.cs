@@ -18,14 +18,14 @@ using CashFlow.Application;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Interfaces;
-using CashFlow.ViewModel.TransacaoRegistroViewModel;
+using CashFlow.Domain.Interfaces.ViewModels;
 
 namespace CashFlow.Views
 {
     public sealed partial class TransacaoRegistroPage : Page
     {
         #region Interfaces
-        private readonly ITransacaoRegistroPageVM _transacaoRegistroPageVM;
+        private readonly ITransacaoRegistroViewModel _transacaoRegistroViewModel;
         #endregion
 
         #region Propriedades
@@ -37,24 +37,33 @@ namespace CashFlow.Views
         {
             InitializeComponent();
 
-            _transacaoRegistroPageVM = Bootstrap.ServiceProvider.GetRequiredService<ITransacaoRegistroPageVM>();
+            _transacaoRegistroViewModel = Bootstrap.ServiceProvider.GetRequiredService<ITransacaoRegistroViewModel>();
 
-            this.DataContext = _transacaoRegistroPageVM;
+            this.DataContext = _transacaoRegistroViewModel;
         }
         #endregion
 
         #region Eventos
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            if (e.Parameter is eTipoOperacao tipoOperacao) 
-                tipoOperacaoAtual = tipoOperacao;
-        }
         private void Page_Loading(FrameworkElement sender, object args)
         {
             CarregarDropDowns();
             DefinirPadronizacaoDosComponentes();
+
+            ExecutarOperacao(eTipoOperacao.Visualizar);
+        }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            try
+            {
+                base.OnNavigatedTo(e);
+
+                if (e.Parameter is eTipoOperacao tipoOperacao) 
+                    tipoOperacaoAtual = tipoOperacao;
+            }
+            catch
+            {
+
+            }
         }
         private async void btnAdicionarEntidade_Click(object sender, RoutedEventArgs e)
         {
@@ -115,6 +124,10 @@ namespace CashFlow.Views
             //    Aviso.Ocultar(spAjuda);
             //}
         }
+        private void gStatusGeral_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
         #endregion
 
         #region Metodos
@@ -124,12 +137,7 @@ namespace CashFlow.Views
         }
         private void CarregarTipoTransacao()
         {
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Clear();
 
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 1, Nome = "Entrada" });
-            _transacaoRegistroPageVM.TipoTransacaoCollection.Add(new Domain.Entity.TipoTransacao { PK_TipoTransacao = 2, Nome = "Saída" });
-
-            _transacaoRegistroPageVM.TipoTransacaoSelecionada = _transacaoRegistroPageVM.TipoTransacaoCollection.FirstOrDefault();
         }
         private void CarregarTipoEntidadeFinanceira()
         {
@@ -150,7 +158,7 @@ namespace CashFlow.Views
         private void ExecutarOperacao(eTipoOperacao eTipoOperacao)
         {
             tipoOperacaoAtual = eTipoOperacao;
-            _transacaoRegistroPageVM.DefinirOperacao(tipoOperacaoAtual);
+            _transacaoRegistroViewModel.DefinirOperacao(tipoOperacaoAtual);
 
             // Aviso.Ocultar(spAviso);
 
@@ -183,10 +191,5 @@ namespace CashFlow.Views
             }
         }
         #endregion
-
-        private void gStatusGeral_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-
-        }
     }
 }
