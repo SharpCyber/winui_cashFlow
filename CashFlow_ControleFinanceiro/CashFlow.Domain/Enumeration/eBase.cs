@@ -25,18 +25,30 @@ namespace CashFlow.Domain.Enumeration
         Ascendente,
         Descendente
     }
-    public enum ePagina
+    //public enum ePagina
+    //{
+    //    Nenhuma = 0,
+    //    Login = 1,
+    //    Transacao = 2,
+    //    TransacaoRegistro = 3
+    //}
+    //public enum eDialogo
+    //{
+    //    Nenhuma = 0,
+    //    AtivoFinanceiro = 1,
+    //    EntidadeFinanceira = 2,
+    //    Categoria = 3,
+    //}
+
+    public enum eTela
     {
         Nenhuma = 0,
-        Transacao = 1,
-        TransacaoRegistro = 2
-    }
-    public enum eDialogo
-    {
-        Nenhuma = 0,
-        AtivoFinanceiro = 1,
-        EntidadeFinanceira = 2,
-        Categoria = 3,
+        LoginPage = 1,
+        TransacaoPage = 2,
+        TransacaoRegistroPage = 3,
+        AtivoFinanceiroDialog = 4,
+        EntidadeFinanceiraDialog = 5,
+        CategoriaDialog = 6,
     }
 
     public enum eTipoOperacao

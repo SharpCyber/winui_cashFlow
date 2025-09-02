@@ -1,55 +1,61 @@
-﻿using CashFlow.Application;
-using CashFlow.Domain.Enumeration;
-using CashFlow.Domain.Interfaces;
-using CashFlow.Views;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using CashFlow.Application;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Interfaces;
+using CashFlow.Domain.Interfaces.ViewModels;
+using CashFlow.Views;
 
 namespace CashFlow
 {
     public static class Configuracao
     {
-        public static void AbrirTela(ePagina pagina, Frame frame, eTipoOperacao tipoOperacao = eTipoOperacao.Visualizar)
+        public static void AbrirTela(eTela tela, Frame frame, eTipoOperacao tipoOperacao = eTipoOperacao.Visualizar, IMainWindowViewModel mainWindowViewModel = null)
         {
-            switch (pagina)
+            switch (tela)
             {
-                case ePagina.Nenhuma:
+                case eTela.Nenhuma:
                     break;
-                case ePagina.Transacao:
+                case eTela.LoginPage:
+                    frame.Navigate(typeof(LoginPage), mainWindowViewModel);
+                    break;
+                case eTela.TransacaoPage:
                     frame.Navigate(typeof(TransacaoPage), tipoOperacao);
                     break;
-                case ePagina.TransacaoRegistro:
+                case eTela.TransacaoRegistroPage:
                     frame.Navigate(typeof(TransacaoRegistroPage), tipoOperacao);
                     break;
+
                 default:
                     break;
             }
         }
-        public static async Task AbrirDialog(eDialogo dialogo, XamlRoot xamlRoot)
+        public static async Task AbrirDialog(eTela tela, XamlRoot xamlRoot)
         {
-            switch (dialogo)
+            switch (tela)
             {
-                case eDialogo.Nenhuma:
+                case eTela.Nenhuma:
                     break;
-                case eDialogo.AtivoFinanceiro:
+                case eTela.AtivoFinanceiroDialog:
                     await AbrirDialog(new AtivoRegistroDialog(), xamlRoot);
                     break;
-                case eDialogo.EntidadeFinanceira:
+                case eTela.EntidadeFinanceiraDialog:
                     await AbrirDialog(new EntidadeRegistroDialog(), xamlRoot);
                     break;
-                case eDialogo.Categoria:
+                case eTela.CategoriaDialog:
                     await AbrirDialog(new CategoriaRegistroDialog(), xamlRoot);
                     break;
                 default:
                     break;
             }
         }
+
         private static async Task AbrirDialog(ContentDialog dialog, XamlRoot xamlRoot)
         {
             dialog.XamlRoot = xamlRoot;

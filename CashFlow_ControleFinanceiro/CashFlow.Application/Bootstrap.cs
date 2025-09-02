@@ -8,6 +8,7 @@ using CashFlow.ViewModel.Ativo;
 using CashFlow.ViewModel.Categoria;
 using CashFlow.ViewModel.Entidade;
 using CashFlow.ViewModel.MainWindow;
+using CashFlow.ViewModel.TransacaoPage;
 using CashFlow.ViewModel.TransacaoRegistro;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -54,6 +55,7 @@ namespace CashFlow.Application
             services.AddSingleton<IAtivoDialogViewModel, AtivoDialogViewModel>();
             services.AddSingleton<IEntidadeRegistroDialogViewModel, EntidadeRegistroDialogViewModel>();
             services.AddSingleton<ITransacaoRegistroViewModel, TransacaoRegistroViewModel>();
+            services.AddSingleton<ITransacaoPageViewModel, TransacaoPageViewModel>();
         }
     }
 }

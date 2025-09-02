@@ -67,7 +67,7 @@ namespace CashFlow.Views
         }
         private async void btnAdicionarEntidade_Click(object sender, RoutedEventArgs e)
         {
-            await Configuracao.AbrirDialog(eDialogo.EntidadeFinanceira, this.Content.XamlRoot);
+            await Configuracao.AbrirDialog(eTela.EntidadeFinanceiraDialog, this.Content.XamlRoot);
         }
         private void VencimentoCheckBox_Changed(object sender, RoutedEventArgs e)
         {

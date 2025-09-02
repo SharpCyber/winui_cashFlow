@@ -16,39 +16,38 @@
 
     <Grid Padding="0" Margin="0" x:Name="MainContent">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="82"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="{Binding TamanhoColunaMenuNavegacao}" x:Name="colMenuNavegacao"/>
+            <ColumnDefinition Width="*" x:Name="colConteudo"/>
         </Grid.ColumnDefinitions>
         
         <NavigationView x:Name="NavView"
                         Grid.Column="0"
-                        Background="{StaticResource Cinza13}"
-                        PaneDisplayMode="Left"
-                        IsPaneToggleButtonVisible="False"
-                        IsSettingsVisible="False"
-                        IsBackButtonVisible="Collapsed"
-                        Margin="0"
-                        Padding="0"
+                        Visibility="{Binding ExibirMenuNavegacao}"
+                        Style="{StaticResource NavegacaoBase}"
                         Loaded="NavView_Loaded"
                         ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Transações">
+                <NavigationViewItem x:Name="nviLoginPage" ToolTipService.ToolTip="Login" Visibility="Collapsed" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviTransacaoRegistroPage" Tag="TransacaoRegistro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Transação Registro">
+                <NavigationViewItem x:Name="nviTransacaoPage" ToolTipService.ToolTip="Transações" Style="{StaticResource ItemNavegacaoBase}">
+                    <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="nviTransacaoRegistroPage" ToolTipService.ToolTip="Transação Registro" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/transacaoregistro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceiraDialog" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Entidades Financeiras">
+                <NavigationViewItem x:Name="nviEntidadeFinanceira" ToolTipService.ToolTip="Entidades Financeiras" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/entidadefinanceira_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviCategoria" Tag="CategoriaDialog" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Categorias">
+                <NavigationViewItem x:Name="nviCategoria" ToolTipService.ToolTip="Categorias" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/categoria_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiroDialog" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Ativos Financeiros">
+                <NavigationViewItem x:Name="nviAtivoFinanceiro" ToolTipService.ToolTip="Ativos Financeiros" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/ativofinanceiro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

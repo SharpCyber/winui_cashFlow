@@ -1,6 +1,8 @@
 using CashFlow.Application;
 using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
+using CashFlow.Domain.Interfaces.ViewModels;
+using CashFlow.ViewModel.TransacaoPage;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -22,6 +24,7 @@ namespace CashFlow.Views
     public sealed partial class TransacaoPage : Page
     {
         #region Interfaces
+        private readonly ITransacaoPageViewModel _transacaoPageViewModel;
         #endregion
 
         #region Propriedades
@@ -31,6 +34,10 @@ namespace CashFlow.Views
         public TransacaoPage()
         {
             InitializeComponent();
+
+            _transacaoPageViewModel = Bootstrap.ServiceProvider.GetRequiredService<ITransacaoPageViewModel>();
+
+            this.DataContext = _transacaoPageViewModel;
         }
         #endregion
 

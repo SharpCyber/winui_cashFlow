@@ -325,7 +325,7 @@
         </Grid>
 
         <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="20,0" LayoutUpdated="scroll_LayoutUpdated" >
-            <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding Items}" MaxWidth="1366" Margin="12,0" >
+            <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding TransacaoCollection}" MaxWidth="1366" Margin="12,0" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel/>
@@ -368,21 +368,21 @@
                                     </Grid.ColumnDefinitions>
 
                                     <FontIcon x:Name="fiEntradaSaidaTransacao" 
-                              FontFamily="Segoe Fluent Icons" 
-                              Grid.Row="0"
-                              Grid.Column="0"
-                              VerticalAlignment="Center"
-                              HorizontalAlignment="Center"
-                              Glyph="&#xEB0F;" 
-                              Foreground="{StaticResource Vermelho1}"
-                              FontSize="14"/>
+                                              FontFamily="Segoe Fluent Icons" 
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Glyph="&#xEB0F;" 
+                                              Foreground="{StaticResource Vermelho1}"
+                                              FontSize="14"/>
 
                                     <!-- 20 Caracteres limite -->
                                     <TextBlock x:Name="txtCategoriaTransacao"
-                               Grid.Row="0"
-                               Grid.Column="1"
-                               Text="E-Commerce Microsoft"
-                               Style="{StaticResource txtStyle_ItemTransacao_12}"/>
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="{Binding CategoriaNome}"
+                                               Style="{StaticResource txtStyle_ItemTransacao_12}"/>
                                 </Grid>
 
                                 <Grid Grid.Row="0" Grid.Column="1"  Padding="4">

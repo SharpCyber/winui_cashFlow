@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="ms-appx:///Styles/ButtonStyle.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/FontIconStyle.xaml"/>
                 <ResourceDictionary Source="ms-appx:///Styles/TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="ms-appx:///Styles/NavigationViewStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

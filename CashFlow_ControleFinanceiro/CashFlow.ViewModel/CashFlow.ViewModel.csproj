@@ -13,8 +13,5 @@
 	<ItemGroup>
 		<ProjectReference Include="..\CashFlow.Domain\CashFlow.Domain.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="TransacaoPage\" />
-	</ItemGroup>
 
 </Project>

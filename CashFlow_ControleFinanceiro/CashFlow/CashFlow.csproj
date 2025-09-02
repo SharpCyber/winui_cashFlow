@@ -14,7 +14,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Styles\ButtonStyle.xaml" />
+	  <None Remove="Styles\NavigationViewStyle.xaml" />
 	  <None Remove="Themes\Colors.xaml" />
+	  <None Remove="Views\LoginPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -105,6 +107,16 @@
 	  <Content Update="Assets\transacao_64x64.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Styles\NavigationViewStyle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Styles\TextBlockStyle.xaml">
