@@ -7,9 +7,140 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="Red">
+    Background="{StaticResource Nenhuma}">
 
     <Grid>
-        <Button Background="Blue" HorizontalAlignment="Center" Width="120" Height="120" Content="Clicar" Click="Button_Click"/>
+        <FlyoutPresenter HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Center" 
+                         Background="{StaticResource Cinza10}"
+                         Margin="32" 
+                         Padding="32,64"
+                         MaxHeight="600" 
+                         MaxWidth="600">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="gEmail" Grid.Row="0" Margin="0,0,0,12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border x:Name="bEmail" 
+                            Grid.Row="0"
+                            Height="44" 
+                            BorderBrush="{StaticResource Vermelho1}" 
+                            BorderThickness="1"
+                            CornerRadius="4">
+
+                        <Grid>
+                            <TextBox x:Name="txtEmail"
+                                     BorderThickness="0"
+                                     PlaceholderText="Digite seu e-mail"
+                                     Padding="38,11,12,0"
+                                     MaxLength="300"
+                                     />
+
+                            <FontIcon Glyph="&#xE715;"                
+                                      FontSize="16"
+                                      Foreground="{StaticResource Cinza2}"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Margin="12,0,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock x:Name="txtEmailError"
+                               Grid.Row="1" 
+                               Text="Email inválido." 
+                               Style="{ThemeResource CaptionTextBlockStyle}"
+                               Foreground="{StaticResource Vermelho1}"
+                               Margin="4,4,0,0"/>
+                </Grid>
+
+                <Grid x:Name="gSenha" Grid.Row="1" Margin="0,0,0,12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border x:Name="bSenha" 
+                            Grid.Row="0"
+                            Height="44" 
+                            BorderBrush="{StaticResource Vermelho1}" 
+                            BorderThickness="1"
+                            CornerRadius="4">
+
+                        <Grid>
+                            <PasswordBox x:Name="txtSenha"
+                                         BorderThickness="0"
+                                         PlaceholderText="Digite sua senha"
+                                         Padding="38,11,12,0"
+                                         MaxLength="300"/>
+
+                            <FontIcon Glyph="&#xE72E;"                
+                                      FontSize="16"
+                                      Foreground="{StaticResource Cinza2}"
+                                      HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      Margin="12,0,0,0"/>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock x:Name="txtSenhaError"
+                               Grid.Row="1" 
+                               Text="Senha inválido." 
+                               Style="{ThemeResource CaptionTextBlockStyle}"
+                               Foreground="{StaticResource Vermelho1}"
+                               Margin="4,4,0,0"/>
+                </Grid>
+
+                <Button x:Name="btnLogin"
+                        Grid.Row="2"
+                        Content="Entrar"
+                        Click="btnLogin_Click"
+                        Style="{StaticResource AccentButtonStyle}"
+                        HorizontalAlignment="Stretch"/>
+
+                <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,18,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Border Height="2" 
+                            Grid.Column="0"
+                            MinWidth="200" 
+                            Background="{StaticResource Cinza8}" 
+                            HorizontalAlignment="Stretch"/>
+
+                    <TextBlock Grid.Column="1" 
+                               Text="OU" 
+                               Foreground="{StaticResource Cinza7}" Margin="12,0"/>
+
+                    <Border Height="2" 
+                            Grid.Column="2"
+                            MinWidth="200" 
+                            Background="{StaticResource Cinza8}" 
+                            HorizontalAlignment="Stretch"/>
+                </Grid>
+
+                <Button x:Name="btnLoginGoogle"
+                        Margin="0,18,0,0"
+                        Grid.Row="4"
+                        Click="btnLoginGoogle_Click"
+                        Content="Google"
+                        Style="{StaticResource DefaultButtonStyle}"
+                        HorizontalAlignment="Stretch"/>
+            </Grid>
+        </FlyoutPresenter>
     </Grid>
 </Page>
