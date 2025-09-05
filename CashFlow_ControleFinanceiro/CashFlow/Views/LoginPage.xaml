@@ -9,17 +9,20 @@
     mc:Ignorable="d"
     Background="{StaticResource Nenhuma}">
 
-    <Grid>
+    <Grid x:Name="gPrincipal">
         <FlyoutPresenter HorizontalAlignment="Stretch" 
                          VerticalAlignment="Center" 
                          Background="{StaticResource Cinza10}"
                          Margin="32" 
-                         Padding="32,64"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Padding="32,18,32,38"
                          MaxHeight="600" 
                          MaxWidth="600">
-
-            <Grid>
+            <Grid x:Name="gConteudo">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -27,7 +30,15 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="gEmail" Grid.Row="0" Margin="0,0,0,12">
+                <TextBlock Text="Cash Flow"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource Cinza2}"
+                           Margin="0,0,0,32"
+                           VerticalAlignment="Center" 
+                           HorizontalAlignment="Center"/>
+
+                <Grid x:Name="gEmail" Grid.Row="1" Margin="0,0,0,12">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -36,13 +47,14 @@
                     <Border x:Name="bEmail" 
                             Grid.Row="0"
                             Height="44" 
-                            BorderBrush="{StaticResource Vermelho1}" 
+                            BorderBrush="{StaticResource Vermelho5}" 
                             BorderThickness="1"
                             CornerRadius="4">
 
                         <Grid>
                             <TextBox x:Name="txtEmail"
                                      BorderThickness="0"
+                                     Background="{StaticResource Vermelho5Transp10}"
                                      PlaceholderText="Digite seu e-mail"
                                      Padding="38,11,12,0"
                                      MaxLength="300"
@@ -65,7 +77,7 @@
                                Margin="4,4,0,0"/>
                 </Grid>
 
-                <Grid x:Name="gSenha" Grid.Row="1" Margin="0,0,0,12">
+                <Grid x:Name="gSenha" Grid.Row="2" Margin="0,0,0,12">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -74,13 +86,14 @@
                     <Border x:Name="bSenha" 
                             Grid.Row="0"
                             Height="44" 
-                            BorderBrush="{StaticResource Vermelho1}" 
+                            BorderBrush="{StaticResource Vermelho5}" 
                             BorderThickness="1"
                             CornerRadius="4">
 
                         <Grid>
                             <PasswordBox x:Name="txtSenha"
                                          BorderThickness="0"
+                                         Background="{StaticResource Vermelho5Transp10}"
                                          PlaceholderText="Digite sua senha"
                                          Padding="38,11,12,0"
                                          MaxLength="300"/>
@@ -102,14 +115,24 @@
                                Margin="4,4,0,0"/>
                 </Grid>
 
-                <Button x:Name="btnLogin"
-                        Grid.Row="2"
+                <Button x:Name="btnEntrar" Grid.Row="3"
                         Content="Entrar"
-                        Click="btnLogin_Click"
+                        Click="btnEntrar_Click"
+                        FontWeight="Bold"
                         Style="{StaticResource AccentButtonStyle}"
                         HorizontalAlignment="Stretch"/>
 
-                <Grid Grid.Row="3" HorizontalAlignment="Center" Margin="0,18,0,0">
+                <Grid Grid.Row="4" Margin="0,4,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <HyperlinkButton x:Name="hlbEsqueciMinhaSenha" Click="hlbEsqueciMinhaSenha_Click" Content="Esqueci minha senha" Grid.Column="0" Foreground="{StaticResource Azul2}" HorizontalAlignment="Left"/>
+                    <HyperlinkButton x:Name="hlbCadastrarUsuario" Click="hlbCadastrarUsuario_Click" Content="Cadastrar usuário" Grid.Column="1" Foreground="{StaticResource Azul2}" HorizontalAlignment="Right"/>
+                </Grid>
+                
+                <Grid Grid.Row="5" HorizontalAlignment="Center" Margin="0,18,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -133,13 +156,18 @@
                             HorizontalAlignment="Stretch"/>
                 </Grid>
 
-                <Button x:Name="btnLoginGoogle"
+                <Button x:Name="btnLoginGoogle" Grid.Row="6"
                         Margin="0,18,0,0"
-                        Grid.Row="4"
                         Click="btnLoginGoogle_Click"
-                        Content="Google"
                         Style="{StaticResource DefaultButtonStyle}"
-                        HorizontalAlignment="Stretch"/>
+                        HorizontalAlignment="Stretch">
+                    <StackPanel Orientation="Horizontal" Spacing="12">
+                        <Image Source="ms-appx:///Assets/google_24x24.png" Margin="0" HorizontalAlignment="Stretch" Width="24" Height="24"/>
+                        <TextBlock Text="Entrar com Google" 
+                                   Foreground="{StaticResource Cinza1}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
             </Grid>
         </FlyoutPresenter>
     </Grid>
