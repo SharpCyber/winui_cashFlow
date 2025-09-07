@@ -1,18 +1,3 @@
-using CashFlow.Application;
-using CashFlow.Domain.Entity;
-using CashFlow.Domain.Enumeration;
-using CashFlow.Domain.Helpers;
-using CashFlow.Domain.Interfaces;
-using CashFlow.Domain.Interfaces.ViewModels;
-using CashFlow.ViewModel.Ativo;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +7,21 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
+using CashFlow.Application;
+using CashFlow.Domain.Entity;
+using CashFlow.Domain.Enumeration;
+using CashFlow.Domain.Helpers;
+using CashFlow.Domain.Interfaces;
+using CashFlow.Domain.Interfaces.ViewModels;
+using CashFlow.ViewModel.Ativo;
 
 namespace CashFlow.Views
 {

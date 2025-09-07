@@ -52,10 +52,10 @@ namespace CashFlow.ViewModel.MainWindow
 
         public event EventHandler<eTela> NavegarParaPaginaRequested;
 
-        public void NavegarPara(eTela tela)
+        public void NavegarPara(eTela tela, bool exibirMenuNavegacao = false)
         {
+            ExibirMenuNavegacao = (exibirMenuNavegacao) ? Visibility.Visible : Visibility.Collapsed;
             NavegarParaPaginaRequested?.Invoke(this, tela);
         }
-
     }
 }

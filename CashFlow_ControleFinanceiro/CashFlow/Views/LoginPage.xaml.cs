@@ -14,6 +14,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation;
 using CashFlow.Domain.Interfaces.ViewModels;
 using CashFlow.ViewModel.MainWindow;
+using CashFlow.Domain.Enumeration;
 
 namespace CashFlow.Views
 {
@@ -34,35 +35,59 @@ namespace CashFlow.Views
         #endregion
 
         #region Eventos
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            _mainWindowViewModel.ExibirMenuNavegacao = Visibility.Visible;
-            (_mainWindowViewModel as MainWindowViewModel)?.NavegarPara(Domain.Enumeration.eTela.TransacaoPage);
-        }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
             if (e.Parameter is IMainWindowViewModel viewModel)
-            {
                 _mainWindowViewModel = viewModel;
-            }
         }
-        private void btnLoginGoogle_Click(object sender, RoutedEventArgs e)
+        private void btnEntrarLogin_Click(object sender, RoutedEventArgs e)
+        {
+            _mainWindowViewModel.NavegarPara(eTela.TransacaoPage, exibirMenuLateral: true);
+        }
+        private void btnEntrarLoginGoogle_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void btnEntrar_Click(object sender, RoutedEventArgs e)
+        private void btnRegistroVoltarLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            this.rLogin.Height = new GridLength();
+            this.rRegistroUsuario.Height = new GridLength(0);
+            this.rValidarEmail.Height = new GridLength(0);
+            this.rRedefinirSenha.Height = new GridLength(0);
         }
-        private void hlbEsqueciMinhaSenha_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void btnVoltarLogin_Click(object sender, RoutedEventArgs e)
+        {
+            this.rLogin.Height = new GridLength();
+            this.rRegistroUsuario.Height = new GridLength(0);
+            this.rValidarEmail.Height = new GridLength(0);
+            this.rRedefinirSenha.Height = new GridLength(0);
         }
-        private void hlbCadastrarUsuario_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void btnCadastrarUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            this.rLogin.Height = new GridLength(0);
+            this.rRegistroUsuario.Height = new GridLength();
+            this.rValidarEmail.Height = new GridLength(0);
+            this.rRedefinirSenha.Height = new GridLength(0);
+        }
+
+        private void btnContinuarRedefinirSenha_Click(object sender, RoutedEventArgs e)
+        {
+            this.rLogin.Height = new GridLength(0);
+            this.rRegistroUsuario.Height = new GridLength(0);
+            this.rValidarEmail.Height = new GridLength(0);
+            this.rRedefinirSenha.Height = new GridLength();
+        }
+
+        private void btnValidarEmail_Click(object sender, RoutedEventArgs e)
+        {
+            this.rLogin.Height = new GridLength(0);
+            this.rRegistroUsuario.Height = new GridLength(0);
+            this.rValidarEmail.Height = new GridLength();
+            this.rRedefinirSenha.Height = new GridLength(0);
         }
         #endregion
 

@@ -13,5 +13,6 @@ namespace CashFlow.Domain.Interfaces.ViewModels
         string NomeTelaAtiva { get; set; }
         Visibility ExibirMenuNavegacao { get; set; }
         event EventHandler<eTela> NavegarParaPaginaRequested;
+        void NavegarPara(eTela tela, bool exibirMenuLateral = false);
     }
 }
