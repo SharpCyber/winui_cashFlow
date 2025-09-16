@@ -23,7 +23,7 @@ namespace CashFlow.ViewModel.TransacaoPage
         {
             // Pesquisa por data em desenvolvimento
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var transacao = new Domain.Entity.Transacao()
                 {
