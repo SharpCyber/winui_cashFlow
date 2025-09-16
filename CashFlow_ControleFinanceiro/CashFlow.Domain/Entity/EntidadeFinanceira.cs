@@ -30,5 +30,12 @@ namespace CashFlow.Domain.Entity
 
         [Obrigatorio]
         public bool Ativo { get; set; } = true;
+
+
+        [Editavel(false)]
+        public TipoEntidadeFinanceira TipoEntidadeFinanceira { get; set; }
+
+        [Editavel(false)]
+        public Categoria Categoria { get; set; }
     }
 }

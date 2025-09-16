@@ -14,10 +14,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="Styles\ButtonStyle.xaml" />
+	  <None Remove="Styles\NavigationViewStyle.xaml" />
 	  <None Remove="Themes\Colors.xaml" />
-	  <None Remove="Views\DashBoardPage.xaml" />
-	  <None Remove="Views\InvestimentoPage.xaml" />
-	  <None Remove="Views\TestePage.xaml" />
+	  <None Remove="Views\LoginPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -61,9 +60,6 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 		<Content Include="Assets\ativofinanceiro_64x64.png">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Assets\teste_64x64.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
@@ -110,6 +106,19 @@
 	  </Content>
 	</ItemGroup>
 	<ItemGroup>
+	  <Page Update="Styles\NavigationViewStyle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Styles\TextBlockStyle.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
 	  <Page Update="Views\TransacaoRegistroPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
@@ -120,11 +129,6 @@
 	  </Page>
 	  <Page Update="Views\EntidadeRegistroDialog.xaml">
 	    <SubType>Designer</SubType>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\TestePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>
 	<ItemGroup>
@@ -139,16 +143,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <Page Update="Views\AtivoRegistroDialog.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\DashboardPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Page>
-	</ItemGroup>
-	<ItemGroup>
-	  <Page Update="Views\InvestimentoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </Page>
 	</ItemGroup>

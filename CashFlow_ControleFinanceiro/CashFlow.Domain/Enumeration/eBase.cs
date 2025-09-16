@@ -25,23 +25,16 @@ namespace CashFlow.Domain.Enumeration
         Ascendente,
         Descendente
     }
-    public enum ePagina
+    public enum eTela
     {
         Nenhuma = 0,
-        Teste = 1,
-        Dashboard = 2,
-        Transacao = 3,
-        Investimento = 4,
-        TransacaoRegistro = 5
+        LoginPage = 1,
+        TransacaoPage = 2,
+        TransacaoRegistroPage = 3,
+        AtivoFinanceiroDialog = 4,
+        EntidadeFinanceiraDialog = 5,
+        CategoriaDialog = 6,
     }
-    public enum eDialogo
-    {
-        Nenhuma = 0,
-        AtivoFinanceiro = 1,
-        EntidadeFinanceira = 2,
-        Categoria = 3,
-    }
-
     public enum eTipoOperacao
     {
         Nenhuma = 0,
@@ -52,5 +45,13 @@ namespace CashFlow.Domain.Enumeration
         Deletar = 5,
         Cancelar = 6,
         Confirmar = 7
+    }
+    public enum eLoginOperacao
+    {
+        Login = 1,
+        Registrar = 2,
+        RecuperarSenha = 3,
+        TrocarSenha = 4,
+        LoginGoogle = 5,
     }
 }

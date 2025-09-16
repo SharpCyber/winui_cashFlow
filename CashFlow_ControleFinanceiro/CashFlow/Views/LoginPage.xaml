@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="CashFlow.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CashFlow.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{StaticResource Nenhuma}">
+
+    <Grid x:Name="gPrincipal">
+        <FlyoutPresenter HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Center" 
+                         Background="{StaticResource Cinza10}"
+                         Margin="32" 
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Padding="32,18,32,38"
+                         MaxHeight="700" 
+                         MaxWidth="600">
+            <Grid x:Name="gConteudo">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="rLogin" Height="*"/>
+                    <RowDefinition x:Name="rRegistroUsuario" Height="0"/>
+                    <RowDefinition x:Name="rValidarEmail" Height="0"/>
+                    <RowDefinition x:Name="rRedefinirSenha" Height="0"/>
+                </Grid.RowDefinitions>
+
+                <Grid x:Name="gLogin">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Spacing="4" Margin="0,0,0,12">
+                        <TextBlock x:Name="txtTituloLogin" 
+                               Text="Cash Flow" 
+                               FontSize="24" 
+                               FontWeight="Bold" 
+                               Foreground="{StaticResource Cinza2}" 
+                               Margin="0" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Center"/>
+                        
+                        <Border Height="1" HorizontalAlignment="Stretch" Background="{StaticResource Cinza9}"/>
+                    </StackPanel>
+                    
+                    <Grid x:Name="gEmailLogin" 
+                          Grid.Row="1" 
+                          Margin="0,0,0,12">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bEmailLogin" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <TextBox x:Name="txtEmailLogin"
+                                         BorderThickness="0"
+                                         Background="{StaticResource Vermelho5Transp10}"
+                                         PlaceholderText="Digite seu e-mail"
+                                         Padding="38,11,12,0"
+                                         MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE715;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtEmailLoginError"
+                                   Grid.Row="1" 
+                                   Text="Email inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Grid x:Name="gSenhaLogin" Grid.Row="2" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bSenhaLogin" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <PasswordBox x:Name="txtSenha"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Digite sua senha"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE72E;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtSenhaLoginError"
+                                   Grid.Row="1" 
+                                   Text="Senha inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Button x:Name="btnEntrarLogin" Grid.Row="3"
+                            Content="Entrar"
+                            Click="btnEntrarLogin_Click"
+                            FontWeight="Bold"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+
+                    <Grid Grid.Row="4" Margin="0,4,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <HyperlinkButton x:Name="hlbEsqueciMinhaSenha" 
+                                         Click="btnValidarEmail_Click" 
+                                         Content="Esqueci minha senha" 
+                                         Grid.Column="0" 
+                                         Foreground="{StaticResource Azul2}" 
+                                         HorizontalAlignment="Left"/>
+                        
+                        <HyperlinkButton x:Name="hlbCadastrarUsuario" 
+                                         Click="btnCadastrarUsuario_Click" 
+                                         Content="Cadastrar usuário" 
+                                         Grid.Column="1" 
+                                         Foreground="{StaticResource Azul2}" 
+                                         HorizontalAlignment="Right"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5" HorizontalAlignment="Center" Margin="0,18,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Height="2" 
+                                Grid.Column="0"
+                                MinWidth="200" 
+                                Background="{StaticResource Cinza8}" 
+                                HorizontalAlignment="Stretch"/>
+
+                        <TextBlock Grid.Column="1" 
+                                   Text="OU" 
+                                   Foreground="{StaticResource Cinza7}" Margin="12,0"/>
+
+                        <Border Height="2" 
+                                Grid.Column="2"
+                                MinWidth="200" 
+                                Background="{StaticResource Cinza8}" 
+                                HorizontalAlignment="Stretch"/>
+                    </Grid>
+
+                    <Button x:Name="btnEntrarLoginGoogle" Grid.Row="6"
+                            Margin="0,18,0,0"
+                            Click="btnEntrarLoginGoogle_Click"
+                            Style="{StaticResource DefaultButtonStyle}"
+                            HorizontalAlignment="Stretch">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <Image Source="ms-appx:///Assets/google_24x24.png" Margin="0" HorizontalAlignment="Stretch" Width="24" Height="24"/>
+                            <TextBlock Text="Entrar com Google" 
+                                       Foreground="{StaticResource Cinza1}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+
+                <Grid x:Name="gRegistroUsuario" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Spacing="4" Margin="0,0,0,12">
+                        <TextBlock Text="Registrar Usuário" 
+                                   FontSize="24" 
+                                   FontWeight="Bold" 
+                                   Foreground="{StaticResource Cinza2}" 
+                                   Margin="0" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Border Height="1" HorizontalAlignment="Stretch" Background="{StaticResource Cinza9}"/>
+                    </StackPanel>
+                    
+                    <Grid x:Name="gEmailRegistroUsuario" Grid.Row="1" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bEmailRegistroUsuario" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <TextBox x:Name="txtEmailRegistroUsuario"
+                                         BorderThickness="0"
+                                         Background="{StaticResource Vermelho5Transp10}"
+                                         PlaceholderText="Digite seu e-mail"
+                                         Padding="38,11,12,0"
+                                         MaxLength="300"
+                                         />
+
+                                <FontIcon Glyph="&#xE715;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtEmailRegistroUsuarioError"
+                                   Grid.Row="1" 
+                                   Text="Email inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Grid x:Name="gSenhaRegistroUsuario" Grid.Row="2" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bSenhaRegistroUsuario" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <PasswordBox x:Name="txtSenhaRegistroUsuario"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Digite sua senha"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE72E;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtSenhaRegistroUsuarioError"
+                                   Grid.Row="1" 
+                                   Text="Senha inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Grid x:Name="gSenhaConfirmacaoRegistroUsuario" Grid.Row="3" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bSenhaConfirmacaoRegistroUsuario" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <PasswordBox x:Name="txtSenhaConfirmacaoRegistroUsuario"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Digite sua senha"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE72E;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtSenhaConfirmacaoRegistroUsuarioError"
+                                   Grid.Row="1" 
+                                   Text="Senha inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Button x:Name="btnRegistrarUsuario" Grid.Row="4"
+                            Content="Registrar"
+                            Click="btnVoltarLogin_Click"
+                            FontWeight="Bold"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+
+                    <Button x:Name="btnRegistroVoltarLogin" Grid.Row="5"
+                            Margin="0,12,0,0" 
+                            Content="Voltar para fazer login"
+                            BorderBrush="{StaticResource Nenhuma}"
+                            Click="btnVoltarLogin_Click"
+                            FontWeight="Normal"
+                            Background="{StaticResource Nenhuma}"
+                            Style="{StaticResource DefaultButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+                </Grid>
+
+                <Grid x:Name="gValidarUsuario" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Redefinir Senha"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource Cinza1}"
+                                   Margin="0"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Border Height="1" HorizontalAlignment="Stretch" Background="{StaticResource Cinza9}"/>
+                        <TextBlock Text="Digite seu endereço de e-mail e lhe enviaremos um código de verificação para redefinir sua senha."
+                                   TextWrapping="WrapWholeWords"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="{StaticResource Cinza4}"
+                                   Margin="0,0,0,16"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Grid x:Name="gEmailValidarUsuario" Grid.Row="1" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bEmailValidarUsuario" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <TextBox x:Name="txtEmailValidarUsuario"
+                                         BorderThickness="0"
+                                         Background="{StaticResource Vermelho5Transp10}"
+                                         PlaceholderText="Digite seu e-mail"
+                                         Padding="38,11,12,0"
+                                         MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE715;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtEmailValidarUsuarioError"
+                                   Grid.Row="1" 
+                                   Text="Email inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Grid Grid.Row="2" ColumnSpacing="8">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"/>
+                            <ColumnDefinition Width="30*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="gCodigoValidarUsuario" Grid.Column="0" Margin="0,0,0,12">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Border x:Name="bCodigoValidarUsuario" 
+                                    Grid.Row="0"
+                                    Height="44" 
+                                    BorderBrush="{StaticResource Vermelho5}" 
+                                    BorderThickness="1"
+                                    CornerRadius="4">
+
+                                <Grid>
+                                    <TextBox x:Name="txtCodigoValidarUsuario"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Código"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                    <TextBlock Text="#"
+                                               Width="20"
+                                               Height="20"
+                                               FontSize="20"
+                                               HorizontalAlignment="Left"
+                                               Margin="14,0,0,8"
+                                             Foreground="{StaticResource Cinza2}"/>
+                                </Grid>
+                            </Border>
+                            <TextBlock x:Name="txtCodigoValidarUsuarioError"
+                                       Grid.Row="1" 
+                                       Text="Email inválido." 
+                                       Style="{ThemeResource CaptionTextBlockStyle}"
+                                       Foreground="{StaticResource Vermelho1}"
+                                       Margin="4,4,0,0"/>
+                        </Grid>
+
+                        <Button x:Name="btnEnviarCodigoValidarUsuario" 
+                                Grid.Column="1"
+                                Height="44"
+                                Style="{StaticResource DefaultButtonStyle}"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Stretch"
+                                Content="Enviar Código"/>
+
+
+                    </Grid>
+
+                    <Button x:Name="btnContinuarRedefinirSenha" Grid.Row="4"
+                            Content="Continuar"
+                            Click="btnContinuarRedefinirSenha_Click"
+                            FontWeight="Bold"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+
+                    <Button x:Name="btnValidarUsuarioVoltarLogin" Grid.Row="5"
+                            Margin="0,12,0,0" 
+                            Content="Voltar para fazer login"
+                            BorderBrush="{StaticResource Nenhuma}"
+                            Click="btnVoltarLogin_Click"
+                            FontWeight="Normal"
+                            Background="{StaticResource Nenhuma}"
+                            Style="{StaticResource DefaultButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+                </Grid>
+
+                <Grid x:Name="gRedefinirSenha" Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="Redefinir Senha"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Foreground="{StaticResource Cinza1}"
+                                   Margin="0"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Border Height="1" HorizontalAlignment="Stretch" Background="{StaticResource Cinza9}"/>
+                        <TextBlock Text="Digite uma nova senha abaixo para alterar sua senha."
+                                   TextWrapping="WrapWholeWords"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="{StaticResource Cinza4}"
+                                   Margin="0,0,0,16"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Grid x:Name="gSenhaRedefinirSenha" Grid.Row="2" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bSenhaRedefinirSenha" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <PasswordBox x:Name="txtSenhaRedefinirSenha"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Digite sua senha"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE72E;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtSenhaRedefinirSenhaError"
+                                   Grid.Row="1" 
+                                   Text="Senha inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Grid x:Name="gSenhaConfirmacaoRedefinirSenha" Grid.Row="3" Margin="0,0,0,12">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="bSenhaConfirmacaoRedefinirSenha" 
+                                Grid.Row="0"
+                                Height="44" 
+                                BorderBrush="{StaticResource Vermelho5}" 
+                                BorderThickness="1"
+                                CornerRadius="4">
+
+                            <Grid>
+                                <PasswordBox x:Name="txtSenhaConfirmacaoRedefinirSenha"
+                                             BorderThickness="0"
+                                             Background="{StaticResource Vermelho5Transp10}"
+                                             PlaceholderText="Digite sua senha"
+                                             Padding="38,11,12,0"
+                                             MaxLength="300"/>
+
+                                <FontIcon Glyph="&#xE72E;"                
+                                          FontSize="16"
+                                          Foreground="{StaticResource Cinza2}"
+                                          HorizontalAlignment="Left"
+                                          VerticalAlignment="Center"
+                                          Margin="12,0,0,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="txtSenhaConfirmacaoRedefinirSenhaError"
+                                   Grid.Row="1" 
+                                   Text="Senha inválido." 
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Foreground="{StaticResource Vermelho1}"
+                                   Margin="4,4,0,0"/>
+                    </Grid>
+
+                    <Button x:Name="btnConfirmarRedefinirSenha" Grid.Row="4"
+                            Content="Redefinir Senha"
+                            Click="btnVoltarLogin_Click"
+                            FontWeight="Bold"
+                            Style="{StaticResource AccentButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+
+                    <Button x:Name="btnRedefinirSenhaVoltarValidacao" Grid.Row="5"
+                            Margin="0,12,0,0" 
+                            Content="Voltar"
+                            BorderBrush="{StaticResource Nenhuma}"
+                            Click="btnValidarEmail_Click"
+                            FontWeight="Normal"
+                            Background="{StaticResource Nenhuma}"
+                            Style="{StaticResource DefaultButtonStyle}"
+                            HorizontalAlignment="Stretch"/>
+                </Grid>
+            </Grid>
+        </FlyoutPresenter>
+    </Grid>
+</Page>

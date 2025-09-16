@@ -6,9 +6,582 @@
     xmlns:local="using:CashFlow.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    x:Name="pageTransacao"
+    Loaded="pageTransacao_Loaded"
+    Background="{StaticResource Cinza13}">
 
-    <Grid Background="Blue">
+    <Grid Background="{StaticResource Cinza13}" 
+          Margin="0" 
+          RowSpacing="14" 
+          HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>  <!-- 0- Resumo entrada/saída -->
+            <RowDefinition Height="Auto"/>  <!-- 1- Pesquisa/Filtros -->
+            <RowDefinition Height="*"/>     <!-- 2- Transações -->
+            <RowDefinition Height="32"/>    <!-- 3- Rodapé -->
+        </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Background="{StaticResource Nenhuma}"
+              ColumnSpacing="24" 
+              MaxWidth="1366" 
+              Margin="32,12,32,0" 
+              HorizontalAlignment="Stretch">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MaxWidth="260" MinWidth="100"/>
+                <ColumnDefinition Width="*" MaxWidth="260" MinWidth="100"/>
+                <ColumnDefinition Width="*" MinWidth="260"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Background="{StaticResource Nenhuma}" 
+                  Grid.Column="0"
+                  RowSpacing="4"
+                  Padding="0"
+                  Margin="0"
+                  HorizontalAlignment="Stretch">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" 
+                      Padding="0"
+                      Margin="0"
+                      Background="{StaticResource Nenhuma}" 
+                      HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="txtDespesaTitulo" 
+                               Grid.Column="0"
+                               Text="Despesa"
+                               FontSize="14"
+                               FontWeight="Normal"
+                               Foreground="{StaticResource Branco}"
+                               VerticalAlignment="Center"/>
+
+                    <StackPanel x:Name="spDespesaTituloPorcentagem"
+                                Grid.Column="1" 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Bottom" 
+                                Spacing="4">
+                    
+                        <FontIcon FontFamily="Segoe Fluent Icons" 
+                                  Glyph="&#xEB0F;" 
+                                  Foreground="{StaticResource Vermelho1}"
+                                  FontSize="14"/>
+
+                        <TextBlock x:Name="txtDespesaTituloPorcentagem"
+                                   Text="80%" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="{StaticResource Branco}"/>
+                    </StackPanel>
+                </Grid>
+
+                <ProgressBar Value="45" 
+                             Grid.Row="1"
+                             Maximum="100"
+                             Minimum="0"
+                             MinHeight="3"
+                             Padding="0"
+                             Margin="0"
+                             Foreground="{StaticResource Vermelho1}"
+                             Background="{StaticResource Cinza4}"
+                             CornerRadius="2"/>
+
+                <StackPanel Grid.Row="2" 
+                            Orientation="Horizontal"
+                            Background="{StaticResource Nenhuma}" 
+                            HorizontalAlignment="Right">
+
+                    <TextBlock x:Name="txtDespesaTituloRecebido" 
+                               Grid.Column="0"
+                               Text="5.253,99"
+                               FontSize="14"
+                               Foreground="{StaticResource Vermelho1}"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+
+                    <TextBlock x:Name="txtDespesaTituloTotal" 
+                               Grid.Column="0"
+                               Text=" | 9.999,99"
+                               FontSize="14"
+                               Foreground="{StaticResource Cinza2}"
+                               FontWeight="Normal"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Background="{StaticResource Nenhuma}" 
+                  Grid.Column="1"
+                  RowSpacing="4"
+                  Padding="0"
+                  Margin="0"
+                  HorizontalAlignment="Stretch">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" 
+                      Padding="0"
+                      Margin="0"
+                      Background="{StaticResource Nenhuma}" 
+                      HorizontalAlignment="Stretch">
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="txtReceitaTitulo" 
+                               Grid.Column="0"
+                               Text="Receita"
+                               FontSize="14"
+                               FontWeight="Normal"
+                               VerticalAlignment="Center"/>
+
+                    <StackPanel x:Name="spReceitaTituloPorcentagem"
+                                Grid.Column="1" 
+                                Orientation="Horizontal" 
+                                HorizontalAlignment="Right" 
+                                VerticalAlignment="Bottom" 
+                                Spacing="4">
+
+                        <FontIcon FontFamily="Segoe Fluent Icons" 
+                                  Glyph="&#xEB11;" 
+                                  Foreground="{StaticResource Verde1}"
+                                  FontSize="14"/>
+
+                        <TextBlock x:Name="txtReceitaTituloPorcentagem"
+                                   Text="80%" 
+                                   FontWeight="SemiBold" 
+                                   Foreground="{StaticResource Branco}"/>
+                    </StackPanel>
+                </Grid>
+
+                <ProgressBar Value="45" 
+                             Grid.Row="1"
+                             Maximum="100"
+                             Minimum="0"
+                             MinHeight="3"
+                             Padding="0"
+                             Margin="0"
+                             Foreground="{StaticResource Verde1}"
+                             Background="{StaticResource Cinza4}"
+                             CornerRadius="2"/>
+
+                <StackPanel Grid.Row="2" 
+                            Orientation="Horizontal"
+                            Background="{StaticResource Nenhuma}" 
+                            HorizontalAlignment="Right">
+
+                    <TextBlock x:Name="txtReceitaTituloRecebido" 
+                               Grid.Column="0"
+                               Text="5.253,99"
+                               FontSize="14"
+                               Foreground="{StaticResource Verde1}"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+
+                    <TextBlock x:Name="txtReceitaTituloTotal" 
+                               Grid.Column="0"
+                               Text=" | 9.999,99"
+                               FontSize="14"
+                               Foreground="{StaticResource Cinza2}"
+                               FontWeight="Normal"
+                               VerticalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Column="2" 
+                        Padding="0" 
+                        Spacing="0" 
+                        VerticalAlignment="Center" 
+                        MaxWidth="600" 
+                        HorizontalAlignment="Right"
+                        Background="{StaticResource Nenhuma}" CornerRadius="8">
+                
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="12"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
+
+                    <TextBlock Grid.Column="0"
+                               Text="Saldo"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="4">
+                        <FontIcon FontFamily="Segoe Fluent Icons" 
+                                      Glyph="&#xEB11;" 
+                                      Foreground="{StaticResource Verde1}"
+                                      FontSize="14"/>
+                        <TextBlock Text="80%" FontWeight="SemiBold" Foreground="{StaticResource Branco}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border Height="0" 
+                        Width="200" 
+                        HorizontalAlignment="Right"
+                        Background="{StaticResource Cinza4}"/>
+
+                <TextBlock Text="R$ 999.999.999,99"
+                           Foreground="{StaticResource Verde1}"
+                           FontSize="14"
+                           HorizontalAlignment="Right"
+                           FontWeight="Bold"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Background="{StaticResource Cinza11}"
+              BorderBrush="{StaticResource Cinza13Transp10}"
+              BorderThickness="0,0,0,2"
+              Grid.Row="1"
+              CornerRadius="8"
+              Margin="32,12,32,0" 
+              ColumnSpacing="24" 
+              MaxWidth="1366" 
+              HorizontalAlignment="Stretch">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="48"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0"
+                  VerticalAlignment="Stretch"
+                  Background="{StaticResource Nenhuma}"
+                  ColumnSpacing="2" 
+                  Margin="0"
+                  Padding="8"
+                  MinWidth="230" 
+                  MaxWidth="230">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="32"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ComboBox x:Name="cboOrdenacao"
+                          Grid.Column="0"
+                          Grid.Row="1"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Stretch"                    
+                          ItemsSource="{Binding OrdenacaoCollection}"
+                          SelectedItem="{Binding OrdenacaoSelecionada, Mode=TwoWay}"
+                          DisplayMemberPath="Nome"
+                          SelectedIndex="0"/>
+
+                <Button x:Name="btnOrdenacao"
+                        Click="btnOrdenacao_Click"
+                        Grid.Row="1"
+                        Grid.Column="2"               
+                        Padding="0"
+                        Style="{StaticResource DefaultButtonStyle}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE8CB;"/>
+                </Button>
+            </Grid>
+
+            <DatePicker x:Name="dtpDataPesquisa"
+                        Grid.Column="1" 
+                        DayVisible="False" 
+                        Language="pt-BR" 
+                        HorizontalAlignment="Left"
+                        MonthFormat="{}{month.solo.full}" 
+                        YearFormat="{}{year.full(4)}"
+                        SelectedDate="{Binding DataSelecionada, Mode=TwoWay}"
+                        />
+
+            <Button x:Name="btnAdicionar"
+                    Click="btnAdicionar_Click"
+                    Grid.Column="4"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource AccentButtonStyle_34x}">
+                <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
+            </Button>
+        </Grid>
+
+        <ScrollViewer Grid.Row="2" x:Name="scroll" Margin="20,0" LayoutUpdated="scroll_LayoutUpdated" >
+            <ItemsControl x:Name="spPrincipal" ItemsSource="{Binding TransacaoCollection}" MaxWidth="1366" Margin="12,0" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid x:Name="gItemTransacao" Grid.Row="2" Margin="0,0,0,6" Background="{StaticResource Cinza10}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="gLinhaItemTransacao" Height="40" MinHeight="40" MaxHeight="40"/>
+                                <!-- 0- Transação -->
+                                <RowDefinition x:Name="gLinhaItemTransacaoAtivo" Height="40" MinHeight="0" MaxHeight="40"/>
+                                <!-- 1- Ativos -->
+                                <RowDefinition x:Name="gLinhaItemObservacaoAtivo" Height="*" MinHeight="0" MaxHeight="38"/>
+                                <!-- 2- Observação -->
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <!-- 0- Ícone entrada/saída + Categorias -->
+                                    <ColumnDefinition Width="*" MinWidth="112" MaxWidth="200"/>
+                                    <!-- 1- Entidade Financeira -->
+                                    <ColumnDefinition Width="*"/>
+                                    <!-- 2- Data Transação -->
+                                    <ColumnDefinition Width="*" MinWidth="80" MaxWidth="100" />
+                                    <!-- 3- Data Vencimento -->
+                                    <ColumnDefinition Width="*" MinWidth="80" MaxWidth="100" />
+                                    <!-- 4- Valor -->
+                                    <ColumnDefinition Width="*" MinWidth="150" MaxWidth="250" />
+                                    <!-- 5- btns -->
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Row="0" Grid.Column="0" Background="{StaticResource Cinza11}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="24"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <FontIcon x:Name="fiEntradaSaidaTransacao" 
+                                              FontFamily="Segoe Fluent Icons" 
+                                              Grid.Row="0"
+                                              Grid.Column="0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"
+                                              Glyph="&#xEB0F;" 
+                                              Foreground="{StaticResource Vermelho1}"
+                                              FontSize="14"/>
+
+                                    <!-- 20 Caracteres limite -->
+                                    <TextBlock x:Name="txtCategoriaTransacao"
+                                               Grid.Row="0"
+                                               Grid.Column="1"
+                                               Text="{Binding CategoriaNome}"
+                                               Style="{StaticResource txtStyle_ItemTransacao_12}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="0" Grid.Column="1"  Padding="4">
+
+                                    <TextBlock x:Name="txtEntidadeFinanceiraTransacao" 
+                               MaxLines="2"
+                               Text="Microsoft (NASDAQ MSFT) é uma empresa transnacional de tecnologia dos Estados Unidos com sede Cidade"
+                               Style="{StaticResource txtStyle_ItemTransacao_12}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="0" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" 
+                               Text="Transação" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Text="01/07/2025" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12_Entrada}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="0" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" 
+                               Text="Vencimento" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Text="01/07/2025" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12_Saida}"/>
+                                </Grid>
+
+                                <Grid Grid.Row="0" Background="{StaticResource Cinza9}" CornerRadius="4" Grid.Column="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" 
+                               Text="Total (R$)" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Text="999.999.999.999.999,99" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12_Total}"/>
+                                </Grid>
+
+                                <StackPanel Grid.Row="0" Grid.Column="5" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                                    <Button x:Name="btnTransacaoOpcoes"
+                            VerticalAlignment="Center"
+                            Padding="0"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource AlternateCloseButtonStyle}">
+                                        <FontIcon Style="{StaticResource FontIcon_14}" Glyph="&#xE712;"/>
+                                    </Button>
+                                    <Button x:Name="btnExpandirTransacao"
+                            VerticalAlignment="Center"
+                            Padding="0"
+                            Width="32"
+                            Height="32"
+                            Style="{StaticResource AlternateCloseButtonStyle}">
+                                        <FontIcon Style="{StaticResource FontIcon_14}" Glyph="&#xE70D;"/>
+                                    </Button>
+                                </StackPanel>
+
+                            </Grid>
+
+                            <Grid Grid.Row="1" VerticalAlignment="Stretch" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1" HorizontalAlignment="Stretch" Background="{StaticResource Cinza11Transp50}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" MaxWidth="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Grid Background="{StaticResource Nenhuma}" Grid.Column="0" >
+                                    <TextBlock Grid.Column="0" 
+                                   Style="{StaticResource txtStyle_ItemTransacao_12}"
+                                   Text="Crowdfunding Imobiliário"/>
+                                </Grid>
+
+                                <Grid Background="{StaticResource Nenhuma}" Grid.Column="1" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1,0">
+                                    <TextBlock 
+                                   Style="{StaticResource txtStyle_ItemTransacao_12}"
+                                   FontSize="10"
+                                   Text="MXRF11 - MAX EMPREENDIMENTOS"/>
+                                </Grid>
+
+                                <Grid Background="{StaticResource Cinza9}" Grid.Column="2" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0"           
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"
+                               Text="Compra"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12}"
+                               Text="999.999.999.999,99"/>
+                                </Grid>
+
+                                <Grid Background="{StaticResource Cinza10}" Grid.Column="3" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0"           
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"
+                               Text="Outros (R$)"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12}"
+                               Text="999.999.999.999,99"/>
+                                </Grid>
+
+                                <Grid Background="{StaticResource Cinza11}" Grid.Column="4" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0"           
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"
+                               Text="Imposto (R$)"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12}"
+                               Text="999.999.999.999,99"/>
+                                </Grid>
+
+                                <Grid Background="{StaticResource Cinza13}" Grid.Column="5" BorderBrush="{StaticResource Cinza9Transp10}" BorderThickness="1,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="18"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0"           
+                               Style="{StaticResource txtStyle_ItemTransacao_Bottom_10}"
+                               Text="Unitário (R$)"/>
+
+                                    <TextBlock Grid.Row="1" 
+                               Style="{StaticResource txtStyle_ItemTransacao_Top_12}"
+                               Text="999.999.999.999,99"/>
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Grid Grid.Row="3" Background="{StaticResource Cinza11}" Padding="12,4,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="Entradas:" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Verde2}" />
+                <TextBlock Text="999.999,99" FontSize="12" Foreground="{StaticResource Cinza3}" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="Saídas:" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Vermelho2}" />
+                <TextBlock Text="999.999,99" FontSize="12" Foreground="{StaticResource Cinza3}" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="Vencidos:" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Vermelho3}" />
+                <TextBlock Text="999.999,99" FontSize="12" Foreground="{StaticResource Cinza3}" />
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <TextBlock Text="Pendentes:" FontSize="12" FontWeight="Bold" Foreground="{StaticResource Amarelo}" />
+                <TextBlock Text="9M" FontSize="12" Foreground="{StaticResource Cinza3}" />
+            </StackPanel>
+            <StackPanel Grid.Column="4" Orientation="Horizontal" Spacing="4" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <TextBlock Text="Total:" FontSize="12" Foreground="{StaticResource Branco}" />
+                <TextBlock Text="999.999,99" FontSize="12" Foreground="{StaticResource Cinza3}" />
+            </StackPanel>
+        </Grid>
+        
     </Grid>
 </Page>

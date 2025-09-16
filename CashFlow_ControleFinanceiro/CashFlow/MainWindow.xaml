@@ -14,59 +14,66 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid Padding="0" Margin="0">
+    <Grid Padding="0" Margin="0" x:Name="MainContent">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="82"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="{Binding TamanhoColunaMenuNavegacao}" x:Name="colMenuNavegacao"/>
+            <ColumnDefinition Width="*" x:Name="colConteudo"/>
         </Grid.ColumnDefinitions>
-
+        
         <NavigationView x:Name="NavView"
-                        PaneDisplayMode="Left"
-                        IsPaneToggleButtonVisible="False"
-                        IsSettingsVisible="False"
-                        IsBackButtonVisible="Collapsed"
-                        Margin="0"
-                        Padding="0"
+                        Grid.Column="0"
+                        Visibility="{Binding ExibirMenuNavegacao}"
+                        Style="{StaticResource NavegacaoBase}"
                         Loaded="NavView_Loaded"
                         ItemInvoked="NavView_ItemInvoked">
             <NavigationView.MenuItems>
-                <NavigationViewItem x:Name="nviDashboardPage" Tag="Dashboard" Margin="0,20,0,0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Dashboard">
-                    <Image Source="ms-appx:///Assets/dashboard_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
-                </NavigationViewItem>
-
-                <NavigationViewItem x:Name="nviTransacaoPage" Tag="Transacao" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Transações">
+                <NavigationViewItem x:Name="nviLoginPage" ToolTipService.ToolTip="Login" Visibility="Collapsed" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviInvestimentoPage" Tag="Investimento" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Investimentos">
-                    <Image Source="ms-appx:///Assets/investimento_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
+                <NavigationViewItem x:Name="nviTransacaoPage" ToolTipService.ToolTip="Transações" Style="{StaticResource ItemNavegacaoBase}">
+                    <Image Source="ms-appx:///Assets/transacao_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviTransacaoRegistroPage" Tag="TransacaoRegistro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Registrar Transações">
+                <NavigationViewItem x:Name="nviTransacaoRegistroPage" ToolTipService.ToolTip="Transação Registro" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/transacaoregistro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviEntidadeFinanceira" Tag="EntidadeFinanceira" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Entidades Financeiras">
+                <NavigationViewItem x:Name="nviEntidadeFinanceira" ToolTipService.ToolTip="Entidades Financeiras" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/entidadefinanceira_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviCategoria" Tag="Categoria" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Categorias">
+                <NavigationViewItem x:Name="nviCategoria" ToolTipService.ToolTip="Categorias" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/categoria_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="nviAtivoFinanceiro" Tag="AtivoFinanceiro" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Ativos Financeiros">
+                <NavigationViewItem x:Name="nviAtivoFinanceiro" ToolTipService.ToolTip="Ativos Financeiros" Style="{StaticResource ItemNavegacaoBase}">
                     <Image Source="ms-appx:///Assets/ativofinanceiro_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
                 </NavigationViewItem>
-
-                <NavigationViewItem x:Name="nviTeste" Tag="Teste" Margin="0" Padding="4,0,0,0" HorizontalAlignment="Right" Height="64" ToolTipService.ToolTip="Teste">
-                    <Image Source="ms-appx:///Assets/teste_64x64.png" Margin="0" HorizontalAlignment="Stretch" Width="34" Height="34"/>
-                </NavigationViewItem>
-
             </NavigationView.MenuItems>
         </NavigationView>
-        <Frame 
-            Grid.Column="1"
-            Background="Red"
-            x:Name="ContentFrame" />
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="38"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        
+            <Grid x:Name="gStatusTop" Grid.Row="0" Background="{StaticResource Cinza12}" Padding="12,0" BorderBrush="{StaticResource Cinza13}" BorderThickness="0,0,0,1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Left" Text="{Binding NomeTelaAtiva}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" FontSize="12" HorizontalAlignment="Right" Text="Nome do usuário"/>
+            </Grid>
+            
+            <Frame 
+                Grid.Row="1"
+                Background="{StaticResource Cinza11}"
+                x:Name="ContentFrame" />
+        </Grid>
+        
     </Grid>
 </Window>

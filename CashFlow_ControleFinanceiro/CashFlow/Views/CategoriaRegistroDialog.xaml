@@ -71,38 +71,38 @@
                          FontSize="16" 
                          FontWeight="Normal" 
                          Margin="0" 
-                         MaxLength="30"/>
+                         MaxLength="20"/>
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Margin="0" Spacing="4">
                     
                     <Button x:Name="btnCancelar" 
                             Click="btnCancelar_Click" 
-                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Visibility="{Binding ExibirBotaoCancelar}" 
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE711;"/>
                     </Button>
                     <Button x:Name="btnSalvar" 
                             Click="btnSalvar_Click" 
-                            Visibility="{Binding ExibirBotaoSalvarCancelar}" 
+                            Visibility="{Binding ExibirBotaoSalvar}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74E;"/>
                     </Button>
                     <Button x:Name="btnExcluir" 
                             Click="btnExcluir_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoExcluir}" 
                             IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE74D;"/>
                     </Button>
                     <Button x:Name="btnEditar" 
                             Click="btnEditar_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoEditar}" 
                             IsEnabled="{Binding HabilitarBotaoCrud}"
                             Style="{StaticResource DefaultButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE70F;"/>
                     </Button>
                     <Button x:Name="btnAdicionar" 
                             Click="btnAdicionar_Click" 
-                            Visibility="{Binding ExibirBotaoCrud}" 
+                            Visibility="{Binding ExibirBotaoAdicionar}" 
                             Style="{StaticResource AccentButtonStyle_34x}">
                         <FontIcon Style="{StaticResource FontIcon_16}" Glyph="&#xE710;"/>
                     </Button>

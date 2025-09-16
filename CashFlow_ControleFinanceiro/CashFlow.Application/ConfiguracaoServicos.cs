@@ -25,7 +25,7 @@ namespace CashFlow.Application
         public static void RegistrarEntidades()
         {
             var uow = Bootstrap.ServiceProvider.GetRequiredService<IUnitOfWork>();
-            uow.Connection.CriarTabela(typeof(Usuario));
+            //uow.Connection.CriarTabela(typeof(Usuario));
             //uow.Connection.CriarTabela(typeof(TipoEntidadeFinanceira));
             //uow.Connection.CriarTabela(typeof(Categoria));
             //uow.Connection.CriarTabela(typeof(EntidadeFinanceira));

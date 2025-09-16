@@ -18,15 +18,14 @@ using CashFlow.Domain.Entity;
 using CashFlow.Domain.Enumeration;
 using CashFlow.Domain.Helpers;
 using CashFlow.Domain.Interfaces;
-using CashFlow.ViewModel.CategoriaViewModel;
-using CashFlow.ViewModel.EntidadeFinanceiraViewModel;
+using CashFlow.Domain.Interfaces.ViewModels;
 
 namespace CashFlow.Views
 {
     public sealed partial class EntidadeRegistroDialog : ContentDialog
     {
         #region Interfaces
-        private readonly IEntidadeRegistroDialogVM _entidadeFinanceiraDialogViewModel;
+        private readonly IEntidadeRegistroDialogViewModel _entidadeRegistroDialogViewModel;
         #endregion
 
         #region Propriedades
@@ -34,12 +33,13 @@ namespace CashFlow.Views
         #endregion
 
         #region Método Construtor
-        public EntidadeRegistroDialog(IEntidadeRegistroDialogVM entidadeFinanceiraDialogViewModel)
+        public EntidadeRegistroDialog()
         {
             InitializeComponent();
 
-            _entidadeFinanceiraDialogViewModel = entidadeFinanceiraDialogViewModel;
-            this.DataContext = _entidadeFinanceiraDialogViewModel;
+            _entidadeRegistroDialogViewModel = Bootstrap.ServiceProvider.GetRequiredService<IEntidadeRegistroDialogViewModel>();
+
+            this.DataContext = _entidadeRegistroDialogViewModel;
         }
         #endregion
 
@@ -103,31 +103,29 @@ namespace CashFlow.Views
         }
         private void CarregarEntidadeFinanceira()
         {
-            _entidadeFinanceiraDialogViewModel.Items.Clear();
+            _entidadeRegistroDialogViewModel.Items.Clear();
 
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 0, Nome = "" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 1, Nome = "Teste 1" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 2, Nome = "Teste 2" });
-            _entidadeFinanceiraDialogViewModel.Items.Add(new { PK_EntidadeFinanceira = 3, Nome = "Teste 3" });
+            _entidadeRegistroDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 1, Nome = "Teste 1" });
+            _entidadeRegistroDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 2, Nome = "Teste 2" });
+            _entidadeRegistroDialogViewModel.Items.Add(new EntidadeFinanceira { PK_EntidadeFinanceira = 3, Nome = "Teste 3" });
 
-            _entidadeFinanceiraDialogViewModel.ItemSelecionado = _entidadeFinanceiraDialogViewModel.Items.FirstOrDefault();
-
+            cboEntidadeFinanceira.SelectedIndex = 0;
         }
+
         private void CarregarCategoria()
         {
-            _entidadeFinanceiraDialogViewModel.Categorias.Clear();
+            _entidadeRegistroDialogViewModel.CategoriaCollection.Clear();
 
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 0, Nome = "" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 1, Nome = "Alimentação" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 2, Nome = "Transporte" });
-            _entidadeFinanceiraDialogViewModel.Categorias.Add(new Categoria { PK_Categoria = 3, Nome = "Lazer" });
+            _entidadeRegistroDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 1, Nome = "Teste 1" });
+            _entidadeRegistroDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 2, Nome = "Teste 2" });
+            _entidadeRegistroDialogViewModel.CategoriaCollection.Add(new Categoria { PK_Categoria = 3, Nome = "Teste 3" });
 
-            _entidadeFinanceiraDialogViewModel.CategoriaSelecionada = _entidadeFinanceiraDialogViewModel.Categorias.FirstOrDefault();
+            cboCategoria.SelectedIndex = 0;
         }
         private void ExecutarOperacao(eTipoOperacao eTipoOperacao)
         {
             tipoOperacaoAtual = eTipoOperacao;
-            _entidadeFinanceiraDialogViewModel.DefinirOperacao(tipoOperacaoAtual);
+            _entidadeRegistroDialogViewModel.DefinirOperacao(tipoOperacaoAtual);
 
             Aviso.Ocultar(spAviso);
 
@@ -145,8 +143,8 @@ namespace CashFlow.Views
                     break;
                 case eTipoOperacao.Deletar:
                     Aviso.Mostrar(
-                        spAviso, 
-                        "Tem certeza que deseja realizar a exclusão da entidade?\nEssa operação não poderá ser desfeita.", 
+                        spAviso,
+                        "Tem certeza que deseja realizar a exclusão da entidade?\n\nEssa operação não poderá ser desfeita.",
                         eTipoMensagem.Informacao,
                         TextWrapping.Wrap);
                     break;

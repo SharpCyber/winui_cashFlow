@@ -26,10 +26,14 @@ namespace CashFlow.Domain.Entity
         public DateTime DataTransacao { get; set; } = DateTime.Now;
 
         public DateTime? DataVencimento { get; set; }
-
         public string Observacao { get; set; }
 
         [Obrigatorio, Relacionamento("Usuario", "PK_Usuario")]
         public int FK_Usuario { get; set; }
+
+        [Editavel(false)]
+        public TipoTransacao TipoTransacao { get; set; }
+        [Editavel(false)]
+        public EntidadeFinanceira EntidadeFinanceira { get; set; }
     }
 }

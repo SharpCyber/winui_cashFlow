@@ -1,12 +1,18 @@
-﻿using System;
-using CashFlow.Data;
+﻿using CashFlow.Data;
 using CashFlow.Domain.Entity;
 using CashFlow.Domain.Interfaces;
+using CashFlow.Domain.Interfaces.ViewModels;
 using CashFlow.InfraData.Repository;
-using CashFlow.ViewModel.CategoriaViewModel;
-using CashFlow.ViewModel.EntidadeFinanceiraViewModel;
+using CashFlow.ViewModel;
+using CashFlow.ViewModel.Ativo;
+using CashFlow.ViewModel.Categoria;
+using CashFlow.ViewModel.Entidade;
+using CashFlow.ViewModel.MainWindow;
+using CashFlow.ViewModel.TransacaoPage;
+using CashFlow.ViewModel.TransacaoRegistro;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace CashFlow.Application
 {
@@ -32,10 +38,24 @@ namespace CashFlow.Application
         private static void RegistrarServicos(IServiceCollection services)
         {
             services.AddSingleton<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
 
-            services.AddSingleton<ICategoriaDialogVM, CategoriaRegistroDialogVM>();
-            services.AddSingleton<IEntidadeRegistroDialogVM, EntidadeRegistroDialogVM>();
+            RegistrarRepositorios(services);
+            RegistrarViewModels(services);
+        }
+
+        private static void RegistrarRepositorios(IServiceCollection services)
+        {
+            services.AddSingleton<ITipoTransacaoRepository, TipoTransacaoRepository>();
+        }
+
+        private static void RegistrarViewModels(IServiceCollection services) 
+        {
+            services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
+            services.AddSingleton<ICategoriaDialogViewModel, CategoriaDialogViewModel>();
+            services.AddSingleton<IAtivoDialogViewModel, AtivoDialogViewModel>();
+            services.AddSingleton<IEntidadeRegistroDialogViewModel, EntidadeRegistroDialogViewModel>();
+            services.AddSingleton<ITransacaoRegistroViewModel, TransacaoRegistroViewModel>();
+            services.AddSingleton<ITransacaoPageViewModel, TransacaoPageViewModel>();
         }
     }
 }
